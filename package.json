@@ -1,9 +1,14 @@
 {
   "name": "alfred-chrono-notes",
-  "author": "Westley Eklund",
-  "version": "0.0.2",
+  "author": {
+    "name": "Wes Eklund",
+    "email": "me@weseklund.com",
+    "url": "weseklund.com"
+  },
+  "license": "MIT",
+  "version": "0.0.3",
   "description": "Alfred Workflow for easy access to your Obsidian Periodic Notes",
-  "main": "workflow/alfred/templates.js",
+  "main": "workflow/entrypoint.js",
   "type": "module",
   "repository": "https://github.com/weklund/alfred-chrono-notes",
   "scripts": {
@@ -26,7 +31,6 @@
     "workflow",
     "productivity"
   ],
-  "license": "MIT",
   "dependencies": {
     "alfred-notifier": "^0.2.3",
     "alfy": "^0.12.2",
