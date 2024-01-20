@@ -1,0 +1,45 @@
+{
+  "name": "alfred-chrono-notes",
+  "author": "Westley Eklund",
+  "version": "0.0.2",
+  "description": "Alfred Workflow for easy access to your Obsidian Periodic Notes",
+  "main": "workflow/alfred/templates.js",
+  "type": "module",
+  "repository": "https://github.com/weklund/alfred-chrono-notes",
+  "scripts": {
+    "test": "jest",
+    "prepublishOnly": "tsc",
+    "postinstall": "alfy-init",
+    "preuninstall": "alfy-cleanup",
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "files": [
+    "workflow/**/*.js",
+    "*.png",
+    "info.plist"
+  ],
+  "keywords": [
+    "alfred",
+    "alfredapp",
+    "obsidian",
+    "workflow",
+    "productivity"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "alfred-notifier": "^0.2.3",
+    "alfy": "^0.12.2",
+    "handlebars": "^4.7.7",
+    "open": "^8.4.0",
+    "urlencode": "^1.1.0",
+    "yaml": "^2.2.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.0",
+    "@types/urlencode": "^1.1.2",
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4"
+  }
+}
