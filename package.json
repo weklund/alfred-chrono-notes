@@ -31,6 +31,10 @@
     "workflow",
     "productivity"
   ],
+  "engines" : {
+    "npm" : ">=6.12.0 <10.3.0",
+    "node" : ">=13.0.0 <21.0.0"
+  },
   "dependencies": {
     "alfred-notifier": "^0.2.3",
     "alfy": "^0.12.2",
