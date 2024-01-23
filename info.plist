@@ -21,11 +21,34 @@
 				<false/>
 			</dict>
 		</array>
+		<key>7F1B1630-1E17-4EAA-B20C-AE49B4842996</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1608CD3C-90FC-46D0-B019-AE15729ED72E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>2B791AAB-2C6F-4FA5-AD5C-3BE7AE12AA35</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>8E57F57C-AC90-404E-B726-6EEE60B8E9B1</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>60C20433-F66D-48B0-A8DE-197D0AE89E3F</string>
+				<string>BA154139-6236-4C6C-9295-F2127150B71D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -36,6 +59,91 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>2E7F72DB-0BB9-481E-9FD2-8BEBF56FC974</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A0635D5F-0569-4BBE-B692-F987A2A16ACC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3A975BD9-F00A-41E8-9DEE-907604B247D2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>393E066A-F906-44FF-A95F-0A4F879D86B3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A905D64A-4091-4A0D-B5C4-B09BB3C2C057</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>634F4155-9C04-43EF-9E33-A8D577B307FB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>52B233B8-1320-4EDE-9294-91D7B9DF6B8E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B2B007AF-7C39-4B94-81FE-7BF42FB57E64</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A905D64A-4091-4A0D-B5C4-B09BB3C2C057</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C9DE9D15-7F37-48DA-8EAB-F76E35B09278</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A0635D5F-0569-4BBE-B692-F987A2A16ACC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E242328D-AB73-408B-B9E0-383618C9515B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7F1B1630-1E17-4EAA-B20C-AE49B4842996</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -58,31 +166,65 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alignment</key>
-				<integer>0</integer>
-				<key>backgroundcolor</key>
-				<string></string>
-				<key>fadespeed</key>
-				<integer>0</integer>
-				<key>fillmode</key>
-				<integer>0</integer>
-				<key>font</key>
-				<string></string>
-				<key>ignoredynamicplaceholders</key>
+				<key>lastpathcomponent</key>
 				<false/>
-				<key>largetypetext</key>
-				<string>{query}</string>
-				<key>textcolor</key>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
 				<string></string>
-				<key>wrapat</key>
-				<integer>50</integer>
+				<key>title</key>
+				<string>Opening Obsidian on next week's Note</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.largetype</string>
+			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>60C20433-F66D-48B0-A8DE-197D0AE89E3F</string>
+			<string>1608CD3C-90FC-46D0-B019-AE15729ED72E</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string>Opening Obsidian on Today's Daily Note</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>BA154139-6236-4C6C-9295-F2127150B71D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ocw</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
+				<key>text</key>
+				<string>Open Current Week's Note</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>E242328D-AB73-408B-B9E0-383618C9515B</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -92,7 +234,30 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node workflow/entrypoint.js "$1"</string>
+				<string>./node_modules/.bin/run-node workflow/alfred-actions/current-week/current-week.js "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>7F1B1630-1E17-4EAA-B20C-AE49B4842996</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./node_modules/.bin/run-node workflow/alfred-actions/current-day/current-day.js "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -113,11 +278,11 @@
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>otd</string>
+				<string>ocd</string>
 				<key>subtext</key>
-				<string>We love pandas</string>
+				<string>Will create if does not exist</string>
 				<key>text</key>
-				<string>Open the Wikipedia page about pandas</string>
+				<string>Open Today's Daily Note</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
@@ -141,6 +306,23 @@
 			<key>type</key>
 			<string>alfred.workflow.utility.debug</string>
 			<key>uid</key>
+			<string>2B791AAB-2C6F-4FA5-AD5C-3BE7AE12AA35</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>'{query}', {variables}</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
 			<string>2E7F72DB-0BB9-481E-9FD2-8BEBF56FC974</string>
 			<key>version</key>
 			<integer>1</integer>
@@ -148,57 +330,186 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
+				<key>lastpathcomponent</key>
 				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>2</integer>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string>Opening Obsidian on next week's Note</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>3A975BD9-F00A-41E8-9DEE-907604B247D2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string>Opening Obsidian on Tomorrow's Daily Note</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>634F4155-9C04-43EF-9E33-A8D577B307FB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
 				<key>escaping</key>
 				<integer>102</integer>
-				<key>keyword</key>
-				<string>odt</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string></string>
 				<key>script</key>
-				<string>./node_modules/.bin/run-node workflow/entrypoint.js "$1"</string>
+				<string>./node_modules/.bin/run-node workflow/alfred-actions/next-week/next-week.js "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
 				<key>type</key>
 				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A0635D5F-0569-4BBE-B692-F987A2A16ACC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>onw</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
+				<key>text</key>
+				<string>Open Next Week's Note</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>819C5078-FF59-44B3-B762-611B1CB98F89</string>
+			<string>C9DE9D15-7F37-48DA-8EAB-F76E35B09278</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ond</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
+				<key>text</key>
+				<string>Open Next Daily Note</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>B2B007AF-7C39-4B94-81FE-7BF42FB57E64</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./node_modules/.bin/run-node workflow/alfred-actions/next-day/next-day.js "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A905D64A-4091-4A0D-B5C4-B09BB3C2C057</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>'{query}', {variables}</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>393E066A-F906-44FF-A95F-0A4F879D86B3</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>'{query}', {variables}</string>
+				<key>cleardebuggertext</key>
+				<false/>
+				<key>processoutputs</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>52B233B8-1320-4EDE-9294-91D7B9DF6B8E</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>1608CD3C-90FC-46D0-B019-AE15729ED72E</key>
+		<dict>
+			<key>xpos</key>
+			<real>1615</real>
+			<key>ypos</key>
+			<real>160</real>
+		</dict>
+		<key>2B791AAB-2C6F-4FA5-AD5C-3BE7AE12AA35</key>
+		<dict>
+			<key>xpos</key>
+			<real>1520</real>
+			<key>ypos</key>
+			<real>395</real>
+		</dict>
 		<key>2E7F72DB-0BB9-481E-9FD2-8BEBF56FC974</key>
 		<dict>
 			<key>xpos</key>
@@ -206,28 +517,49 @@
 			<key>ypos</key>
 			<real>430</real>
 		</dict>
+		<key>393E066A-F906-44FF-A95F-0A4F879D86B3</key>
+		<dict>
+			<key>xpos</key>
+			<real>1545</real>
+			<key>ypos</key>
+			<real>765</real>
+		</dict>
+		<key>3A975BD9-F00A-41E8-9DEE-907604B247D2</key>
+		<dict>
+			<key>xpos</key>
+			<real>1640</real>
+			<key>ypos</key>
+			<real>530</real>
+		</dict>
+		<key>52B233B8-1320-4EDE-9294-91D7B9DF6B8E</key>
+		<dict>
+			<key>xpos</key>
+			<real>485</real>
+			<key>ypos</key>
+			<real>770</real>
+		</dict>
 		<key>59CB478D-73DD-4C5B-8C83-FDC1485C4842</key>
 		<dict>
 			<key>note</key>
-			<string>Type your keyword into Alfred to trigger this workflow.</string>
+			<string>Change the keyword to your preferred way to open today's note.</string>
 			<key>xpos</key>
 			<real>75</real>
 			<key>ypos</key>
 			<real>235</real>
 		</dict>
-		<key>60C20433-F66D-48B0-A8DE-197D0AE89E3F</key>
+		<key>634F4155-9C04-43EF-9E33-A8D577B307FB</key>
 		<dict>
 			<key>xpos</key>
 			<real>580</real>
 			<key>ypos</key>
-			<real>200</real>
+			<real>535</real>
 		</dict>
-		<key>819C5078-FF59-44B3-B762-611B1CB98F89</key>
+		<key>7F1B1630-1E17-4EAA-B20C-AE49B4842996</key>
 		<dict>
 			<key>xpos</key>
-			<real>75</real>
+			<real>1320</real>
 			<key>ypos</key>
-			<real>475</real>
+			<real>200</real>
 		</dict>
 		<key>8E57F57C-AC90-404E-B726-6EEE60B8E9B1</key>
 		<dict>
@@ -236,9 +568,74 @@
 			<key>ypos</key>
 			<real>235</real>
 		</dict>
+		<key>A0635D5F-0569-4BBE-B692-F987A2A16ACC</key>
+		<dict>
+			<key>xpos</key>
+			<real>1345</real>
+			<key>ypos</key>
+			<real>570</real>
+		</dict>
+		<key>A905D64A-4091-4A0D-B5C4-B09BB3C2C057</key>
+		<dict>
+			<key>xpos</key>
+			<real>285</real>
+			<key>ypos</key>
+			<real>575</real>
+		</dict>
+		<key>B2B007AF-7C39-4B94-81FE-7BF42FB57E64</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open current day's note.</string>
+			<key>xpos</key>
+			<real>75</real>
+			<key>ypos</key>
+			<real>575</real>
+		</dict>
+		<key>BA154139-6236-4C6C-9295-F2127150B71D</key>
+		<dict>
+			<key>xpos</key>
+			<real>580</real>
+			<key>ypos</key>
+			<real>195</real>
+		</dict>
+		<key>C9DE9D15-7F37-48DA-8EAB-F76E35B09278</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open today's note.</string>
+			<key>xpos</key>
+			<real>1135</real>
+			<key>ypos</key>
+			<real>570</real>
+		</dict>
+		<key>E242328D-AB73-408B-B9E0-383618C9515B</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open current day's note.</string>
+			<key>xpos</key>
+			<real>1110</real>
+			<key>ypos</key>
+			<real>200</real>
+		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
 	<array/>
+	<key>variables</key>
+	<dict>
+		<key>DAILY_PATH</key>
+		<string>/Users/ekluw/Projects/obsidian/Personal/999-Planner/DailyPlans</string>
+		<key>DAILY_PATH_FORMAT</key>
+		<string>YYYY-MM-DD dddd</string>
+		<key>DAILY_TEMPLATE_PATH</key>
+		<string>~/Projects/obsidian/Personal/999-Templates/daily plan template.md</string>
+		<key>OBSIDIAN_VAULT_NAME</key>
+		<string>Personal</string>
+		<key>WEEKLY_PATH</key>
+		<string>/Users/ekluw/Projects/obsidian/Personal/999-Planner/WeeklyPlans</string>
+		<key>WEEKLY_PATH_FORMAT</key>
+		<string>YYYY-[W]ww</string>
+		<key>WEEKLY_TEMPLATE_PATH</key>
+		<string>~/Projects/obsidian/Personal/999-Templates/weekly planner template.md</string>
+	</dict>
 	<key>version</key>
 	<string>0.0.5</string>
 	<key>webaddress</key>

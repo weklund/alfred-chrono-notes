@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@types/node':
+    specifier: ^20.11.5
+    version: 20.11.5
   alfred-notifier:
     specifier: ^0.2.3
     version: 0.2.3
