@@ -1,6 +1,7 @@
 import alfy from 'alfy';
 import open from "open";
 import { createTemplatedFile, DateUnit, doesFileExist, formatWeekDate, resolveFileDateFormatPath, validateExistingEnvVar, } from '../../utils/utils.js';
+import { DateTime } from "luxon";
 // Write a function that manually reformats a Date object to show this format 'yyyy mm dd dddd'
 // If the month is a single digit, make sure to add a 0 before it to make it 2 digits
 // const formatDate = (date: Date) => `${date.getFullYear()} ${date.getMonth() + 1} ${date.getDate()} ${DAYS[date.getDay()]}`
@@ -13,12 +14,12 @@ const OBSIDIAN_VAULT_NAME = process.env.OBSIDIAN_VAULT_NAME;
 validateExistingEnvVar(OBSIDIAN_VAULT_NAME, 'Obsidian Vault Name EnvVar');
 const WEEKLY_PATH = process.env.WEEKLY_PATH;
 validateExistingEnvVar(WEEKLY_PATH, 'Weekly Note Folder');
-const WEEKLY_PATH_FORMAT = process.env.WEEKLY_PATH;
+const WEEKLY_PATH_FORMAT = process.env.WEEKLY_PATH_FORMAT;
 validateExistingEnvVar(WEEKLY_PATH_FORMAT, 'Weekly Note Folder');
 const WEEKLY_TEMPLATE_PATH = process.env.WEEKLY_TEMPLATE_PATH;
 validateExistingEnvVar(WEEKLY_TEMPLATE_PATH, 'Weekly Note Template Folder');
 // 1. Get current week
-const day = new Date();
+const day = DateTime.now().setLocale("en-US");
 // 2. Resolve full path
 const full_path = resolveFileDateFormatPath(WEEKLY_PATH, day, DateUnit.WEEK, WEEKLY_PATH_FORMAT);
 console.log(`Full Path: ${full_path}`);

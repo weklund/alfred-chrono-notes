@@ -175,7 +175,7 @@
 				<key>text</key>
 				<string></string>
 				<key>title</key>
-				<string>Opening Obsidian on next week's Note</string>
+				<string>Opening Obsidian on this week's Note</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
@@ -624,7 +624,7 @@
 		<key>DAILY_PATH</key>
 		<string>/Users/ekluw/Projects/obsidian/Personal/999-Planner/DailyPlans</string>
 		<key>DAILY_PATH_FORMAT</key>
-		<string>YYYY-MM-DD dddd</string>
+		<string>yyyy-MM-dd cccc</string>
 		<key>DAILY_TEMPLATE_PATH</key>
 		<string>~/Projects/obsidian/Personal/999-Templates/daily plan template.md</string>
 		<key>OBSIDIAN_VAULT_NAME</key>
@@ -632,7 +632,7 @@
 		<key>WEEKLY_PATH</key>
 		<string>/Users/ekluw/Projects/obsidian/Personal/999-Planner/WeeklyPlans</string>
 		<key>WEEKLY_PATH_FORMAT</key>
-		<string>YYYY-[W]ww</string>
+		<string>yyyy-'W'WW</string>
 		<key>WEEKLY_TEMPLATE_PATH</key>
 		<string>~/Projects/obsidian/Personal/999-Templates/weekly planner template.md</string>
 	</dict>

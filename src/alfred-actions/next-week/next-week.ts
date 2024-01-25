@@ -4,11 +4,12 @@ import {
     createTemplatedFile,
     DateUnit,
     doesFileExist,
-    EnvironmentVariable,
-    formatDayDate, formatWeekDate,
+    formatWeekDate,
     resolveFileDateFormatPath,
     validateExistingEnvVar,
+    EnvironmentVariable,
 } from '../../utils/utils.js';
+import {DateTime} from "luxon";
 
 
 // Write a function that manually reformats a Date object to show this format 'yyyy mm dd dddd'
@@ -22,7 +23,7 @@ import {
 
 // 0. Get env vars:
 
-const OBSIDIAN_VAULT_NAME: string | undefined = process.env.OBSIDIAN_VAULT_NAME
+const OBSIDIAN_VAULT_NAME: EnvironmentVariable = process.env.OBSIDIAN_VAULT_NAME
 validateExistingEnvVar(OBSIDIAN_VAULT_NAME, 'Obsidian Vault Name EnvVar')
 
 const WEEKLY_PATH: EnvironmentVariable = process.env.WEEKLY_PATH
@@ -35,8 +36,8 @@ const WEEKLY_TEMPLATE_PATH: EnvironmentVariable = process.env.WEEKLY_TEMPLATE_PA
 validateExistingEnvVar(WEEKLY_TEMPLATE_PATH, 'Weekly Note Template Folder')
 
 // 1. Get next week
-let day = new Date()
-day.setDate(day.getDate() + 7)
+let day = DateTime.now().setLocale("en-US")
+day = day.plus({weeks: 1})
 
 // 2. Resolve full path
 const full_path = resolveFileDateFormatPath(WEEKLY_PATH as string, day, DateUnit.WEEK, WEEKLY_PATH_FORMAT as string)

@@ -3,7 +3,6 @@ import * as fs from "fs";
 import { FileDoesNotExistException } from "../Exceptions/FileDoesNotExistException.js";
 import { PathNotFileException } from "../Exceptions/PathNotFileException.js";
 import { MissingConfigurationException } from "../Exceptions/MissingConfigurationException.js";
-const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 export var DateUnit;
 (function (DateUnit) {
     DateUnit["DAY"] = "DAY";
@@ -16,14 +15,10 @@ export var DateUnit;
  *
  * @param {Date} date
  * @param {string} formatToken
- * @returns {string} YYYY-MM-DD DDDD
+ * @returns {string} YYYY-MM-DD dddd
  */
-export function formatDayDate(date, formatToken = "YYYY-MM-DD DDDD") {
-    let month = date.getMonth() + 1;
-    // We have to do this because just getting January will return '1' and we want '01'
-    // TODO: Improve implementation once we handle all data formats
-    const monthFormat = month.toString().length == 1 ? '0' + month : month;
-    return `${date.getFullYear()}-${monthFormat}-${date.getDate()} ${DAYS[date.getDay()]}`;
+export function formatDayDate(date, formatToken = "yyyy-MM-dd cccc") {
+    return date.toFormat(formatToken);
 }
 /**
  * Format date to YYYY-[W]ww
@@ -32,14 +27,10 @@ export function formatDayDate(date, formatToken = "YYYY-MM-DD DDDD") {
  *
  * @param {Date} date
  * @param {string} formatToken
- * @returns {string} YYYY-MM-DD DDDD
+ * @returns {string}  dateTime in YYYY-'W'ww format
  */
-export function formatWeekDate(date, formatToken = "YYYY-[W]ww") {
-    const weekNumber = getWeekNumber(date);
-    // We have to do this because just getting single digit will return '1' and we want '01'
-    // TODO: Improve implementation once we handle all data formats
-    const weekFormat = weekNumber.toString().length == 1 ? '0' + weekNumber : weekNumber.toString();
-    return `${date.getFullYear()}-W${weekFormat}`;
+export function formatWeekDate(date, formatToken = "yyyy-'W'WW") {
+    return date.toFormat(formatToken);
 }
 /**
  * Get the Week number based on the given Date
@@ -49,16 +40,7 @@ export function formatWeekDate(date, formatToken = "YYYY-[W]ww") {
  * @param date
  */
 export function getWeekNumber(date) {
-    // Copy date so don't modify original
-    // Using UTC ensure leap year adjustments are already accounted for
-    let utcDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-    // Set to nearest Thursday: current date + 4 - current day number
-    utcDate.setUTCDate(utcDate.getUTCDate() + 4 - (utcDate.getUTCDay()));
-    // Get first day of year
-    let yearStart = new Date(Date.UTC(utcDate.getUTCFullYear(), 0, 1));
-    const millisecondsInDay = 1000 * 60 * 60 * 24;
-    // Calculate full weeks to nearest Thursday
-    return Math.ceil((((utcDate.getTime() - yearStart.getTime()) / millisecondsInDay) + 1) / 7);
+    return date.localWeekNumber;
 }
 /**
  * A function that adds the entire path if not provided
@@ -165,3 +147,49 @@ export function createTemplatedFile(filePath, templateFilePath) {
         throw new Error(`Could not create templated file at ${filePath}`);
     }
 }
+const momentToLuxonMap = {
+    "M": "L",
+    "Mo": "L",
+    "MM": "LL",
+    "MMM": "LLL",
+    "MMMM": "LLLL",
+    "Q": "q",
+    "D": "d",
+    "DD": "dd",
+    "DDD": "o",
+    "DDDD": "ooo",
+    "d": "c",
+    "ddd": "ccc",
+    "dddd": "cccc",
+    "w": "W",
+    "ww": "WW",
+    "YY": "yy",
+    "YYYY": "yyyy",
+    "A": "a",
+    "a": "a",
+    "H": "H",
+    "HH": "HH",
+    "h": "h",
+    "hh": "hh",
+    "m": "m",
+    "mm": "mm",
+    "s": "s",
+    "ss": "ss",
+    "S": "S",
+    "SS": "SS",
+    "SSS": "SSS",
+    "Z": "ZZ",
+    "ZZ": "ZZ",
+    "X": "X",
+    "x": "x",
+    "[": "'",
+    "]": "'",
+    "\\[": "'\\'",
+    "\\]": "'",
+};
+export const mapMomentToLuxonTokenFormat = (momentFormat) => {
+    // Regular expression for capturing the moment tokens
+    const tokenRegex = new RegExp(Object.keys(momentToLuxonMap).join('|'), 'g');
+    // Replacing the moment tokens with the equivalent luxon tokens
+    return momentFormat.replace(tokenRegex, match => momentToLuxonMap[match] || match);
+};

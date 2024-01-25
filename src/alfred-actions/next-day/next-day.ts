@@ -9,6 +9,7 @@ import {
     resolveFileDateFormatPath,
     validateExistingEnvVar,
 } from '../../utils/utils.js';
+import {DateTime} from "luxon";
 
 
 // Write a function that manually reformats a Date object to show this format 'yyyy mm dd dddd'
@@ -33,9 +34,7 @@ const DAILY_TEMPLATE_PATH: EnvironmentVariable = process.env.DAILY_TEMPLATE_PATH
 validateExistingEnvVar(DAILY_TEMPLATE_PATH, 'Daily Note Template Folder')
 
 // 1. Get next day
-let day = new Date()
-day.setDate(day.getDate() + 1)
-console.log(`Next Day: ${day}`)
+let day = DateTime.now()
 
 // 2. Resolve full path
 const full_path = resolveFileDateFormatPath(DAILY_PATH as string, day, DateUnit.DAY, DAILY_PATH_FORMAT as string)

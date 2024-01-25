@@ -1,14 +1,11 @@
 import alfy from 'alfy';
 import open from "open";
-import {formatDayDate} from "./utils/utils";
+import { formatDayDate } from "./utils/utils";
+import { DateTime } from "luxon";
 
 // TODO:  Change this entrypoint file to handle validation of configuration variables, validate installation of Obsidian, and Obsidian Periodic Notes plugin
 
-const today = new Date();
-
-const file_name_schema = "yyyy mm dd dddd"
-
-
+const now = DateTime.now().setLocale("en-US");
 
 // Write a function that manually reformats a Date object to show this format 'yyyy mm dd dddd'
 // If the month is a single digit, make sure to add a 0 before it to make it 2 digits
@@ -21,7 +18,7 @@ const file_name_schema = "yyyy mm dd dddd"
 
 
 
-const OBSIDIAN_CURRENT_NOTE = `obsidian://open?vault=Personal&file=${formatDayDate(today)}.md`
+const OBSIDIAN_CURRENT_NOTE = `obsidian://open?vault=Personal&file=${formatDayDate(now)}.md`
 
 try {
     open(OBSIDIAN_CURRENT_NOTE);

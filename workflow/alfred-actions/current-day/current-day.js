@@ -1,6 +1,7 @@
 import alfy from 'alfy';
 import open from "open";
 import { createTemplatedFile, DateUnit, doesFileExist, formatDayDate, resolveFileDateFormatPath, validateExistingEnvVar, } from '../../utils/utils.js';
+import { DateTime } from "luxon";
 // Write a function that manually reformats a Date object to show this format 'yyyy mm dd dddd'
 // If the month is a single digit, make sure to add a 0 before it to make it 2 digits
 // const formatDate = (date: Date) => `${date.getFullYear()} ${date.getMonth() + 1} ${date.getDate()} ${DAYS[date.getDay()]}`
@@ -18,7 +19,7 @@ validateExistingEnvVar(DAILY_PATH_FORMAT, 'Daily Note Folder');
 const DAILY_TEMPLATE_PATH = process.env.DAILY_TEMPLATE_PATH;
 validateExistingEnvVar(DAILY_TEMPLATE_PATH, 'Daily Note Template Folder');
 // 1. Get current day
-const day = new Date();
+const day = DateTime.now();
 // 2. Resolve full path
 const full_path = resolveFileDateFormatPath(DAILY_PATH, day, DateUnit.DAY, DAILY_PATH_FORMAT);
 console.log(`Full Path: ${full_path}`);
