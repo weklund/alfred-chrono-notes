@@ -20,7 +20,7 @@ describe("Current Day Action", () => {
         process.env.DAILY_PATH = VALID_DAILY_PATH;
         process.env.DAILY_TEMPLATE_PATH = VALID_TEMPLATE_PATH;
 
-
+        expect(false).toBeTruthy()
     })
 
 
