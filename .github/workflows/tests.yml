@@ -39,5 +39,10 @@ jobs:
       - name: Install dependencies
         run: SKIP_POSTINSTALL=1 pnpm i --frozen-lockfile
 
-      - name: Run Tests
-        run: pnpm test
+      - name: Run Tests and get Coverage
+        run: pnpm coverage
+
+      - name: Coveralls
+        run: coverallsapp/github-action@v2
+
+      
