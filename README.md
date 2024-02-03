@@ -1,11 +1,7 @@
 # alfred-chrono-notes
 Alfred Workflow for easy access to your Obsidian Periodic Notes.
 
-[![CI](https://github.com/weklund/alfred-chrono-notes/actions/workflows/tests.yml/badge.svg)](https://github.com/weklund/alfred-chrono-notes/actions/workflows/tests.yml)
-
-[![Coverage Status](https://coveralls.io/repos/github/weklund/alfred-chrono-notes/badge.svg?t=2QlVvG)](https://coveralls.io/github/weklund/alfred-chrono-notes)
-
-![GitHub License](https://img.shields.io/github/license/weklund/alfred-chrono-notes)
+[![CI](https://github.com/weklund/alfred-chrono-notes/actions/workflows/tests.yml/badge.svg)](https://github.com/weklund/alfred-chrono-notes/actions/workflows/tests.yml) [![Coverage Status](https://coveralls.io/repos/github/weklund/alfred-chrono-notes/badge.svg?t=2QlVvG)](https://coveralls.io/github/weklund/alfred-chrono-notes) ![GitHub License](https://img.shields.io/github/license/weklund/alfred-chrono-notes)
 
 
 ## Getting Started
