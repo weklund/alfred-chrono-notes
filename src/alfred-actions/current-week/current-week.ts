@@ -9,7 +9,7 @@ import {
     resolveFileDateFormatPath,
     validateExistingEnvVar,
 } from '../../utils/utils.js';
-import {DateTime, Info, Settings, WeekSettings} from "luxon";
+import {DateTime} from "luxon";
 
 
 // Write a function that manually reformats a Date object to show this format 'yyyy mm dd dddd'
@@ -22,7 +22,6 @@ import {DateTime, Info, Settings, WeekSettings} from "luxon";
 // obsidian://open?vault=Personal&file=2024 01 22 Monday.md
 
 // 0. Get env vars:
-
 const OBSIDIAN_VAULT_NAME: EnvironmentVariable = process.env.OBSIDIAN_VAULT_NAME
 validateExistingEnvVar(OBSIDIAN_VAULT_NAME, 'Obsidian Vault Name EnvVar')
 
@@ -39,7 +38,12 @@ validateExistingEnvVar(WEEKLY_TEMPLATE_PATH, 'Weekly Note Template Folder')
 const day: DateTime = DateTime.now().setLocale("en-US")
 
 // 2. Resolve full path
-const full_path = resolveFileDateFormatPath(WEEKLY_PATH as string, day, DateUnit.WEEK, WEEKLY_PATH_FORMAT as string)
+const full_path = resolveFileDateFormatPath(
+    WEEKLY_PATH as string,
+    day,
+    DateUnit.WEEK,
+    WEEKLY_PATH_FORMAT as string
+)
 
 console.log(`Full Path: ${full_path}`)
 

@@ -19,6 +19,7 @@ Alfred Workflow for easy access to your Obsidian Periodic Notes.
   - [x] Convert moment from periodic notes to luxon date format tokens
   - [ ] Determine whether an env var is using moment or luxon to convert
 - [ ] Unit Tests
+- [ ] Race condition on when file doesn't exist?
 - [ ] Support any date format
 - [ ] Basic Configuration builder for Env Vars setup
 - [ ] https://semantic-release.gitbook.io/semantic-release/

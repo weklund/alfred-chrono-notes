@@ -35,7 +35,6 @@ export function formatDayDate(date: DateTime, formatToken: string = "yyyy-MM-dd 
  * @returns {string}  dateTime in YYYY-'W'ww format
  */
 export function formatWeekDate(date: DateTime, formatToken: string = "yyyy-'W'WW"): string {
-
     return date.toFormat(formatToken)
 }
 

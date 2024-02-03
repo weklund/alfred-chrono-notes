@@ -26,7 +26,6 @@ describe("formatDayDate", () => {
 })
 
 describe("getWeekNumber", () => {
-
     const cases = [
         [DateTime.local(2024, 1, 1), "Monday", 1],
         [DateTime.local(2024, 1, 7), "Sunday", 2],

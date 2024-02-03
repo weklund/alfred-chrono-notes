@@ -14,7 +14,7 @@
   "scripts": {
     "test": "jest",
     "prepublishOnly": "tsc",
-    "postinstall": "alfy-init",
+    "postinstall": "skip-postinstall ||  alfy-init",
     "preuninstall": "alfy-cleanup",
     "build": "tsc",
     "dev": "tsc --watch"
