@@ -1,4 +1,3 @@
-import alfy from 'alfy';
 import open from "open";
 import {
     EnvironmentVariable,
@@ -23,7 +22,7 @@ import {DateTime} from "luxon";
 
 // 0. Get env vars:
 
-const OBSIDIAN_VAULT_NAME: string | undefined = process.env.OBSIDIAN_VAULT_NAME
+const OBSIDIAN_VAULT_NAME: EnvironmentVariable = process.env.OBSIDIAN_VAULT_NAME
 validateExistingEnvVar(OBSIDIAN_VAULT_NAME, 'Obsidian Vault Name EnvVar')
 
 const DAILY_PATH: EnvironmentVariable = process.env.DAILY_PATH
@@ -59,5 +58,5 @@ const OBSIDIAN_NOTE_URI = `obsidian://open?vault=Personal&file=${formatDayDate(d
 try {
     open(OBSIDIAN_NOTE_URI);
 } catch (e: any) {
-    alfy.log(`${e}`);
+    console.log(`${e}`);
 }
