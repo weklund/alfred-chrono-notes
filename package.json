@@ -12,12 +12,13 @@
   "type": "module",
   "repository": "https://github.com/weklund/alfred-chrono-notes",
   "scripts": {
-    "test": "jest",
     "prepublishOnly": "tsc",
     "postinstall": "node skip-postinstall ||  alfy-init",
     "preuninstall": "alfy-cleanup",
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "files": [
     "workflow/**/*.js",
