@@ -39,6 +39,9 @@ jobs:
       - name: Install dependencies
         run: SKIP_POSTINSTALL=1 pnpm i --frozen-lockfile
 
+      - name: Run Eslint
+        run: pnpm eslint
+
       - name: Run Tests and get Coverage
         run: pnpm coverage
 
