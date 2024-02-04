@@ -21,7 +21,7 @@ export enum DateUnit {
  * @param {string} formatToken
  * @returns {string} YYYY-MM-DD dddd
  */
-export function formatDayDate(date: DateTime, formatToken = "yyyy-MM-dd cccc"): string {
+export function formatDayDate(date: DateTime, formatToken: string = "yyyy-MM-dd cccc"): string {
     return date.toFormat(formatToken)
 }
 
@@ -34,8 +34,22 @@ export function formatDayDate(date: DateTime, formatToken = "yyyy-MM-dd cccc"): 
  * @param {string} formatToken
  * @returns {string}  dateTime in YYYY-'W'ww format
  */
-export function formatWeekDate(date: DateTime, formatToken = "yyyy-'W'WW"): string {
-    return date.toFormat(formatToken)
+export function formatWeekDate(date: DateTime, formatToken: string = "yyyy-'W'WW"): string {
+    console.log(formatToken)
+
+    // TODO: Troubleshoot why .toFormat can't take in localWeekNumber so we can dynamically format
+    // Format given weeknumber to make sure it's 2 digits, so a single digit number will have a 0 prefixed
+    let weekNumber = getWeekNumber(date).toString()
+
+    if (weekNumber.length === 1) {
+        weekNumber = `0${weekNumber}`
+    }
+
+    // Manually format the date using yyyy-'W'WW format token
+    return `${date.toFormat("yyyy")}-W${weekNumber}`;
+
+
+    // return date.toFormat(formatToken, {locale: "en-US"})
 }
 
 /**
@@ -92,13 +106,15 @@ export function doesFileExist(filePath: string): boolean {
 }
 
 /**
- * Validates if the environment variable was set.  Additionally, console logs the set env var
+ * Checks if the environment variable was set.  Will throw an exception if not.
  *
  * @param {string} environmentVariable
  * @param {string} friendlyName
  * @throws {MissingConfigurationException} if environment variable wasn't set
  */
-export function validateExistingEnvVar(environmentVariable: EnvironmentVariable | undefined | null, friendlyName = 'Environment variable'): void {
+export function validateExistingEnvVar(environmentVariable: EnvironmentVariable | undefined | null, friendlyName: string = 'Environment variable'): void {
+    console.log(friendlyName)
+
     if (!isEnvVarSet(environmentVariable)) {
         throw new MissingConfigurationException('Missing environment variable: ' + environmentVariable)
     }

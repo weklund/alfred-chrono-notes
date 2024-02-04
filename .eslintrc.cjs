@@ -45,5 +45,6 @@ module.exports = {
                 order: 'asc',
             },
         ],
+        '@typescript-eslint/no-inferrable-types': 0
     }
 };

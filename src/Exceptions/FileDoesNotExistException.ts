@@ -6,7 +6,7 @@
  * @param {string} path - The path of the file that does not exist.
  */
 export class FileDoesNotExistException extends Error {
-    constructor(message: string, path: string) {
+    constructor(message: string) {
         super(message);
         this.name = 'FileDoesNotExistException';
         this.message = message;
