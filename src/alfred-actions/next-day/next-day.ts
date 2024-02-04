@@ -34,10 +34,10 @@ const DAILY_TEMPLATE_PATH: EnvironmentVariable = process.env.DAILY_TEMPLATE_PATH
 validateExistingEnvVar(DAILY_TEMPLATE_PATH, 'Daily Note Template Folder')
 
 // 1. Get next day
-let day = DateTime.now()
+const day = DateTime.now()
 
 // 2. Resolve full path
-const full_path = resolveFileDateFormatPath(DAILY_PATH as string, day, DateUnit.DAY, DAILY_PATH_FORMAT as string)
+const full_path = resolveFileDateFormatPath(DAILY_PATH!, day, DateUnit.DAY, DAILY_PATH_FORMAT!)
 
 console.log(`Full Path: ${full_path}`)
 
@@ -45,7 +45,7 @@ console.log(`Full Path: ${full_path}`)
 if (!doesFileExist(full_path)){
 
     // 3.a Create Templated file
-    createTemplatedFile(full_path, DAILY_TEMPLATE_PATH as string)
+    createTemplatedFile(full_path, DAILY_TEMPLATE_PATH!)
 }
 
 // 4. Open file

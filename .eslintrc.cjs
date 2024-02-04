@@ -1,23 +1,49 @@
 /* eslint-env node */
 module.exports = {
+    root: true,
+    plugins: [
+        '@typescript-eslint',
+        'write-good-comments',
+        'perfectionist',
+        'sonarjs',
+        'promise',
+        'jest'
+    ],
     extends: [
         'eslint:recommended',
+        'prettier',
         'plugin:@typescript-eslint/recommended-type-checked',
         'plugin:@typescript-eslint/stylistic-type-checked',
-        'prettier',
+        'plugin:sonarjs/recommended',
+        'plugin:promise/recommended',
+        'plugin:security/recommended-legacy',
+        'plugin:jest/recommended',
+        'plugin:jest/style'
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         project: true,
         tsconfigRootDir: __dirname,
     },
-    plugins: [
-        '@typescript-eslint',
-    ],
-    root: true,
     ignorePatterns: [
-        "workflow/**/*.js",
-        "coverage",
-        "*.js"
+        'workflow/**/*.js',
+        'coverage',
+        '*.js',
     ],
+    rules: {
+        'write-good-comments/write-good-comments': [
+            'warn',
+            {
+                'passive': false,
+                'whitelist': ['read-only']
+            }
+        ],
+        'perfectionist/sort-objects': [
+            'error',
+            {
+                type: 'natural',
+                order: 'asc',
+            },
+        ],
+    }
 };

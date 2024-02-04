@@ -40,7 +40,7 @@ let day = DateTime.now().setLocale("en-US")
 day = day.plus({weeks: 1})
 
 // 2. Resolve full path
-const full_path = resolveFileDateFormatPath(WEEKLY_PATH as string, day, DateUnit.WEEK, WEEKLY_PATH_FORMAT as string)
+const full_path = resolveFileDateFormatPath(WEEKLY_PATH!, day, DateUnit.WEEK, WEEKLY_PATH_FORMAT!)
 
 console.log(`Full Path: ${full_path}`)
 
@@ -48,7 +48,7 @@ console.log(`Full Path: ${full_path}`)
 if (!doesFileExist(full_path)){
 
     // 3.a Create Templated file
-    createTemplatedFile(full_path, WEEKLY_TEMPLATE_PATH as string)
+    createTemplatedFile(full_path, WEEKLY_TEMPLATE_PATH!)
 }
 
 // 4. Open file

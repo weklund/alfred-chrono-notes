@@ -21,7 +21,7 @@ export enum DateUnit {
  * @param {string} formatToken
  * @returns {string} YYYY-MM-DD dddd
  */
-export function formatDayDate(date: DateTime, formatToken: string = "yyyy-MM-dd cccc"): string {
+export function formatDayDate(date: DateTime, formatToken = "yyyy-MM-dd cccc"): string {
     return date.toFormat(formatToken)
 }
 
@@ -34,7 +34,7 @@ export function formatDayDate(date: DateTime, formatToken: string = "yyyy-MM-dd 
  * @param {string} formatToken
  * @returns {string}  dateTime in YYYY-'W'ww format
  */
-export function formatWeekDate(date: DateTime, formatToken: string = "yyyy-'W'WW"): string {
+export function formatWeekDate(date: DateTime, formatToken = "yyyy-'W'WW"): string {
     return date.toFormat(formatToken)
 }
 
@@ -54,7 +54,7 @@ export function getWeekNumber(date: DateTime): number {
  * @param filepath
  */
 export function resolveHomePath (filepath: string): string {
-    if (filepath[0] === "~" && process.env.HOME) {
+    if (filepath.startsWith("~") && process.env.HOME) {
         return path.join(process.env.HOME, filepath.slice(1));
     }
     return filepath;
@@ -98,7 +98,7 @@ export function doesFileExist(filePath: string): boolean {
  * @param {string} friendlyName
  * @throws {MissingConfigurationException} if environment variable wasn't set
  */
-export function validateExistingEnvVar(environmentVariable: EnvironmentVariable | undefined | null, friendlyName: string = 'Environment variable'): void {
+export function validateExistingEnvVar(environmentVariable: EnvironmentVariable | undefined | null, friendlyName = 'Environment variable'): void {
     if (!isEnvVarSet(environmentVariable)) {
         throw new MissingConfigurationException('Missing environment variable: ' + environmentVariable)
     }
@@ -142,7 +142,7 @@ export function resolveFileDateFormatPath(pathDirectory: string, date: DateTime,
  * @throws {FileDoesNotExistException}
  */
  export function createTemplatedFile(filePath: string, templateFilePath: string): void {
-     // 1. Validate that the provided filePath does not exist.
+     // 1. Check that the provided filePath does not exist.
     if (doesFileExist(filePath)) {
         throw new Error(`File already exists at ${filePath}`)
     }
@@ -152,7 +152,7 @@ export function resolveFileDateFormatPath(pathDirectory: string, date: DateTime,
 
     checkIfFileExists(templateFilePath)
 
-    let fullTemplateFilePath = resolveHomePath(templateFilePath)
+    const fullTemplateFilePath = resolveHomePath(templateFilePath)
 
     try {
         templateFileContent = fs.readFileSync(fullTemplateFilePath, 'utf8')
@@ -160,7 +160,7 @@ export function resolveFileDateFormatPath(pathDirectory: string, date: DateTime,
         throw new Error(`Could not read template file at ${fullTemplateFilePath}`)
     }
 
-    let fullFilePath = resolveHomePath(filePath)
+    const fullFilePath = resolveHomePath(filePath)
 
     // 2. Create new file from template
     try{
@@ -170,51 +170,51 @@ export function resolveFileDateFormatPath(pathDirectory: string, date: DateTime,
     }
 }
 
-const momentToLuxonMap: {[key: string]: string} = {
-    "M": "L",
-    "Mo": "L",
-    "MM": "LL",
-    "MMM": "LLL",
-    "MMMM": "LLLL",
-    "Q": "q",
+const momentToLuxonMap: Record<string, string> = {
+    "[": "'",
+    "\\[": "'\\'",
+    "\\]": "'",
+    "]": "'",
+    "A": "a",
     "D": "d",
     "DD": "dd",
     "DDD": "o",
     "DDDD": "ooo",
+    "H": "H",
+    "HH": "HH",
+    "M": "L",
+    "MM": "LL",
+    "MMM": "LLL",
+    "MMMM": "LLLL",
+    "Mo": "L",
+    "Q": "q",
+    "S": "S",
+    "SS": "SS",
+    "SSS": "SSS",
+    "X": "X",
+    "YY": "yy",
+    "YYYY": "yyyy",
+    "Z": "ZZ",
+    "ZZ": "ZZ",
+    "a": "a",
     "d": "c",
     "ddd": "ccc",
     "dddd": "cccc",
-    "w": "W",
-    "ww": "WW",
-    "YY": "yy",
-    "YYYY": "yyyy",
-    "A": "a",
-    "a": "a",
-    "H": "H",
-    "HH": "HH",
     "h": "h",
     "hh": "hh",
     "m": "m",
     "mm": "mm",
     "s": "s",
     "ss": "ss",
-    "S": "S",
-    "SS": "SS",
-    "SSS": "SSS",
-    "Z": "ZZ",
-    "ZZ": "ZZ",
-    "X": "X",
+    "w": "W",
+    "ww": "WW",
     "x": "x",
-    "[": "'",
-    "]": "'",
-    "\\[": "'\\'",
-    "\\]": "'",
 };
 
 export const mapMomentToLuxonTokenFormat = (momentFormat: string) => {
     // Regular expression for capturing the moment tokens
     const tokenRegex = new RegExp(Object.keys(momentToLuxonMap).join('|'), 'g');
 
-    // Replacing the moment tokens with the equivalent luxon tokens
+    // Replacing the moment tokens with the matching luxon tokens
     return momentFormat.replace(tokenRegex, match => momentToLuxonMap[match] || match);
 }

@@ -51,49 +51,49 @@ describe("getWeekNumber", () => {
 
 
     describe("formatWeekDate", () => {
-        it("should ", () => {
+        it("should", () => {
 
         })
     })
 
     describe("resolveHomePath", () => {
-        it("should ", () => {
+        it("should", () => {
 
         })
     })
 
     describe("checkIfFileExists", () => {
-        it("should ", () => {
+        it("should", () => {
 
         })
     })
 
     describe("doesFileExist", () => {
-        it("should ", () => {
+        it("should", () => {
 
         })
     })
 
     describe("validateExistingEnvVar", () => {
-        it("should ", () => {
+        it("should", () => {
 
         })
     })
 
     describe("isEnvVarSet", () => {
-        it("should ", () => {
+        it("should", () => {
 
         })
     })
 
     describe("resolveFileDateFormatPath", () => {
-        it("should ", () => {
+        it("should", () => {
 
         })
     })
 
     describe("createTemplatedFile", () => {
-        it("should ", () => {
+        it("should", () => {
 
         })
     })
