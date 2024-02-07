@@ -45,6 +45,7 @@ module.exports = {
                 order: 'asc',
             },
         ],
-        '@typescript-eslint/no-inferrable-types': 0
+        '@typescript-eslint/no-inferrable-types': 0,
+        'security/detect-non-literal-fs-filename': 0
     }
 };

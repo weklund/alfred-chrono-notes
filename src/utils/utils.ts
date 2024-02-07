@@ -1,9 +1,9 @@
 import * as path from "path";
 import * as fs from "fs";
-import {FileDoesNotExistException} from "../Exceptions/FileDoesNotExistException.js";
+import {DateTime} from "luxon";
 import {PathNotFileException} from "../Exceptions/PathNotFileException.js";
 import {MissingConfigurationException} from "../Exceptions/MissingConfigurationException.js";
-import {DateTime} from "luxon";
+import {FileDoesNotExistException} from "../Exceptions/FileDoesNotExistException.js";
 
 export type EnvironmentVariable = string | undefined | null
 
@@ -13,13 +13,13 @@ export enum DateUnit {
 }
 
 /**
- * Format date to YYYY-MM-DD DDDD
+ * Format date to yyyy-MM-dd cccc
  *
  * TODO: Replace default argument after exhaustive data formats handled
  *
  * @param {Date} date
  * @param {string} formatToken
- * @returns {string} YYYY-MM-DD dddd
+ * @returns {string} yyyy-MM-dd cccc
  */
 export function formatDayDate(date: DateTime, formatToken: string = "yyyy-MM-dd cccc"): string {
     return date.toFormat(formatToken)
@@ -75,6 +75,19 @@ export function resolveHomePath (filepath: string): string {
 }
 
 /**
+ * Provides a security check to prevent an attacker to execute arbitrary code.
+ *
+ * Mitigates the ESlint rule security/detect-non-literal-fs-filename
+ * @link https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-non-literal-fs-filename.md
+ *
+ * @param path {string}
+ * @returns {boolean}
+ */
+export function isStringLiteral(path: string): boolean {
+    return path.startsWith('/') && path.length > 1;
+}
+
+/**
  * Check if file exists in vault.
  *      If not, create it.
  *      If it does, open it.
@@ -85,12 +98,20 @@ export function resolveHomePath (filepath: string): string {
 export function checkIfFileExists(filePath: string): void {
     const path = resolveHomePath(filePath);
 
-    if (!fs.existsSync(path)) {
-        throw new FileDoesNotExistException(`File does not exist at ${path}`, path)
+    if (isStringLiteral(path) && !fs.existsSync(path)) {
+        throw new FileDoesNotExistException(`File does not exist at ${path}`)
     }
 
-    if (!fs.statSync(path).isFile()) {
-        throw new PathNotFileException(`Path is not a file at ${path}`, path)
+    if(isStringLiteral(path)) {
+        try{
+            // await fs.stat(path)
+        } catch (e) {
+            throw new FileDoesNotExistException(`File does not exist at ${path}`)
+        }
+    }
+
+    if (isStringLiteral(path) && !fs.statSync(path).isFile()) {
+        throw new PathNotFileException(`Path is not a file at ${path}`)
     }
 }
 

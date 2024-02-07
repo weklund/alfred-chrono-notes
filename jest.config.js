@@ -5,7 +5,7 @@ const config = {
     },
     globals: {
         "ts-jest": {
-            useESM: true,
+            useESM: false,
         },
     },
     moduleNameMapper: {
