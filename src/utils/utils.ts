@@ -4,6 +4,7 @@ import {DateTime} from "luxon";
 import {PathNotFileException} from "../Exceptions/PathNotFileException.js";
 import {MissingConfigurationException} from "../Exceptions/MissingConfigurationException.js";
 import {FileDoesNotExistException} from "../Exceptions/FileDoesNotExistException.js";
+import {InvalidFilePathSchemaException} from "../Exceptions/InvalidFilePathSchemaException";
 
 export type EnvironmentVariable = string | undefined | null
 
@@ -57,7 +58,7 @@ export function formatWeekDate(date: DateTime, formatToken: string = "yyyy-'W'WW
  *
  * Not ISO 8601 as this implementation sets Sunday as the first day of the week, not the last day.
  *
- * @param date
+ * @param {DateTime} date
  */
 export function getWeekNumber(date: DateTime): number {
     return date.localWeekNumber
@@ -65,7 +66,8 @@ export function getWeekNumber(date: DateTime): number {
 
 /**
  * A function that adds the entire path if not provided
- * @param filepath
+ *
+ * @param filepath {string}
  */
 export function resolveHomePath (filepath: string): string {
     if (filepath.startsWith("~") && process.env.HOME) {
@@ -75,49 +77,49 @@ export function resolveHomePath (filepath: string): string {
 }
 
 /**
+ * Check if path is valid.
+ *
  * Provides a security check to prevent an attacker to execute arbitrary code.
  *
  * Mitigates the ESlint rule security/detect-non-literal-fs-filename
  * @link https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-non-literal-fs-filename.md
  *
- * @param path {string}
+ * @param path
  * @returns {boolean}
  */
-export function isStringLiteral(path: string): boolean {
-    return path.startsWith('/') && path.length > 1;
+export function isValidPathSchema(path: string): boolean {
+    const regex = /^[a-zA-Z0-9][a-zA-Z0-9._/-]*$/;
+    return regex.test(path);
 }
 
 /**
  * Check if file exists in vault.
- *      If not, create it.
- *      If it does, open it.
- *      If it exists and is a folder, Throw.
- *      If it does not exist, Throw.
- * @param filePath
+ *
+ * @param filePath {string}
+ * @throws {InvalidFilePathSchemaException} if the provided path is not valid
+ * @throws {FileDoesNotExistException} if the provided path does not exist
+ * @throws {PathNotFileException} if the provided path is not a file
  */
 export function checkIfFileExists(filePath: string): void {
     const path = resolveHomePath(filePath);
 
-    if (isStringLiteral(path) && !fs.existsSync(path)) {
+    if(!isValidPathSchema(path)) {
+        throw new InvalidFilePathSchemaException(`Invalid path schema: ${path}`)
+    }
+
+    if (isValidPathSchema(path) && !fs.existsSync(path)) {
         throw new FileDoesNotExistException(`File does not exist at ${path}`)
     }
 
-    if(isStringLiteral(path)) {
-        try{
-            // await fs.stat(path)
-        } catch (e) {
-            throw new FileDoesNotExistException(`File does not exist at ${path}`)
-        }
-    }
-
-    if (isStringLiteral(path) && !fs.statSync(path).isFile()) {
+    if (isValidPathSchema(path) && !fs.statSync(path).isFile()) {
         throw new PathNotFileException(`Path is not a file at ${path}`)
     }
 }
 
 /**
  * Function that checks if a file exists or not
- * @param filePath
+ *
+ * @param filePath {string}
  * @returns {boolean}
  */
 export function doesFileExist(filePath: string): boolean {

@@ -9,5 +9,6 @@ export class InvalidDateFormatException extends Error {
         super(message);
         this.name = 'InvalidDateFormatException';
         this.message = message;
+        console.error(`${this.name}: ${this.message}`);
     }
 }

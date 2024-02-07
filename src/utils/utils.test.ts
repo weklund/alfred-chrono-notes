@@ -1,16 +1,20 @@
 import {
+    checkIfFileExists,
     DateUnit,
     EnvironmentVariable,
     formatDayDate,
     formatWeekDate,
     getWeekNumber,
     isEnvVarSet,
+    isValidPathSchema,
     resolveFileDateFormatPath,
     resolveHomePath,
     validateExistingEnvVar
 } from "./utils";
 import {DateTime} from "luxon";
 import {MissingConfigurationException} from "../Exceptions/MissingConfigurationException";
+import {InvalidFilePathSchemaException} from "../Exceptions/InvalidFilePathSchemaException";
+import * as fs from "fs";
 
 const opts = { locale: "en-US" };
 
@@ -124,27 +128,153 @@ describe("Utility Unit Tests", () => {
         })
     })
 
+    describe("isValidPathSchema", () => {
+
+        describe("has valid path cases", () => {
+            it('should return true if file name without path', () => {
+
+                const path = 'file.txt';
+
+                expect(isValidPathSchema(path)).toBeTruthy()
+            });
+
+            it('should return true if path with subdirectories', () => {
+
+                const path = 'user/data/input.txt';
+
+                expect(isValidPathSchema(path)).toBeTruthy()
+            });
+
+            it('should return true if path with dots and dashes', () => {
+
+                const path = 'user/data-2023/archive.input.txt';
+
+                expect(isValidPathSchema(path)).toBeTruthy()
+            });
+
+        })
+
+
+        describe("has invalid path cases", () => {
+            it('should return false if path starts with a dot', () => {
+                const path = './config.json';
+                expect(isValidPathSchema(path)).toBeFalsy()
+            });
+
+            it('should return false if path starts with double dots', () => {
+                const path = '../config.json';
+                expect(isValidPathSchema(path)).toBeFalsy()
+            });
+
+            it('should return false if path has backwards slashes', () => {
+                const path = 'user\\data\\input.txt';
+                expect(isValidPathSchema(path)).toBeFalsy()
+            });
+
+            it('should return false if path has illegal characters', () => {
+                const path = 'user/data/input<>.txt';
+                expect(isValidPathSchema(path)).toBeFalsy()
+            });
+
+            it('should return false if path has absolute path only', () => {
+                const path = '/etc/passwd';
+                expect(isValidPathSchema(path)).toBeFalsy()
+            });
+
+            // TODO:  Is this the correct example for null byte?
+            it('should return false if path has null byte injection', () => {
+                const path = 'user/data\0script.js';
+                expect(isValidPathSchema(path)).toBeFalsy()
+            });
+
+            it('should return false if path has empty string', () => {
+                const path = '';
+                expect(isValidPathSchema(path)).toBeFalsy()
+            });
+
+            it('should return false if path has only special characters', () => {
+                const path = '***********';
+                expect(isValidPathSchema(path)).toBeFalsy()
+            });
+
+        })
+    })
+
+
     describe("checkIfFileExists", () => {
-        it("should return true if the provided file path is a valid file", () => {
-            // Mock file
-            jest.mock('fs');
 
-            // // @ts-expect-error the fs API doesn't expect existsSync to be mutated, but we need it to mock
-            // fs.existsSync = jest.fn();
-            // // @ts-expect-error we are temporary overriding the implementation to mock the response.
-            // fs.existsSync.mockReturnValue(false);
+        // const fsMock = {...fs}
+        //
+        // jest.mock('fs')
+        //
+        // // const spy = jest.spyOn(fs, 'existsSync').mockImplementationOnce();
+        //
+        // beforeEach(() => {
+        //     Object.assign(fs, fsMock)
+        // })
 
 
+
+
+        // jest.mock('fs', (): Partial<typeof import('fs')> => {
+        //     const mockFs = require('memfs').fs;
+        //     return {
+        //         ...mockFs,
+        //         existsSync(path: string) {
+        //             if (path.endsWith('.node')) {
+        //                 return true;
+        //             } else {
+        //                 return mockFs.existsSync(path);
+        //             }
+        //         },
+        //     };
+        // });
+
+
+        it("should throw InvalidFilePathSchemaException if the provided file path is not a valid file path schema", () => {
+
+            const BAD_FILE_PATH = ".../<>.txt"
+
+            expect(() => {
+                checkIfFileExists(BAD_FILE_PATH)
+            }).toThrow(InvalidFilePathSchemaException)
         })
 
-        it("should throw an error if the provided file path does not exist", () => {
-            // Mock file
+        it("should throw FileDoesNotExistException if the provided file path does not exist", () => {
+            // jest.mock('fs', () => {
+            //     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+            //     return {
+            //         __esModule: true,    //    <----- this __esModule: true is important
+            //         ...jest.requireActual('fs')
+            //     };
+            // });
 
+            jest.createMockFromModule('fs');
+
+            // jest.spyOn(fs, 'existsSync').mockImplementation(() => {
+            //     return false
+            // });
+
+
+
+            // const spy = jest.spyOn(fs, "existsSync").mockReturnValue(true);
+            const BAD_FILE_PATH = ".../<>.txt"
+
+            expect(() => {
+                checkIfFileExists(BAD_FILE_PATH)
+            }).toThrow(InvalidFilePathSchemaException)
+
+            // expect(spy).toHaveBeenCalledTimes(1)
+            //
+            // spy.mockRestore()
         })
 
-        it("should throw if the provided file path is a directory", () => {
-            // Mock file
+        it("should throw PathNotFileException if the provided file path is a directory", () => {
+            // Setup
 
+            // Execute
+
+            // Verify
         })
     })
 
@@ -231,19 +361,4 @@ describe("Utility Unit Tests", () => {
 
         })
     })
-
-    // const VALID_OBSIDIAN_VAULT_NAME = "Personal";
-    // const VALID_DAILY_PATH = "/Users/ekluw/Projects/obsidian/Personal/999-Planner/DailyPlans";
-    // const VALID_TEMPLATE_PATH = "~/Projects/obsidian/Personal/999-Templates/daily plan template.md";
-    //
-    // const OLD_ENV = process.env;
-    //
-    // beforeEach(() => {
-    //     jest.resetModules(); // Most important - it clears the cache
-    //     process.env = { ...OLD_ENV }; // Make a copy
-    // });
-    //
-    // afterAll(() => {
-    //     process.env = OLD_ENV; // Restore old environment
-    // });})
 })

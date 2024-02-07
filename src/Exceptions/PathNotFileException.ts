@@ -9,5 +9,6 @@ export class PathNotFileException extends Error {
         super(message);
         this.name = 'PathNotFileException';
         this.message = message;
+        console.error(`${this.name}: ${message}`);
     }
 }

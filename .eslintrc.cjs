@@ -5,6 +5,7 @@ module.exports = {
         '@typescript-eslint',
         'write-good-comments',
         'perfectionist',
+        'security',
         'sonarjs',
         'promise',
         'jest'
