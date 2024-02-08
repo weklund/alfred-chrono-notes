@@ -56,9 +56,18 @@ async function main() {
         await new Promise(() => {
             void open(OBSIDIAN_NOTE_URI)
         });
+
+        // open(OBSIDIAN_NOTE_URI, {wait: true});
+
     } catch (e: unknown) {
-        console.log(`${e as string}`);
+        console.error(`${e as string}`);
     }
 }
 
 void main()
+
+// try {
+//     open(OBSIDIAN_NOTE_URI);
+// } catch (e: any) {
+//     console.log(`${e}`);
+// }

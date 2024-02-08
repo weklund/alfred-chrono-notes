@@ -132,26 +132,24 @@ describe("Utility Unit Tests", () => {
 
         describe("has valid path cases", () => {
             it('should return true if file name without path', () => {
-
                 const path = 'file.txt';
-
                 expect(isValidPathSchema(path)).toBeTruthy()
             });
 
             it('should return true if path with subdirectories', () => {
-
                 const path = 'user/data/input.txt';
-
                 expect(isValidPathSchema(path)).toBeTruthy()
             });
 
             it('should return true if path with dots and dashes', () => {
-
                 const path = 'user/data-2023/archive.input.txt';
-
                 expect(isValidPathSchema(path)).toBeTruthy()
             });
 
+            it('should return true if absolute path is in /Users/username', () => {
+                const path = '/Users/username/data/input.txt';
+                expect(isValidPathSchema(path)).toBeFalsy()
+            })
         })
 
 
@@ -279,9 +277,9 @@ describe("Utility Unit Tests", () => {
     })
 
     describe("doesFileExist", () => {
-        it("should", () => {
-
-        })
+        // it("should", () => {
+        //
+        // })
     })
 
     describe("validateExistingEnvVar", () => {

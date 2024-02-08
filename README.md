@@ -9,6 +9,11 @@ Alfred Workflow for easy access to your Obsidian Periodic Notes.
 1. [Obsidian](https://obsidian.md/)
 1. [Periodic Notes Plugin](https://github.com/liamcain/obsidian-periodic-notes)
 
+
+### Testing
+
+We have unit tests, but there currently isn't a way to an integrate test with an alfred environment.  All PRs need to have a screenshot or gif of it working
+
 ## TODOS
 
 - [x] Current Day flow
@@ -19,6 +24,7 @@ Alfred Workflow for easy access to your Obsidian Periodic Notes.
   - [x] Convert moment from periodic notes to luxon date format tokens
   - [ ] Determine whether an env var is using moment or luxon to convert
 - [ ] Unit Tests
+- [ ] `pnpm dlx depcheck` during ci
 - [ ] Race condition on when file doesn't exist?
 - [ ] Support any date format
 - [ ] Basic Configuration builder for Env Vars setup

@@ -1,4 +1,3 @@
-import alfy from 'alfy';
 import open from "open";
 import {
     createTemplatedFile,
@@ -20,45 +19,51 @@ import {DateTime} from "luxon";
 // obsidian://open?vault=Personal&file=999-Planner%2FDailyPlans%2F2024-01-22%20Monday
 // obsidian://open?vault=Personal&file=2024-1-22 Monday.md
 // obsidian://open?vault=Personal&file=2024 01 22 Monday.md
+async function main() {
+    // 0. Get env vars:
+    const OBSIDIAN_VAULT_NAME: EnvironmentVariable = process.env.OBSIDIAN_VAULT_NAME
+    validateExistingEnvVar(OBSIDIAN_VAULT_NAME, 'Obsidian Vault Name EnvVar')
 
-// 0. Get env vars:
-const OBSIDIAN_VAULT_NAME: EnvironmentVariable = process.env.OBSIDIAN_VAULT_NAME
-validateExistingEnvVar(OBSIDIAN_VAULT_NAME, 'Obsidian Vault Name EnvVar')
+    const WEEKLY_PATH: EnvironmentVariable = process.env.WEEKLY_PATH
+    validateExistingEnvVar(WEEKLY_PATH, 'Weekly Note Folder')
 
-const WEEKLY_PATH: EnvironmentVariable = process.env.WEEKLY_PATH
-validateExistingEnvVar(WEEKLY_PATH, 'Weekly Note Folder')
+    const WEEKLY_PATH_FORMAT: EnvironmentVariable = process.env.WEEKLY_PATH_FORMAT
+    validateExistingEnvVar(WEEKLY_PATH_FORMAT, 'Weekly Note Folder')
 
-const WEEKLY_PATH_FORMAT: EnvironmentVariable = process.env.WEEKLY_PATH_FORMAT
-validateExistingEnvVar(WEEKLY_PATH_FORMAT, 'Weekly Note Folder')
-
-const WEEKLY_TEMPLATE_PATH: EnvironmentVariable = process.env.WEEKLY_TEMPLATE_PATH
-validateExistingEnvVar(WEEKLY_TEMPLATE_PATH, 'Weekly Note Template Folder')
+    const WEEKLY_TEMPLATE_PATH: EnvironmentVariable = process.env.WEEKLY_TEMPLATE_PATH
+    validateExistingEnvVar(WEEKLY_TEMPLATE_PATH, 'Weekly Note Template Folder')
 
 // 1. Get current week
-const day: DateTime = DateTime.now().setLocale("en-US")
+    const day: DateTime = DateTime.now().setLocale("en-US")
 
 // 2. Resolve full path
-const full_path = resolveFileDateFormatPath(
-    WEEKLY_PATH!,
-    day,
-    DateUnit.WEEK,
-    WEEKLY_PATH_FORMAT!
-)
+    const full_path = resolveFileDateFormatPath(
+        WEEKLY_PATH!,
+        day,
+        DateUnit.WEEK,
+        WEEKLY_PATH_FORMAT!
+    )
 
-console.log(`Full Path: ${full_path}`)
+    console.log(`Full Path: ${full_path}`)
 
 // 3. Check if file exists
-if (!doesFileExist(full_path)){
+    if (!doesFileExist(full_path)){
 
-    // 3.a Create Templated file
-    createTemplatedFile(full_path, WEEKLY_TEMPLATE_PATH!)
-}
+        // 3.a Create Templated file
+        createTemplatedFile(full_path, WEEKLY_TEMPLATE_PATH!)
+    }
 
 // 4. Open file
-const OBSIDIAN_NOTE_URI = `obsidian://open?vault=Personal&file=${formatWeekDate(day)}.md`
+    const OBSIDIAN_NOTE_URI = `obsidian://open?vault=Personal&file=${formatWeekDate(day)}.md`
 
-try {
-    open(OBSIDIAN_NOTE_URI);
-} catch (e: any) {
-    alfy.log(`${e}`);
+    try {
+        await new Promise(() => {
+            void open(OBSIDIAN_NOTE_URI)
+        });
+    } catch (e: unknown) {
+        console.error(`${e as string}`);
+    }
+
 }
+
+void main()

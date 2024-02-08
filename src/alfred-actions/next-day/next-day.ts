@@ -1,4 +1,3 @@
-import alfy from 'alfy';
 import open from "open";
 import {
     createTemplatedFile,
@@ -20,39 +19,48 @@ import {DateTime} from "luxon";
 // obsidian://open?vault=Personal&file=999-Planner%2FDailyPlans%2F2024-01-22%20Monday
 // obsidian://open?vault=Personal&file=2024-1-22 Monday.md
 
-// 0. Get env vars:
-const OBSIDIAN_VAULT_NAME: string | undefined = process.env.OBSIDIAN_VAULT_NAME
-validateExistingEnvVar(OBSIDIAN_VAULT_NAME, 'Obsidian Vault Name EnvVar')
+async function main(){
+    // 0. Get env vars:
+    const OBSIDIAN_VAULT_NAME: string | undefined = process.env.OBSIDIAN_VAULT_NAME
+    validateExistingEnvVar(OBSIDIAN_VAULT_NAME, 'Obsidian Vault Name EnvVar')
 
-const DAILY_PATH: EnvironmentVariable = process.env.DAILY_PATH
-validateExistingEnvVar(DAILY_PATH, 'Daily Note Folder')
+    const DAILY_PATH: EnvironmentVariable = process.env.DAILY_PATH
+    validateExistingEnvVar(DAILY_PATH, 'Daily Note Folder')
 
-const DAILY_PATH_FORMAT: EnvironmentVariable = process.env.DAILY_PATH_FORMAT
-validateExistingEnvVar(DAILY_PATH_FORMAT, 'Daily Note Folder')
+    const DAILY_PATH_FORMAT: EnvironmentVariable = process.env.DAILY_PATH_FORMAT
+    validateExistingEnvVar(DAILY_PATH_FORMAT, 'Daily Note Folder')
 
-const DAILY_TEMPLATE_PATH: EnvironmentVariable = process.env.DAILY_TEMPLATE_PATH
-validateExistingEnvVar(DAILY_TEMPLATE_PATH, 'Daily Note Template Folder')
+    const DAILY_TEMPLATE_PATH: EnvironmentVariable = process.env.DAILY_TEMPLATE_PATH
+    validateExistingEnvVar(DAILY_TEMPLATE_PATH, 'Daily Note Template Folder')
 
 // 1. Get next day
-const day = DateTime.now()
+    const day = DateTime.now()
 
 // 2. Resolve full path
-const full_path = resolveFileDateFormatPath(DAILY_PATH!, day, DateUnit.DAY, DAILY_PATH_FORMAT!)
+    const full_path = resolveFileDateFormatPath(DAILY_PATH!, day, DateUnit.DAY, DAILY_PATH_FORMAT!)
 
-console.log(`Full Path: ${full_path}`)
+    console.log(`Full Path: ${full_path}`)
 
 // 3. Check if file exists
-if (!doesFileExist(full_path)){
+    if (!doesFileExist(full_path)){
 
-    // 3.a Create Templated file
-    createTemplatedFile(full_path, DAILY_TEMPLATE_PATH!)
-}
+        // 3.a Create Templated file
+        createTemplatedFile(full_path, DAILY_TEMPLATE_PATH!)
+    }
 
 // 4. Open file
-const OBSIDIAN_NOTE_URI = `obsidian://open?vault=Personal&file=${formatDayDate(day)}.md`
+    const OBSIDIAN_NOTE_URI = `obsidian://open?vault=Personal&file=${formatDayDate(day)}.md`
 
-try {
-    open(OBSIDIAN_NOTE_URI);
-} catch (e: any) {
-    alfy.log(`${e}`);
+    try {
+        await new Promise(() => {
+            void open(OBSIDIAN_NOTE_URI)
+        });
+
+
+    } catch (e: unknown) {
+        console.error(`${e as string}`);
+    }
+
 }
+
+void main()

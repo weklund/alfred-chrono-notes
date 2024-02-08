@@ -4,7 +4,7 @@ import {DateTime} from "luxon";
 import {PathNotFileException} from "../Exceptions/PathNotFileException.js";
 import {MissingConfigurationException} from "../Exceptions/MissingConfigurationException.js";
 import {FileDoesNotExistException} from "../Exceptions/FileDoesNotExistException.js";
-import {InvalidFilePathSchemaException} from "../Exceptions/InvalidFilePathSchemaException";
+import {InvalidFilePathSchemaException} from "../Exceptions/InvalidFilePathSchemaException.js";
 
 export type EnvironmentVariable = string | undefined | null
 
@@ -88,7 +88,12 @@ export function resolveHomePath (filepath: string): string {
  * @returns {boolean}
  */
 export function isValidPathSchema(path: string): boolean {
+    // TODO: Remove after through testing
     const regex = /^[a-zA-Z0-9][a-zA-Z0-9._/-]*$/;
+
+    // Get current mac user from node env or os
+    // const regex = /^(?:\/Users\/[a-zA-Z0-9_-]+\/)?[a-zA-Z0-9._/-]*$/;
+
     return regex.test(path);
 }
 
@@ -209,51 +214,52 @@ export function resolveFileDateFormatPath(pathDirectory: string, date: DateTime,
     }
 }
 
-const momentToLuxonMap: Record<string, string> = {
-    "[": "'",
-    "\\[": "'\\'",
-    "\\]": "'",
-    "]": "'",
-    "A": "a",
-    "D": "d",
-    "DD": "dd",
-    "DDD": "o",
-    "DDDD": "ooo",
-    "H": "H",
-    "HH": "HH",
-    "M": "L",
-    "MM": "LL",
-    "MMM": "LLL",
-    "MMMM": "LLLL",
-    "Mo": "L",
-    "Q": "q",
-    "S": "S",
-    "SS": "SS",
-    "SSS": "SSS",
-    "X": "X",
-    "YY": "yy",
-    "YYYY": "yyyy",
-    "Z": "ZZ",
-    "ZZ": "ZZ",
-    "a": "a",
-    "d": "c",
-    "ddd": "ccc",
-    "dddd": "cccc",
-    "h": "h",
-    "hh": "hh",
-    "m": "m",
-    "mm": "mm",
-    "s": "s",
-    "ss": "ss",
-    "w": "W",
-    "ww": "WW",
-    "x": "x",
-};
-
-export const mapMomentToLuxonTokenFormat = (momentFormat: string) => {
-    // Regular expression for capturing the moment tokens
-    const tokenRegex = new RegExp(Object.keys(momentToLuxonMap).join('|'), 'g');
-
-    // Replacing the moment tokens with the matching luxon tokens
-    return momentFormat.replace(tokenRegex, match => momentToLuxonMap[match] || match);
-}
+// TODO:  Reconsider supporting both moment and luxon
+// const momentToLuxonMap: Record<string, string> = {
+//     "[": "'",
+//     "\\[": "'\\'",
+//     "\\]": "'",
+//     "]": "'",
+//     "A": "a",
+//     "D": "d",
+//     "DD": "dd",
+//     "DDD": "o",
+//     "DDDD": "ooo",
+//     "H": "H",
+//     "HH": "HH",
+//     "M": "L",
+//     "MM": "LL",
+//     "MMM": "LLL",
+//     "MMMM": "LLLL",
+//     "Mo": "L",
+//     "Q": "q",
+//     "S": "S",
+//     "SS": "SS",
+//     "SSS": "SSS",
+//     "X": "X",
+//     "YY": "yy",
+//     "YYYY": "yyyy",
+//     "Z": "ZZ",
+//     "ZZ": "ZZ",
+//     "a": "a",
+//     "d": "c",
+//     "ddd": "ccc",
+//     "dddd": "cccc",
+//     "h": "h",
+//     "hh": "hh",
+//     "m": "m",
+//     "mm": "mm",
+//     "s": "s",
+//     "ss": "ss",
+//     "w": "W",
+//     "ww": "WW",
+//     "x": "x",
+// };
+//
+// export const mapMomentToLuxonTokenFormat = (momentFormat: string) => {
+//     // Regular expression for capturing the moment tokens
+//     const tokenRegex = new RegExp(Object.keys(momentToLuxonMap).join('|'), 'g');
+//
+//     // Replacing the moment tokens with the matching luxon tokens
+//     return momentFormat.replace(tokenRegex, match => momentToLuxonMap[match] || match);
+// }
