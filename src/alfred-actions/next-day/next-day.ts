@@ -1,13 +1,11 @@
 import open from "open";
 import {
     createTemplatedFile,
-    DateUnit,
     doesFileExist,
-    EnvironmentVariable,
     formatDayDate,
     resolveFileDateFormatPath,
     validateExistingEnvVar,
-} from '../../utils/utils.js';
+} from '../../Utils/CommonUtils.js';
 import {DateTime} from "luxon";
 
 
@@ -37,7 +35,7 @@ async function main(){
     const day = DateTime.now()
 
 // 2. Resolve full path
-    const full_path = resolveFileDateFormatPath(DAILY_PATH!, day, DateUnit.DAY, DAILY_PATH_FORMAT!)
+    const full_path = resolveFileDateFormatPath(DAILY_PATH, day, DateUnit.DAY, DAILY_PATH_FORMAT)
 
     console.log(`Full Path: ${full_path}`)
 
@@ -45,7 +43,7 @@ async function main(){
     if (!doesFileExist(full_path)){
 
         // 3.a Create Templated file
-        createTemplatedFile(full_path, DAILY_TEMPLATE_PATH!)
+        createTemplatedFile(full_path, DAILY_TEMPLATE_PATH)
     }
 
 // 4. Open file

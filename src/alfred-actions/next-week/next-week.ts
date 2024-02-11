@@ -7,7 +7,7 @@ import {
     resolveFileDateFormatPath,
     validateExistingEnvVar,
     EnvironmentVariable,
-} from '../../utils/utils.js';
+} from '../../Utils/CommonUtils.js';
 import {DateTime} from "luxon";
 
 
@@ -39,7 +39,7 @@ async function main() {
     day = day.plus({weeks: 1})
 
     // 2. Resolve full path
-    const full_path = resolveFileDateFormatPath(WEEKLY_PATH!, day, DateUnit.WEEK, WEEKLY_PATH_FORMAT!)
+    const full_path = resolveFileDateFormatPath(WEEKLY_PATH, day, DateUnit.WEEK, WEEKLY_PATH_FORMAT)
 
     console.log(`Full Path: ${full_path}`)
 
@@ -47,7 +47,7 @@ async function main() {
     if (!doesFileExist(full_path)){
 
         // 3.a Create Templated file
-        createTemplatedFile(full_path, WEEKLY_TEMPLATE_PATH!)
+        createTemplatedFile(full_path, WEEKLY_TEMPLATE_PATH)
     }
 
     // 4. Open file

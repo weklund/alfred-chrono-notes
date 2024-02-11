@@ -40,13 +40,22 @@ module.exports = {
             }
         ],
         'perfectionist/sort-objects': [
-            'error',
+            'warn',
             {
                 type: 'natural',
                 order: 'asc',
             },
         ],
         '@typescript-eslint/no-inferrable-types': 0,
-        'security/detect-non-literal-fs-filename': 0
+        /**
+         * Why ignore this security rule:
+         * {@link isValidPathSchema} mitigates the risk.
+         */
+        'security/detect-non-literal-fs-filename': 0,
+        /**
+         * Why ignore this security rule:
+         * https://github.com/eslint-community/eslint-plugin-security/issues/21#issuecomment-1157887653
+         */
+        'security/detect-object-injection': 0,
     }
 };

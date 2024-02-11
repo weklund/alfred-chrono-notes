@@ -33,15 +33,15 @@ We have unit tests, but there currently isn't a way to an integrate test with an
 - [ ] Husky for prettier
 - [ ] Eslint
 - [ ] Check for Periodic Notes plugin install
-- [ ] Generic configuration loader 
+- [x] Generic configuration loader 
   - Configuration builder builds Environment Variables
   - Configuration builder pulls from Periodic Notes plugin
 - [ ] Support user config on locale date format
 - [ ] Pull date format from plugin
 - [ ] Periodic Note Plugin: Pull enabled interval types
 - [ ] Design generic source of truth for config (Instead of tight coupling with Periodic Notes plugin)
-- [ ] Validate configuration values in entrypoint.ts
-- [ ] Make action design generic enough that it's only one file that handles
+- [ ] Validate configuration values in Entrypoint.ts
+- [x] Make action design generic enough that it's only one file that handles
   - interval (day/week), 
   - context?(current/next/previous)
   - interval date format token (yyyy m dd)

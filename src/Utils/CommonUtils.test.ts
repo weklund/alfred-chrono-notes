@@ -1,24 +1,11 @@
-import {
-    checkIfFileExists,
-    DateUnit,
-    EnvironmentVariable,
-    formatDayDate,
-    formatWeekDate,
-    getWeekNumber,
-    isEnvVarSet,
-    isValidPathSchema,
-    resolveFileDateFormatPath,
-    resolveHomePath,
-    validateExistingEnvVar
-} from "./utils";
 import {DateTime} from "luxon";
+import {checkIfFileExists, isEnvVarSet, isValidPathSchema, resolveHomePath, validateExistingEnvVar} from "./CommonUtils";
 import {MissingConfigurationException} from "../Exceptions/MissingConfigurationException";
 import {InvalidFilePathSchemaException} from "../Exceptions/InvalidFilePathSchemaException";
-import * as fs from "fs";
 
 const opts = { locale: "en-US" };
 
-describe("Utility Unit Tests", () => {
+describe("Common Utility Unit Tests", () => {
 
 
     describe("formatDayDate", () => {

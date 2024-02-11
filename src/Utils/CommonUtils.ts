@@ -1,68 +1,10 @@
 import * as path from "path";
 import * as fs from "fs";
-import {DateTime} from "luxon";
 import {PathNotFileException} from "../Exceptions/PathNotFileException.js";
 import {MissingConfigurationException} from "../Exceptions/MissingConfigurationException.js";
 import {FileDoesNotExistException} from "../Exceptions/FileDoesNotExistException.js";
 import {InvalidFilePathSchemaException} from "../Exceptions/InvalidFilePathSchemaException.js";
-
-export type EnvironmentVariable = string | undefined | null
-
-export enum DateUnit {
-    DAY = 'DAY',
-    WEEK = 'WEEK',
-}
-
-/**
- * Format date to yyyy-MM-dd cccc
- *
- * TODO: Replace default argument after exhaustive data formats handled
- *
- * @param {Date} date
- * @param {string} formatToken
- * @returns {string} yyyy-MM-dd cccc
- */
-export function formatDayDate(date: DateTime, formatToken: string = "yyyy-MM-dd cccc"): string {
-    return date.toFormat(formatToken)
-}
-
-/**
- * Format date to YYYY-[W]ww
- *
- * TODO: Replace default argument after exhaustive data formats handled
- *
- * @param {Date} date
- * @param {string} formatToken
- * @returns {string}  dateTime in YYYY-'W'ww format
- */
-export function formatWeekDate(date: DateTime, formatToken: string = "yyyy-'W'WW"): string {
-    console.log(formatToken)
-
-    // TODO: Troubleshoot why .toFormat can't take in localWeekNumber so we can dynamically format
-    // Format given weeknumber to make sure it's 2 digits, so a single digit number will have a 0 prefixed
-    let weekNumber = getWeekNumber(date).toString()
-
-    if (weekNumber.length === 1) {
-        weekNumber = `0${weekNumber}`
-    }
-
-    // Manually format the date using yyyy-'W'WW format token
-    return `${date.toFormat("yyyy")}-W${weekNumber}`;
-
-
-    // return date.toFormat(formatToken, {locale: "en-US"})
-}
-
-/**
- * Get the Week number based on the given Date
- *
- * Not ISO 8601 as this implementation sets Sunday as the first day of the week, not the last day.
- *
- * @param {DateTime} date
- */
-export function getWeekNumber(date: DateTime): number {
-    return date.localWeekNumber
-}
+import {EnvironmentVariable} from "./Config/ConfigProvider";
 
 /**
  * A function that adds the entire path if not provided
@@ -158,25 +100,6 @@ export function isEnvVarSet(environmentVariable: EnvironmentVariable): boolean {
     return environmentVariable !== undefined && environmentVariable !== null && environmentVariable !== ''
 }
 
-/**
- * Get the full path to a file using the correct date format
- *
- * TODO: Replace default argument after exhaustive data formats handled
- *
- * @param pathDirectory {string}
- * @param date {Date}
- * @param dateUnit {DateUnit}
- * @param formatToken {string}
- * @returns {string}
- */
-export function resolveFileDateFormatPath(pathDirectory: string, date: DateTime, dateUnit: DateUnit, formatToken: string): string {
-
-    if (dateUnit === DateUnit.WEEK){
-        return `${path.join(resolveHomePath(pathDirectory), formatWeekDate(date, formatToken))}.md`
-    }
-
-    return `${path.join(resolveHomePath(pathDirectory), formatDayDate(date, formatToken))}.md`
-}
 
 /**
  * Given a file path and valid templateFilePath, create a new file.
