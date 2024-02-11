@@ -8,11 +8,218 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
-		<key>59CB478D-73DD-4C5B-8C83-FDC1485C4842</key>
+		<key>02EF35C0-0105-4386-B5CD-58AC93D20A6C</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>8E57F57C-AC90-404E-B726-6EEE60B8E9B1</string>
+				<string>479496E3-E534-4A1D-9389-14FCA3834CE5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>BA6B7140-11CD-4676-B688-134674726FB4</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>AB1582EA-F22E-4F29-B1C2-A24D704A8897</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>097D9370-D48B-47E8-850C-5E9D141FDD20</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B7B1E0D5-8CA1-4699-B66C-16688334D900</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>0CCF9230-28FB-4C09-A147-26CEA7418B50</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>BBB3B955-D617-4D9F-AD68-B4E3F65AD3A7</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>0EB435CC-0843-469B-BDAD-CF5066DA1B1B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B81636C3-37B3-4E1E-BFDB-E055AD24BE39</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>12E8A608-CE62-423A-9D94-DB1B3AC8D607</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>AFA1ABE9-0234-46B8-8282-5EEDE77FF328</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>27E829F9-B5DA-4E00-972E-2C82BC12A8CA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0FFB2359-6473-4EF3-A633-9FFDED95762C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>2D592C8C-72CC-454A-BDEF-BA5E61A270DB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F1211D61-33C7-4087-86CF-B025920403E1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>2E90987F-99CC-4ABC-9623-3F78282393EC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>62CD4A4F-FD8D-4518-B216-68CC3478EA81</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>3A4C9539-F39E-49D0-9C2F-76FF9D38FB32</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>45E3BA63-1EE1-4DF2-B9FA-6A8E7744C7C2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>49E145C8-953B-4E78-9D9D-5DA471749860</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3A4C9539-F39E-49D0-9C2F-76FF9D38FB32</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>4E4788C7-0601-430E-9AC4-8C22DBF5FCA4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>62994E9E-4A36-42B2-B367-A922008FF108</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>547E8BFA-EEC7-4659-9DB9-EE692A8C2821</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>6A4F336B-3E64-4521-A1A4-53FA01524A5A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>62994E9E-4A36-42B2-B367-A922008FF108</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>BEBF8511-A14B-46E9-8A9A-263890C69B34</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>62CD4A4F-FD8D-4518-B216-68CC3478EA81</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>11F44A25-24EE-426A-80F3-70DAC74C85DB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>6A4F336B-3E64-4521-A1A4-53FA01524A5A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>94CD8F45-9089-4E20-B817-FBA5DFDFFDEC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>764A9146-53B6-4F9A-ABC9-0024150F43FB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>11D46FC9-DBD1-4F1B-950B-107826FD9514</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -34,21 +241,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>7F1B1630-1E17-4EAA-B20C-AE49B4842996</key>
+		<key>7A4F42EB-2E45-4A89-84C7-948C10C877E2</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>1608CD3C-90FC-46D0-B019-AE15729ED72E</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>2B791AAB-2C6F-4FA5-AD5C-3BE7AE12AA35</string>
+				<string>56BB5CD4-2454-4349-91F8-41E40F83C0F0</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -57,21 +254,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>8E57F57C-AC90-404E-B726-6EEE60B8E9B1</key>
+		<key>88F05F9F-6A5F-4CBC-994A-4DC5A91B8F0C</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>BA154139-6236-4C6C-9295-F2127150B71D</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>2E7F72DB-0BB9-481E-9FD2-8BEBF56FC974</string>
+				<string>AA013998-AA4F-4571-96D5-184DC707966C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -80,21 +267,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>A0635D5F-0569-4BBE-B692-F987A2A16ACC</key>
+		<key>9623A1F1-E4F9-419E-8595-447A4EDD68DD</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>3A975BD9-F00A-41E8-9DEE-907604B247D2</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>393E066A-F906-44FF-A95F-0A4F879D86B3</string>
+				<string>764A9146-53B6-4F9A-ABC9-0024150F43FB</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -103,21 +280,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>A905D64A-4091-4A0D-B5C4-B09BB3C2C057</key>
+		<key>9A55F295-DFC3-4FA0-819E-70DD8D640487</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>634F4155-9C04-43EF-9E33-A8D577B307FB</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>52B233B8-1320-4EDE-9294-91D7B9DF6B8E</string>
+				<string>7A4F42EB-2E45-4A89-84C7-948C10C877E2</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -126,11 +293,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>B2B007AF-7C39-4B94-81FE-7BF42FB57E64</key>
+		<key>AA013998-AA4F-4571-96D5-184DC707966C</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>A905D64A-4091-4A0D-B5C4-B09BB3C2C057</string>
+				<string>9CE25F5F-453A-4D40-A4C9-F5752F059ADE</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -143,7 +310,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>AB1582EA-F22E-4F29-B1C2-A24D704A8897</string>
+				<string>02EF35C0-0105-4386-B5CD-58AC93D20A6C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -154,6 +321,21 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>DDA152E8-629A-4C3E-903B-860F08797C5C</string>
+				<key>disabled</key>
+				<true/>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>B7B1E0D5-8CA1-4699-B66C-16688334D900</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8C392EE6-670F-42B1-8EA3-C8F3426D3D9E</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -175,11 +357,37 @@
 				<false/>
 			</dict>
 		</array>
-		<key>C9DE9D15-7F37-48DA-8EAB-F76E35B09278</key>
+		<key>B81636C3-37B3-4E1E-BFDB-E055AD24BE39</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>A0635D5F-0569-4BBE-B692-F987A2A16ACC</string>
+				<string>014A24BE-0C8E-49F7-A35C-A42B1D0B41E2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>BBB3B955-D617-4D9F-AD68-B4E3F65AD3A7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F5871698-3A64-44B8-A11F-B31500A8E14C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C4F39D7A-2292-4FDD-8375-0777C92E43AF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FC4B2AE8-6F67-4165-B413-C20BC27008A6</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -201,11 +409,50 @@
 				<false/>
 			</dict>
 		</array>
-		<key>E242328D-AB73-408B-B9E0-383618C9515B</key>
+		<key>EFD4BEA1-10AB-41B3-962B-2FDEC5972F2A</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>7F1B1630-1E17-4EAA-B20C-AE49B4842996</string>
+				<string>2D592C8C-72CC-454A-BDEF-BA5E61A270DB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F25AA948-02C1-4C7C-AF4D-F3FEDA432592</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>27E829F9-B5DA-4E00-972E-2C82BC12A8CA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F70EE80C-1CF7-4B13-A79D-77C94D4670C8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>12E8A608-CE62-423A-9D94-DB1B3AC8D607</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>FC4B2AE8-6F67-4165-B413-C20BC27008A6</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>66C37B1B-700C-4A53-8CA8-7F272614FDEE</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -228,21 +475,59 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ocd</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
 				<key>text</key>
-				<string></string>
-				<key>title</key>
-				<string>Opening Obsidian on Today's Daily Note</string>
+				<string>Open Current Day's Note</string>
+				<key>withspace</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>BA154139-6236-4C6C-9295-F2127150B71D</string>
+			<string>B7CEA8F2-3892-4CDC-8A88-987F350613AB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>1C5438F3-118D-4712-A102-F0D54A4C1F5E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>45E3BA63-1EE1-4DF2-B9FA-6A8E7744C7C2</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -252,87 +537,282 @@
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>test</string>
+				<string>ocq</string>
 				<key>subtext</key>
 				<string>Will create if does not exist</string>
 				<key>text</key>
-				<string>Open Today's Daily Note</string>
+				<string>Open Current Quarter's Note</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>59CB478D-73DD-4C5B-8C83-FDC1485C4842</string>
+			<string>49E145C8-953B-4E78-9D9D-5DA471749860</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
+				<key>argument</key>
+				<string>CurrentDaily</string>
+				<key>passthroughargument</key>
 				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>./node_modules/.bin/run-node workflow/alfred-actions/current-day/current-day.js "$1"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>variables</key>
+				<dict/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>8E57F57C-AC90-404E-B726-6EEE60B8E9B1</string>
+			<string>DAA3AA2B-15DD-4B60-A091-674A45E65567</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
+				<key>argument</key>
+				<string>CurrentQuarterly</string>
+				<key>passthroughargument</key>
 				<false/>
-				<key>onlyshowifquerypopulated</key>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>3A4C9539-F39E-49D0-9C2F-76FF9D38FB32</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
 				<false/>
-				<key>removeextension</key>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>9CE25F5F-453A-4D40-A4C9-F5752F059ADE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
 				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>66C37B1B-700C-4A53-8CA8-7F272614FDEE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ond</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
 				<key>text</key>
-				<string></string>
-				<key>title</key>
-				<string>Opening Obsidian on this week's Note</string>
+				<string>Open Next Day's Note</string>
+				<key>withspace</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>1608CD3C-90FC-46D0-B019-AE15729ED72E</string>
+			<string>C4F39D7A-2292-4FDD-8375-0777C92E43AF</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>onq</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
+				<key>text</key>
+				<string>Open Next Quarter's Note</string>
+				<key>withspace</key>
 				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>./node_modules/.bin/run-node workflow/alfred-actions/current-week/current-week.js "$1"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>7F1B1630-1E17-4EAA-B20C-AE49B4842996</string>
+			<string>88F05F9F-6A5F-4CBC-994A-4DC5A91B8F0C</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>NextDaily</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>FC4B2AE8-6F67-4165-B413-C20BC27008A6</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>NextQuarterly</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>AA013998-AA4F-4571-96D5-184DC707966C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>opd</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
+				<key>text</key>
+				<string>Open Previous Day's Note</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>9623A1F1-E4F9-419E-8595-447A4EDD68DD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>11D46FC9-DBD1-4F1B-950B-107826FD9514</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>opq</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
+				<key>text</key>
+				<string>Open Previous Quarter's Note</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>0EB435CC-0843-469B-BDAD-CF5066DA1B1B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>014A24BE-0C8E-49F7-A35C-A42B1D0B41E2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>PreviousDaily</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>764A9146-53B6-4F9A-ABC9-0024150F43FB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>PreviousQuarterly</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>B81636C3-37B3-4E1E-BFDB-E055AD24BE39</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -351,7 +831,66 @@
 			<key>type</key>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>E242328D-AB73-408B-B9E0-383618C9515B</string>
+			<string>2E90987F-99CC-4ABC-9623-3F78282393EC</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>11F44A25-24EE-426A-80F3-70DAC74C85DB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>0FFB2359-6473-4EF3-A633-9FFDED95762C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ocy</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
+				<key>text</key>
+				<string>Open Current Year's Note</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>F25AA948-02C1-4C7C-AF4D-F3FEDA432592</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -359,16 +898,16 @@
 			<key>config</key>
 			<dict>
 				<key>argument</key>
-				<string>'{query}', {variables}</string>
-				<key>cleardebuggertext</key>
+				<string>CurrentAnnually</string>
+				<key>passthroughargument</key>
 				<false/>
-				<key>processoutputs</key>
-				<true/>
+				<key>variables</key>
+				<dict/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
+			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>2E7F72DB-0BB9-481E-9FD2-8BEBF56FC974</string>
+			<string>27E829F9-B5DA-4E00-972E-2C82BC12A8CA</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -376,83 +915,77 @@
 			<key>config</key>
 			<dict>
 				<key>argument</key>
-				<string>'{query}', {variables}</string>
-				<key>cleardebuggertext</key>
+				<string>CurrentWeekly</string>
+				<key>passthroughargument</key>
 				<false/>
-				<key>processoutputs</key>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>62CD4A4F-FD8D-4518-B216-68CC3478EA81</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
 				<true/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
+			<string>alfred.workflow.output.callexternaltrigger</string>
 			<key>uid</key>
-			<string>2B791AAB-2C6F-4FA5-AD5C-3BE7AE12AA35</string>
+			<string>F5871698-3A64-44B8-A11F-B31500A8E14C</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
 				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>8C392EE6-670F-42B1-8EA3-C8F3426D3D9E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ony</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
 				<key>text</key>
-				<string></string>
-				<key>title</key>
-				<string>Opening Obsidian on next week's Note</string>
+				<string>Open Next Year's Note</string>
+				<key>withspace</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>3A975BD9-F00A-41E8-9DEE-907604B247D2</string>
+			<string>097D9370-D48B-47E8-850C-5E9D141FDD20</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string></string>
-				<key>title</key>
-				<string>Opening Obsidian on Tomorrow's Daily Note</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>634F4155-9C04-43EF-9E33-A8D577B307FB</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>./node_modules/.bin/run-node workflow/alfred-actions/next-week/next-week.js "$1"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>A0635D5F-0569-4BBE-B692-F987A2A16ACC</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -471,7 +1004,79 @@
 			<key>type</key>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>C9DE9D15-7F37-48DA-8EAB-F76E35B09278</string>
+			<string>0CCF9230-28FB-4C09-A147-26CEA7418B50</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>NextWeekly</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>BBB3B955-D617-4D9F-AD68-B4E3F65AD3A7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>NextAnnually</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>B7B1E0D5-8CA1-4699-B66C-16688334D900</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>BEBF8511-A14B-46E9-8A9A-263890C69B34</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>56BB5CD4-2454-4349-91F8-41E40F83C0F0</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -481,58 +1086,39 @@
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>ond</string>
+				<string>opw</string>
 				<key>subtext</key>
 				<string>Will create if does not exist</string>
 				<key>text</key>
-				<string>Open Next Daily Note</string>
+				<string>Open Previous Week's Note</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>B2B007AF-7C39-4B94-81FE-7BF42FB57E64</string>
+			<string>4E4788C7-0601-430E-9AC4-8C22DBF5FCA4</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>opy</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
+				<key>text</key>
+				<string>Open Previous Year's Note</string>
+				<key>withspace</key>
 				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>./node_modules/.bin/run-node workflow/alfred-actions/next-day/next-day.js "$1"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>A905D64A-4091-4A0D-B5C4-B09BB3C2C057</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>'{query}', {variables}</string>
-				<key>cleardebuggertext</key>
-				<false/>
-				<key>processoutputs</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
-			<key>uid</key>
-			<string>393E066A-F906-44FF-A95F-0A4F879D86B3</string>
+			<string>9A55F295-DFC3-4FA0-819E-70DD8D640487</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -540,16 +1126,90 @@
 			<key>config</key>
 			<dict>
 				<key>argument</key>
-				<string>'{query}', {variables}</string>
-				<key>cleardebuggertext</key>
+				<string>PreviousWeekly</string>
+				<key>passthroughargument</key>
 				<false/>
-				<key>processoutputs</key>
-				<true/>
+				<key>variables</key>
+				<dict/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.debug</string>
+			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>52B233B8-1320-4EDE-9294-91D7B9DF6B8E</string>
+			<string>62994E9E-4A36-42B2-B367-A922008FF108</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>PreviousAnnually</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>7A4F42EB-2E45-4A89-84C7-948C10C877E2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ocm</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
+				<key>text</key>
+				<string>Open Current Month's Note</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>EFD4BEA1-10AB-41B3-962B-2FDEC5972F2A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>F1211D61-33C7-4087-86CF-B025920403E1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>CurrentMonthly</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>2D592C8C-72CC-454A-BDEF-BA5E61A270DB</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -563,50 +1223,14 @@
 				<key>removeextension</key>
 				<false/>
 				<key>text</key>
-				<string></string>
+				<string>{query}</string>
 				<key>title</key>
-				<string>Opening Obsidian on Today's Daily Note</string>
+				<string>Error</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>AB1582EA-F22E-4F29-B1C2-A24D704A8897</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>availableviaurlhandler</key>
-				<false/>
-				<key>triggerid</key>
-				<string>open-obsidian-chrono-note</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>786AC893-CFA5-49FA-8E87-A1EA1426D69F</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>ocd</string>
-				<key>subtext</key>
-				<string>Will create if does not exist</string>
-				<key>text</key>
-				<string>Open Current Day's Note</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>B7CEA8F2-3892-4CDC-8A88-987F350613AB</string>
+			<string>479496E3-E534-4A1D-9389-14FCA3834CE5</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -640,7 +1264,7 @@
 ###  NextAnnually
 ###  PreviousAnnually
 
-./node_modules/.bin/run-node workflow/entrypoint.js CurrentDaily</string>
+./node_modules/.bin/run-node workflow/entrypoint.js "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -658,6 +1282,21 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>availableviaurlhandler</key>
+				<false/>
+				<key>triggerid</key>
+				<string>open-obsidian-chrono-note</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>786AC893-CFA5-49FA-8E87-A1EA1426D69F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>externaltriggerid</key>
 				<string>open-obsidian-chrono-note</string>
 				<key>passinputasargument</key>
@@ -670,7 +1309,60 @@
 			<key>type</key>
 			<string>alfred.workflow.output.callexternaltrigger</string>
 			<key>uid</key>
-			<string>1C5438F3-118D-4712-A102-F0D54A4C1F5E</string>
+			<string>AFA1ABE9-0234-46B8-8282-5EEDE77FF328</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>onm</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
+				<key>text</key>
+				<string>Open Next Month's Note</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>F70EE80C-1CF7-4B13-A79D-77C94D4670C8</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>4</integer>
+						<key>matchstring</key>
+						<string>^Exception</string>
+						<key>outputlabel</key>
+						<string>error</string>
+						<key>uid</key>
+						<string>BA6B7140-11CD-4676-B688-134674726FB4</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>opening</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>02EF35C0-0105-4386-B5CD-58AC93D20A6C</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -678,7 +1370,7 @@
 			<key>config</key>
 			<dict>
 				<key>argument</key>
-				<string>CurrentDaily</string>
+				<string>NextMonthly</string>
 				<key>passthroughargument</key>
 				<false/>
 				<key>variables</key>
@@ -687,7 +1379,28 @@
 			<key>type</key>
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
-			<string>DAA3AA2B-15DD-4B60-A091-674A45E65567</string>
+			<string>12E8A608-CE62-423A-9D94-DB1B3AC8D607</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string>Opening Obsidian on your ChronoNote</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>AB1582EA-F22E-4F29-B1C2-A24D704A8897</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -708,199 +1421,490 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>opm</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
+				<key>text</key>
+				<string>Open Previous Month's Note</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>547E8BFA-EEC7-4659-9DB9-EE692A8C2821</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>open-obsidian-chrono-note</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<false/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>94CD8F45-9089-4E20-B817-FBA5DFDFFDEC</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>PreviousMonthly</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>6A4F336B-3E64-4521-A1A4-53FA01524A5A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>1608CD3C-90FC-46D0-B019-AE15729ED72E</key>
+		<key>014A24BE-0C8E-49F7-A35C-A42B1D0B41E2</key>
 		<dict>
 			<key>xpos</key>
-			<real>1615</real>
+			<real>1210</real>
 			<key>ypos</key>
-			<real>160</real>
+			<real>595</real>
+		</dict>
+		<key>02EF35C0-0105-4386-B5CD-58AC93D20A6C</key>
+		<dict>
+			<key>xpos</key>
+			<real>1540</real>
+			<key>ypos</key>
+			<real>2075</real>
+		</dict>
+		<key>097D9370-D48B-47E8-850C-5E9D141FDD20</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open next year note.</string>
+			<key>xpos</key>
+			<real>865</real>
+			<key>ypos</key>
+			<real>1160</real>
+		</dict>
+		<key>0CCF9230-28FB-4C09-A147-26CEA7418B50</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open next week note.</string>
+			<key>xpos</key>
+			<real>80</real>
+			<key>ypos</key>
+			<real>1160</real>
+		</dict>
+		<key>0EB435CC-0843-469B-BDAD-CF5066DA1B1B</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open previous quarter note.</string>
+			<key>xpos</key>
+			<real>865</real>
+			<key>ypos</key>
+			<real>595</real>
+		</dict>
+		<key>0FFB2359-6473-4EF3-A633-9FFDED95762C</key>
+		<dict>
+			<key>xpos</key>
+			<real>1210</real>
+			<key>ypos</key>
+			<real>895</real>
+		</dict>
+		<key>11D46FC9-DBD1-4F1B-950B-107826FD9514</key>
+		<dict>
+			<key>xpos</key>
+			<real>425</real>
+			<key>ypos</key>
+			<real>590</real>
+		</dict>
+		<key>11F44A25-24EE-426A-80F3-70DAC74C85DB</key>
+		<dict>
+			<key>xpos</key>
+			<real>425</real>
+			<key>ypos</key>
+			<real>895</real>
+		</dict>
+		<key>12E8A608-CE62-423A-9D94-DB1B3AC8D607</key>
+		<dict>
+			<key>xpos</key>
+			<real>300</real>
+			<key>ypos</key>
+			<real>2095</real>
 		</dict>
 		<key>1C5438F3-118D-4712-A102-F0D54A4C1F5E</key>
 		<dict>
 			<key>xpos</key>
-			<real>340</real>
+			<real>425</real>
 			<key>ypos</key>
-			<real>930</real>
+			<real>50</real>
 		</dict>
-		<key>2B791AAB-2C6F-4FA5-AD5C-3BE7AE12AA35</key>
+		<key>27E829F9-B5DA-4E00-972E-2C82BC12A8CA</key>
 		<dict>
 			<key>xpos</key>
-			<real>1520</real>
+			<real>1080</real>
 			<key>ypos</key>
-			<real>395</real>
+			<real>925</real>
 		</dict>
-		<key>2E7F72DB-0BB9-481E-9FD2-8BEBF56FC974</key>
+		<key>2D592C8C-72CC-454A-BDEF-BA5E61A270DB</key>
 		<dict>
 			<key>xpos</key>
-			<real>485</real>
+			<real>300</real>
 			<key>ypos</key>
-			<real>345</real>
+			<real>1830</real>
 		</dict>
-		<key>393E066A-F906-44FF-A95F-0A4F879D86B3</key>
-		<dict>
-			<key>xpos</key>
-			<real>1545</real>
-			<key>ypos</key>
-			<real>765</real>
-		</dict>
-		<key>3A975BD9-F00A-41E8-9DEE-907604B247D2</key>
-		<dict>
-			<key>xpos</key>
-			<real>1640</real>
-			<key>ypos</key>
-			<real>530</real>
-		</dict>
-		<key>52B233B8-1320-4EDE-9294-91D7B9DF6B8E</key>
-		<dict>
-			<key>xpos</key>
-			<real>485</real>
-			<key>ypos</key>
-			<real>770</real>
-		</dict>
-		<key>59CB478D-73DD-4C5B-8C83-FDC1485C4842</key>
+		<key>2E90987F-99CC-4ABC-9623-3F78282393EC</key>
 		<dict>
 			<key>note</key>
-			<string>Change the keyword to your preferred way to open today's note.</string>
+			<string>Change the keyword to your preferred way to open current week note.</string>
 			<key>xpos</key>
-			<real>75</real>
+			<real>80</real>
 			<key>ypos</key>
-			<real>150</real>
+			<real>895</real>
 		</dict>
-		<key>634F4155-9C04-43EF-9E33-A8D577B307FB</key>
+		<key>3A4C9539-F39E-49D0-9C2F-76FF9D38FB32</key>
 		<dict>
 			<key>xpos</key>
-			<real>580</real>
+			<real>1080</real>
 			<key>ypos</key>
-			<real>535</real>
+			<real>85</real>
+		</dict>
+		<key>45E3BA63-1EE1-4DF2-B9FA-6A8E7744C7C2</key>
+		<dict>
+			<key>xpos</key>
+			<real>1210</real>
+			<key>ypos</key>
+			<real>55</real>
+		</dict>
+		<key>479496E3-E534-4A1D-9389-14FCA3834CE5</key>
+		<dict>
+			<key>xpos</key>
+			<real>1740</real>
+			<key>ypos</key>
+			<real>1960</real>
+		</dict>
+		<key>49E145C8-953B-4E78-9D9D-5DA471749860</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open current quarter note.</string>
+			<key>xpos</key>
+			<real>865</real>
+			<key>ypos</key>
+			<real>55</real>
+		</dict>
+		<key>4E4788C7-0601-430E-9AC4-8C22DBF5FCA4</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open previous week's note.</string>
+			<key>xpos</key>
+			<real>80</real>
+			<key>ypos</key>
+			<real>1435</real>
+		</dict>
+		<key>547E8BFA-EEC7-4659-9DB9-EE692A8C2821</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open previous month note.</string>
+			<key>xpos</key>
+			<real>85</real>
+			<key>ypos</key>
+			<real>2340</real>
+		</dict>
+		<key>56BB5CD4-2454-4349-91F8-41E40F83C0F0</key>
+		<dict>
+			<key>xpos</key>
+			<real>1210</real>
+			<key>ypos</key>
+			<real>1435</real>
+		</dict>
+		<key>62994E9E-4A36-42B2-B367-A922008FF108</key>
+		<dict>
+			<key>xpos</key>
+			<real>295</real>
+			<key>ypos</key>
+			<real>1465</real>
+		</dict>
+		<key>62CD4A4F-FD8D-4518-B216-68CC3478EA81</key>
+		<dict>
+			<key>xpos</key>
+			<real>295</real>
+			<key>ypos</key>
+			<real>925</real>
+		</dict>
+		<key>66C37B1B-700C-4A53-8CA8-7F272614FDEE</key>
+		<dict>
+			<key>xpos</key>
+			<real>425</real>
+			<key>ypos</key>
+			<real>320</real>
+		</dict>
+		<key>6A4F336B-3E64-4521-A1A4-53FA01524A5A</key>
+		<dict>
+			<key>xpos</key>
+			<real>300</real>
+			<key>ypos</key>
+			<real>2370</real>
+		</dict>
+		<key>764A9146-53B6-4F9A-ABC9-0024150F43FB</key>
+		<dict>
+			<key>xpos</key>
+			<real>295</real>
+			<key>ypos</key>
+			<real>620</real>
 		</dict>
 		<key>786AC893-CFA5-49FA-8E87-A1EA1426D69F</key>
 		<dict>
 			<key>xpos</key>
-			<real>655</real>
+			<real>1100</real>
 			<key>ypos</key>
-			<real>930</real>
+			<real>2055</real>
 		</dict>
-		<key>7F1B1630-1E17-4EAA-B20C-AE49B4842996</key>
+		<key>7A4F42EB-2E45-4A89-84C7-948C10C877E2</key>
 		<dict>
 			<key>xpos</key>
-			<real>1320</real>
+			<real>1080</real>
 			<key>ypos</key>
-			<real>200</real>
+			<real>1465</real>
 		</dict>
-		<key>8E57F57C-AC90-404E-B726-6EEE60B8E9B1</key>
+		<key>88F05F9F-6A5F-4CBC-994A-4DC5A91B8F0C</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open next quarter note.</string>
+			<key>xpos</key>
+			<real>865</real>
+			<key>ypos</key>
+			<real>320</real>
+		</dict>
+		<key>8C392EE6-670F-42B1-8EA3-C8F3426D3D9E</key>
 		<dict>
 			<key>xpos</key>
-			<real>285</real>
+			<real>1210</real>
 			<key>ypos</key>
-			<real>150</real>
+			<real>1160</real>
 		</dict>
-		<key>A0635D5F-0569-4BBE-B692-F987A2A16ACC</key>
+		<key>94CD8F45-9089-4E20-B817-FBA5DFDFFDEC</key>
 		<dict>
 			<key>xpos</key>
-			<real>1345</real>
+			<real>430</real>
 			<key>ypos</key>
-			<real>570</real>
+			<real>2340</real>
 		</dict>
-		<key>A905D64A-4091-4A0D-B5C4-B09BB3C2C057</key>
+		<key>9623A1F1-E4F9-419E-8595-447A4EDD68DD</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open previous day's note.</string>
+			<key>xpos</key>
+			<real>80</real>
+			<key>ypos</key>
+			<real>590</real>
+		</dict>
+		<key>9A55F295-DFC3-4FA0-819E-70DD8D640487</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open previous year note.</string>
+			<key>xpos</key>
+			<real>865</real>
+			<key>ypos</key>
+			<real>1435</real>
+		</dict>
+		<key>9CE25F5F-453A-4D40-A4C9-F5752F059ADE</key>
 		<dict>
 			<key>xpos</key>
-			<real>285</real>
+			<real>1210</real>
 			<key>ypos</key>
-			<real>575</real>
+			<real>320</real>
+		</dict>
+		<key>AA013998-AA4F-4571-96D5-184DC707966C</key>
+		<dict>
+			<key>xpos</key>
+			<real>1080</real>
+			<key>ypos</key>
+			<real>350</real>
 		</dict>
 		<key>AB1582EA-F22E-4F29-B1C2-A24D704A8897</key>
 		<dict>
 			<key>xpos</key>
-			<real>1160</real>
+			<real>1740</real>
 			<key>ypos</key>
-			<real>890</real>
+			<real>2120</real>
 		</dict>
-		<key>B2B007AF-7C39-4B94-81FE-7BF42FB57E64</key>
+		<key>AFA1ABE9-0234-46B8-8282-5EEDE77FF328</key>
 		<dict>
-			<key>note</key>
-			<string>Change the keyword to your preferred way to open current day's note.</string>
 			<key>xpos</key>
-			<real>75</real>
+			<real>430</real>
 			<key>ypos</key>
-			<real>575</real>
+			<real>2065</real>
 		</dict>
 		<key>B52A14A4-41F7-4E64-85C1-6D5981FF4150</key>
 		<dict>
 			<key>xpos</key>
-			<real>865</real>
+			<real>1310</real>
 			<key>ypos</key>
-			<real>930</real>
+			<real>2055</real>
+		</dict>
+		<key>B7B1E0D5-8CA1-4699-B66C-16688334D900</key>
+		<dict>
+			<key>xpos</key>
+			<real>1080</real>
+			<key>ypos</key>
+			<real>1190</real>
 		</dict>
 		<key>B7CEA8F2-3892-4CDC-8A88-987F350613AB</key>
 		<dict>
 			<key>note</key>
 			<string>Change the keyword to your preferred way to open today's note.</string>
 			<key>xpos</key>
-			<real>70</real>
+			<real>80</real>
 			<key>ypos</key>
-			<real>930</real>
+			<real>50</real>
 		</dict>
-		<key>BA154139-6236-4C6C-9295-F2127150B71D</key>
+		<key>B81636C3-37B3-4E1E-BFDB-E055AD24BE39</key>
 		<dict>
 			<key>xpos</key>
-			<real>580</real>
+			<real>1080</real>
 			<key>ypos</key>
-			<real>110</real>
+			<real>625</real>
 		</dict>
-		<key>C9DE9D15-7F37-48DA-8EAB-F76E35B09278</key>
+		<key>BBB3B955-D617-4D9F-AD68-B4E3F65AD3A7</key>
+		<dict>
+			<key>xpos</key>
+			<real>295</real>
+			<key>ypos</key>
+			<real>1190</real>
+		</dict>
+		<key>BEBF8511-A14B-46E9-8A9A-263890C69B34</key>
+		<dict>
+			<key>xpos</key>
+			<real>425</real>
+			<key>ypos</key>
+			<real>1435</real>
+		</dict>
+		<key>C4F39D7A-2292-4FDD-8375-0777C92E43AF</key>
 		<dict>
 			<key>note</key>
-			<string>Change the keyword to your preferred way to open today's note.</string>
+			<string>Change the keyword to your preferred way to open next day's note.</string>
 			<key>xpos</key>
-			<real>1135</real>
+			<real>80</real>
 			<key>ypos</key>
-			<real>570</real>
+			<real>320</real>
 		</dict>
 		<key>DAA3AA2B-15DD-4B60-A091-674A45E65567</key>
 		<dict>
 			<key>xpos</key>
-			<real>250</real>
+			<real>295</real>
 			<key>ypos</key>
-			<real>960</real>
+			<real>80</real>
 		</dict>
 		<key>DDA152E8-629A-4C3E-903B-860F08797C5C</key>
 		<dict>
 			<key>xpos</key>
-			<real>1065</real>
+			<real>1470</real>
 			<key>ypos</key>
-			<real>1125</real>
+			<real>2325</real>
 		</dict>
-		<key>E242328D-AB73-408B-B9E0-383618C9515B</key>
+		<key>EFD4BEA1-10AB-41B3-962B-2FDEC5972F2A</key>
 		<dict>
 			<key>note</key>
-			<string>Change the keyword to your preferred way to open current day's note.</string>
+			<string>Change the keyword to your preferred way to open current month note.</string>
 			<key>xpos</key>
-			<real>1110</real>
+			<real>85</real>
 			<key>ypos</key>
-			<real>200</real>
+			<real>1800</real>
+		</dict>
+		<key>F1211D61-33C7-4087-86CF-B025920403E1</key>
+		<dict>
+			<key>xpos</key>
+			<real>430</real>
+			<key>ypos</key>
+			<real>1800</real>
+		</dict>
+		<key>F25AA948-02C1-4C7C-AF4D-F3FEDA432592</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open current year note.</string>
+			<key>xpos</key>
+			<real>865</real>
+			<key>ypos</key>
+			<real>895</real>
+		</dict>
+		<key>F5871698-3A64-44B8-A11F-B31500A8E14C</key>
+		<dict>
+			<key>xpos</key>
+			<real>425</real>
+			<key>ypos</key>
+			<real>1160</real>
+		</dict>
+		<key>F70EE80C-1CF7-4B13-A79D-77C94D4670C8</key>
+		<dict>
+			<key>note</key>
+			<string>Change the keyword to your preferred way to open next month note.</string>
+			<key>xpos</key>
+			<real>85</real>
+			<key>ypos</key>
+			<real>2065</real>
+		</dict>
+		<key>FC4B2AE8-6F67-4165-B413-C20BC27008A6</key>
+		<dict>
+			<key>xpos</key>
+			<real>295</real>
+			<key>ypos</key>
+			<real>350</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
 	<array/>
 	<key>variables</key>
 	<dict>
+		<key>ANNUALLY_FILE_FORMAT</key>
+		<string>yyyy</string>
+		<key>ANNUALLY_PATH</key>
+		<string>/Users/ekluw/Projects/obsidian/Personal/999-Planner/AnnualPlans</string>
+		<key>ANNUALLY_TEMPLATE_PATH</key>
+		<string>~/Projects/obsidian/Personal/999-Templates/annual note template.md</string>
+		<key>DAILY_FILE_FORMAT</key>
+		<string>yyyy-MM-dd cccc</string>
 		<key>DAILY_PATH</key>
 		<string>/Users/ekluw/Projects/obsidian/Personal/999-Planner/DailyPlans</string>
-		<key>DAILY_PATH_FORMAT</key>
-		<string>yyyy-MM-dd cccc</string>
 		<key>DAILY_TEMPLATE_PATH</key>
 		<string>~/Projects/obsidian/Personal/999-Templates/daily plan template.md</string>
+		<key>MONTHLY_FILE_FORMAT</key>
+		<string>yyyy-MM</string>
+		<key>MONTHLY_PATH</key>
+		<string>/Users/ekluw/Projects/obsidian/Personal/999-Planner/MonthlyReviews</string>
+		<key>MONTHLY_TEMPLATE_PATH</key>
+		<string>~/Projects/obsidian/Personal/999-Templates/monthly review template.md</string>
 		<key>OBSIDIAN_VAULT_NAME</key>
 		<string>Personal</string>
+		<key>QUARTERLY_FILE_FORMAT</key>
+		<string>yyyy-'Q'q</string>
+		<key>QUARTERLY_PATH</key>
+		<string>/Users/ekluw/Projects/obsidian/Personal/999-Planner/QuarterlyReviews</string>
+		<key>QUARTERLY_TEMPLATE_PATH</key>
+		<string>~/Projects/obsidian/Personal/999-Templates/quarterly review template.md</string>
+		<key>WEEKLY_FILE_FORMAT</key>
+		<string>yyyy-'W'WW</string>
 		<key>WEEKLY_PATH</key>
 		<string>/Users/ekluw/Projects/obsidian/Personal/999-Planner/WeeklyPlans</string>
-		<key>WEEKLY_PATH_FORMAT</key>
-		<string>yyyy-'W'WW</string>
 		<key>WEEKLY_TEMPLATE_PATH</key>
 		<string>~/Projects/obsidian/Personal/999-Templates/weekly planner template.md</string>
 	</dict>

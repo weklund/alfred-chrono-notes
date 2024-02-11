@@ -1,4 +1,5 @@
-import {EnvConfigDriver} from "./drivers/EnvConfigDriver";
+import {EnvConfigDriver} from "./drivers/EnvConfigDriver.js";
+import {Interval} from "../Chrono/ChronoNote.js";
 
 export type EnvironmentVariable = string | undefined | null
 
@@ -8,19 +9,27 @@ export interface AppConfig {
 }
 
 export interface ConfigDriver {
-    get(key: string): EnvironmentVariable;
+    get(key: string): EnvironmentVariable
+    getIntervalConfig(interval: Interval): IntervalConfig
+    validateIntervalConfig(intervalConfig: IntervalConfig): void
 }
 
 export interface IntervalConfig {
     // The folder where the notes are stored
-    folderPath: string;
+    FOLDER_PATH: string;
     // The file name format to use
-    pathFormat: string;
+    FILE_FORMAT: string;
     // The file path where the desired note template is
-    templatePath: string;
+    TEMPLATE_PATH: string;
 }
 
-export class ConfigProvider {
+export interface IConfigProvider {
+    get(key: string): EnvironmentVariable
+    getIntervalConfig(interval: Interval): IntervalConfig
+    validateIntervalConfig(intervalConfig: IntervalConfig): void
+}
+
+export class ConfigProvider implements IConfigProvider {
     private driver: ConfigDriver;
 
     constructor(driver?: ConfigDriver) {
@@ -32,13 +41,14 @@ export class ConfigProvider {
     }
 
     // Method to get interval configurations, assuming intervals are known
-    getIntervalConfig(interval: string): IntervalConfig {
-        return {
-            folderPath: this.get(`${interval.toUpperCase()}_FOLDER_PATH`) ?? '',
-            pathFormat: this.get(`${interval.toUpperCase()}_PATH_FORMAT`) ?? '',
-            templatePath: this.get(`${interval.toUpperCase()}_TEMPLATE_PATH`) ?? '',
-        };
+    getIntervalConfig(interval: Interval): IntervalConfig {
+        return this.driver.getIntervalConfig(interval)
     }
+
+    validateIntervalConfig(intervalConfig: IntervalConfig): void {
+        this.driver.validateIntervalConfig(intervalConfig)
+    }
+
 }
 
 

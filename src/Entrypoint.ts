@@ -1,76 +1,99 @@
 import open from "open";
-import {doesFileExist, createTemplatedFile, isEnvVarSet} from "./Utils/CommonUtils.js";
-import {ConfigProvider, IntervalConfig} from "./Utils/Config/ConfigProvider.js";
+import {validateExistingEnvVar} from "./Utils/CommonUtils.js";
+import {ConfigProvider, IConfigProvider} from "./Utils/Config/ConfigProvider.js";
 import {parseChronoNoteArg, ChronoNote} from "./Utils/Chrono/ChronoNote.js";
-import {MissingConfigurationException} from "./Exceptions/MissingConfigurationException";
-import {FileHelper} from "./Utils/File/FileHelper";
+import {FileProvider, IFileProvider} from "./Utils/File/FileProvider.js";
 
 // TODO:  Check installation of Obsidian, and Obsidian Periodic Notes plugin
 
+
 /**
- * Check that the required interval config variables are set
- * Specifically checking 3 variables in {@link IntervalConfig}
- * If it's not set then throw {@link MissingConfigurationException}
  *
- * @param intervalVars
  */
-export function validateConfig(intervalVars: IntervalConfig) {
-    Object.keys(intervalVars).forEach((key) => {
-        const typedKey = key as keyof IntervalConfig;
+export class Entrypoint {
+    private readonly configProvider: IConfigProvider;
+    private readonly fileProvider: IFileProvider
 
-        if (!isEnvVarSet(intervalVars[typedKey])) {
-            throw new MissingConfigurationException(`Missing environment variable: ${typedKey}`)
-        }
-    });
-}
+    constructor(
+        configProvider: IConfigProvider,
+        fileProvider: IFileProvider,
+    ) {
+        this.configProvider = configProvider;
+        this.fileProvider = fileProvider
+    }
 
-export async function handle() {
-    console.log("Entrypoint handle flow")
-    // 0. Get env vars:
+    /**
+     *
+     */
+    public async handle() {
+        console.info("Begin Entrypoint handle flow")
+        // 1. Retrieve env vars:
+        const arg = process.argv[2]
+        console.info(`Passed in argv: ${arg}`)
 
-    const arg = process.argv[2]
+        // 2. Parse arg and set ChronoNote context
+        const chronoTypeInput = parseChronoNoteArg(arg)
+        console.info(`Parsed argv with interval as ${chronoTypeInput.interval} and ordinal as ${chronoTypeInput.ordinal}`)
+        const chronoNote = new ChronoNote(chronoTypeInput)
 
-    console.log(arg)
+        // 3. Check that obsidian vault name is set and exists
+        const OBSIDIAN_VAULT_NAME = this.configProvider.get('OBSIDIAN_VAULT_NAME')
+        validateExistingEnvVar(OBSIDIAN_VAULT_NAME, 'Obsidian Vault Name')
 
-    const chronoTypeInput = parseChronoNoteArg(arg)
+        // 4. Retrieve required ChronoNote config and check if valid
+        const intervalVars = this.configProvider.getIntervalConfig(chronoNote.getInterval())
+        this.configProvider.validateIntervalConfig(intervalVars)
 
-    const configProvider = new ConfigProvider();
+        // 5. Get the obsidian file name for the ChronoNote
+        const fileName = `${chronoNote.formatDate(intervalVars.FILE_FORMAT)}.md`
+        console.info(`File Name: ${fileName}`)
 
-    const chronoNote = new ChronoNote(chronoTypeInput)
-
-    const intervalVars = configProvider.getIntervalConfig(chronoNote.getInterval())
-
-    validateConfig(intervalVars)
-
-    const fileHelper = new FileHelper()
-
-    const fullPath = fileHelper.resolveNoteFullPath(
-        intervalVars.folderPath,
-        chronoNote.formatDate(intervalVars.pathFormat)
-    )
-
-    if (!fileHelper.doesFileExist(fullPath)){
-
-        // 3.a Create Templated file
-        chronoNote(
-            fullPath,
-            intervalVars.templatePath,
+        // 6. Get the full path for the ChronoNote
+        const fullPath = this.fileProvider.resolveNoteFullPath(
+            intervalVars.FOLDER_PATH,
+            chronoNote.formatDate(intervalVars.FILE_FORMAT)
         )
-    }
+        console.info(`Full Path: ${fullPath}`)
 
-    console.log(`Full Path: ${fullPath}`)
+        // 7. Check if file exists
+        if (!this.fileProvider.doesFileExist(fullPath)){
+            console.info('File does not exist, creating one from provided template')
 
-    // 4. Open file
-    const OBSIDIAN_NOTE_URI = `obsidian://open?vault=${OBSIDIAN_VAULT_NAME}&file=${formatDayDate(day)}.md`
+            // 7.a If it doesn't then create the ChronoNote based on provided template path
+            this.fileProvider.createTemplatedNote(
+                fullPath ,
+                intervalVars.TEMPLATE_PATH,
+            )
+        } else {
+            console.info('File already exists')
+        }
 
-    try {
-        await new Promise(() => {
-            void open(OBSIDIAN_NOTE_URI)
-        });
+        // 8. Open file
+        const OBSIDIAN_NOTE_URI = `obsidian://open?vault=${OBSIDIAN_VAULT_NAME}&file=${fileName}`
 
-    } catch (e: unknown) {
-        console.error(`${e as string}`);
+        try {
+            console.info('Attempting to open file in Obsidian')
+            await new Promise(() => {
+                void open(OBSIDIAN_NOTE_URI)
+            });
+
+        } catch (e: unknown) {
+            console.error(`${e as string}`);
+        }
     }
 }
 
-void handle()
+// Factory function for entrypoint
+export function createEntrypoint(
+    configProvider: IConfigProvider,
+    fileProvider: IFileProvider,
+): Entrypoint {
+    return new Entrypoint(configProvider, fileProvider);
+}
+
+const main = createEntrypoint(
+    new ConfigProvider(),
+    new FileProvider()
+);
+
+await main.handle();

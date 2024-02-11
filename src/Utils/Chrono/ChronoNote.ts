@@ -1,7 +1,7 @@
 import {DateTime} from "luxon";
 
 import {InvalidEntrypointArguments} from "../../Exceptions/InvalidEntrypointArguments.js";
-import {FileHelper, IFileHelper} from "../File/FileHelper";
+import {FileProvider, IFileProvider} from "../File/FileProvider.js";
 
 export enum Ordinal {
     Current = "Current",
@@ -81,12 +81,12 @@ export function parseChronoNoteArg(input: string): ChronoType {
  */
 export class ChronoNote implements IChronoNote {
     private readonly type: ChronoType;
-    private fileHelper: IFileHelper
+    private fileHelper: IFileProvider
     private date: DateTime = DateTime.now();
 
     constructor(
         type: ChronoType,
-        fileHelper: IFileHelper = new FileHelper,
+        fileHelper: IFileProvider = new FileProvider(),
     ) {
         this.type = type;
         this.fileHelper = fileHelper;
@@ -122,6 +122,7 @@ export class ChronoNote implements IChronoNote {
         this.date = this.date.plus({
             [intervalMap[this.type.interval]]: ordinalMap[this.type.ordinal]
         })
+        console.info(`Date with ${this.type.interval} interval and ${this.type.ordinal} ordinal set to: ${this.date.toFormat("yyyy-MM-dd")}`)
     }
 
     /**

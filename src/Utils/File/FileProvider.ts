@@ -1,17 +1,20 @@
+import * as os from "os";
 import * as fs from "fs";
 import path from "path";
 import {InvalidFilePathSchemaException} from "../../Exceptions/InvalidFilePathSchemaException.js";
 import {FileDoesNotExistException} from "../../Exceptions/FileDoesNotExistException.js";
 import {PathNotFileException} from "../../Exceptions/PathNotFileException.js";
 
-export interface IFileHelper {
+export interface IFileProvider {
     readTemplate: (filePath: string) => string,
     doesFileExist: (filePath: string) => boolean,
     resolveHomePath: (path: string) => string,
     checkIfFileExists: (filePath: string) => void,
+    resolveNoteFullPath: (directoryPath: string, formattedDate: string) => string,
+    createTemplatedNote: (filePath: string, templateFilePath: string) => void,
 }
 
-export class FileHelper implements IFileHelper {
+export class FileProvider implements IFileProvider {
     private driver: typeof fs;
 
     constructor() {
@@ -67,8 +70,12 @@ export class FileHelper implements IFileHelper {
      * @returns {boolean}
      */
     isValidPathSchema(path: string): boolean {
-        // TODO: Remove after through testing
-        const regex = /^[a-zA-Z0-9][a-zA-Z0-9._/-]*$/;
+        const userInfo = os.userInfo()
+
+        const regex = RegExp(`^(?=${userInfo.homedir})[a-zA-Z0-9._/ -]*$`);
+
+        console.log(`Generated Regex expression: ${regex.source}`)
+        console.log(`IsValidPathSchema: ${regex.test(path)}`)
 
         // Get current mac user from node env or os
         // const regex = /^(?:\/Users\/[a-zA-Z0-9_-]+\/)?[a-zA-Z0-9._/-]*$/;
@@ -115,6 +122,42 @@ export class FileHelper implements IFileHelper {
         }
 
         return templateFileContent
+    }
+
+    /**
+     * Given a file path and valid templateFilePath, create a new file.
+     *
+     * @param filePath {string}
+     * @param templateFilePath {string}
+     * @throws {FileDoesNotExistException}
+     */
+    createTemplatedNote(filePath: string, templateFilePath: string): void {
+        // 1. Check that the provided filePath does not exist.
+        if (this.doesFileExist(filePath)) {
+            throw new Error(`File already exists at ${filePath}`)
+        }
+
+        // 2. Check if templateFilePath given is actually a file
+        this.checkIfFileExists(templateFilePath)
+
+        let templateFileContent = ''
+
+        // 3. Fetch the template contents
+        const fullTemplateFilePath = this.resolveHomePath(templateFilePath)
+        try {
+            templateFileContent = this.driver.readFileSync(fullTemplateFilePath, 'utf8')
+        } catch (e) {
+            throw new Error(`Could not read template file at ${fullTemplateFilePath}`)
+        }
+
+        const fullFilePath = this.resolveHomePath(filePath)
+
+        // 4. Create new file from template
+        try{
+            this.driver.writeFileSync(fullFilePath, templateFileContent)
+        } catch (e) {
+            throw new Error(`Could not create templated file at ${filePath}`)
+        }
     }
 
 }
