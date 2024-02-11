@@ -3,6 +3,7 @@ import {doesFileExist, createTemplatedFile, isEnvVarSet} from "./Utils/CommonUti
 import {ConfigProvider, IntervalConfig} from "./Utils/Config/ConfigProvider.js";
 import {parseChronoNoteArg, ChronoNote} from "./Utils/Chrono/ChronoNote.js";
 import {MissingConfigurationException} from "./Exceptions/MissingConfigurationException";
+import {FileHelper} from "./Utils/File/FileHelper";
 
 // TODO:  Check installation of Obsidian, and Obsidian Periodic Notes plugin
 
@@ -23,11 +24,9 @@ export function validateConfig(intervalVars: IntervalConfig) {
     });
 }
 
-async function handle() {
+export async function handle() {
+    console.log("Entrypoint handle flow")
     // 0. Get env vars:
-    const config = new ConfigProvider();
-
-    console.log("Entrypoint execution flow")
 
     const arg = process.argv[2]
 
@@ -35,24 +34,25 @@ async function handle() {
 
     const chronoTypeInput = parseChronoNoteArg(arg)
 
+    const configProvider = new ConfigProvider();
+
     const chronoNote = new ChronoNote(chronoTypeInput)
 
-    const intervalVars = config.getIntervalConfig(chronoNote.getInterval())
+    const intervalVars = configProvider.getIntervalConfig(chronoNote.getInterval())
 
     validateConfig(intervalVars)
 
-    // 2. Resolve full path
-    // const fullPath = resolveFileDateFormatPath(
-    //     DAILY_PATH,
-    //     day,
-    //     DateUnit.DAY,
-    //     DAILY_PATH_FORMAT
-    // )
+    const fileHelper = new FileHelper()
 
-    if (!doesFileExist(fullPath)){
+    const fullPath = fileHelper.resolveNoteFullPath(
+        intervalVars.folderPath,
+        chronoNote.formatDate(intervalVars.pathFormat)
+    )
+
+    if (!fileHelper.doesFileExist(fullPath)){
 
         // 3.a Create Templated file
-        createTemplatedFile(
+        chronoNote(
             fullPath,
             intervalVars.templatePath,
         )

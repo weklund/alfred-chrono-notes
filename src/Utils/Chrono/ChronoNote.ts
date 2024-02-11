@@ -1,7 +1,7 @@
 import {DateTime} from "luxon";
 
 import {InvalidEntrypointArguments} from "../../Exceptions/InvalidEntrypointArguments.js";
-import {resolveHomePath} from "../CommonUtils.js";
+import {FileHelper, IFileHelper} from "../File/FileHelper";
 
 export enum Ordinal {
     Current = "Current",
@@ -34,6 +34,13 @@ const intervalMap = {
 export interface ChronoType {
     ordinal: Ordinal;
     interval: Interval;
+}
+
+export interface IChronoNote {
+    getInterval: () => Interval
+    getDate: () => DateTime
+    getTemplate: (templatePath: string) => string
+    formatDate: (formatToken: string) => string
 }
 
 /**
@@ -69,17 +76,36 @@ export function parseChronoNoteArg(input: string): ChronoType {
     }
 }
 
-export class ChronoNote {
-    private readonly chronoType: ChronoType;
+/**
+ * ChronoNote is a class that represents a chronological note.
+ */
+export class ChronoNote implements IChronoNote {
+    private readonly type: ChronoType;
+    private fileHelper: IFileHelper
     private date: DateTime = DateTime.now();
 
-    constructor(chronoType: ChronoType) {
-        this.chronoType = chronoType
+    constructor(
+        type: ChronoType,
+        fileHelper: IFileHelper = new FileHelper,
+    ) {
+        this.type = type;
+        this.fileHelper = fileHelper;
         this.setDate();
     }
 
+    /**
+     *
+     */
     getInterval(){
-        return this.chronoType.interval;
+        return this.type.interval;
+    }
+
+    getDate(): DateTime {
+        return this.date;
+    }
+
+    getTemplate(templatePath: string): string {
+        return this.fileHelper.readTemplate(templatePath);
     }
 
     /**
@@ -94,8 +120,16 @@ export class ChronoNote {
      */
     setDate(): void {
         this.date = this.date.plus({
-            [intervalMap[this.chronoType.interval]]: ordinalMap[this.chronoType.ordinal]
+            [intervalMap[this.type.interval]]: ordinalMap[this.type.ordinal]
         })
+    }
+
+    /**
+     *
+     * @param formatToken
+     */
+    formatDate(formatToken: string): string {
+        return this.date.toFormat(formatToken)
     }
 
     /**
@@ -144,26 +178,6 @@ export class ChronoNote {
      */
     getWeekNumber(): number {
         return this.date.localWeekNumber
-    }
-
-    /**
-     * Get the full path to a file using the correct date format
-     *
-     * TODO: Replace default argument after exhaustive data formats handled
-     *
-     * @param pathDirectory {string}
-     * @param formatToken {string}
-     * @returns {string}
-     */
-    resolveFileDateFormatPath(pathDirectory: string, formatToken: string): string {
-
-        if (this.chronoType.interval === Interval.Weekly){
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-            return `${path.join(resolveHomePath(pathDirectory), this.formatWeekDate(formatToken))}.md`
-        }
-
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-        return `${path.join(resolveHomePath(pathDirectory), this.formatDayDate(formatToken))}.md`
     }
 
 }
