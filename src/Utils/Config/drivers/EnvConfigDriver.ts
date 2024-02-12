@@ -1,5 +1,5 @@
-import {ConfigDriver, EnvironmentVariable, IntervalConfig} from "../ConfigProvider.js";
 import {isEnvVarSet} from "../../CommonUtils.js";
+import {ConfigDriver, EnvironmentVariable, IntervalConfig} from "../ConfigProvider.js";
 import {MissingConfigurationException} from "../../../Exceptions/MissingConfigurationException.js";
 
 /**

@@ -3,11 +3,6 @@ import {Interval} from "../Chrono/ChronoNote.js";
 
 export type EnvironmentVariable = string | undefined | null
 
-export interface AppConfig {
-    OBSIDIAN_VAULT_NAME: string;
-    [key: string]: string | undefined; // To allow for dynamic interval keys
-}
-
 export interface ConfigDriver {
     get(key: string): EnvironmentVariable
     getIntervalConfig(interval: Interval): IntervalConfig
@@ -48,7 +43,6 @@ export class ConfigProvider implements IConfigProvider {
     validateIntervalConfig(intervalConfig: IntervalConfig): void {
         this.driver.validateIntervalConfig(intervalConfig)
     }
-
 }
 
 

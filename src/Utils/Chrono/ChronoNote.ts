@@ -1,7 +1,8 @@
 import {DateTime} from "luxon";
 
-import {InvalidEntrypointArguments} from "../../Exceptions/InvalidEntrypointArguments.js";
 import {FileProvider, IFileProvider} from "../File/FileProvider.js";
+import {InvalidEntrypointArguments} from "../../Exceptions/InvalidEntrypointArguments.js";
+import {InvalidDateFormatException} from "../../Exceptions/InvalidDateFormatException.js";
 
 export enum Ordinal {
     Current = "Current",
@@ -130,6 +131,12 @@ export class ChronoNote implements IChronoNote {
      * @param formatToken
      */
     formatDate(formatToken: string): string {
+        const formattedDate = this.date.toFormat(formatToken)
+
+        if(!formattedDate) {
+            throw new InvalidDateFormatException(`The provided formatToken is invalid: ${formatToken}`)
+        }
+
         return this.date.toFormat(formatToken)
     }
 

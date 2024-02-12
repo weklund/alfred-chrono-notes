@@ -3,6 +3,7 @@ import {validateExistingEnvVar} from "./Utils/CommonUtils.js";
 import {ConfigProvider, IConfigProvider} from "./Utils/Config/ConfigProvider.js";
 import {parseChronoNoteArg, ChronoNote} from "./Utils/Chrono/ChronoNote.js";
 import {FileProvider, IFileProvider} from "./Utils/File/FileProvider.js";
+import {ObsidianOpenNoteException} from "./Exceptions/ObsidianOpenNoteException.js";
 
 // TODO:  Check installation of Obsidian, and Obsidian Periodic Notes plugin
 
@@ -78,7 +79,7 @@ export class Entrypoint {
             });
 
         } catch (e: unknown) {
-            console.error(`${e as string}`);
+            throw new ObsidianOpenNoteException(e as string)
         }
     }
 }

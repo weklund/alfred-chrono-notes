@@ -10,6 +10,25 @@ Alfred Workflow for easy access to your Obsidian Periodic Notes.
 1. [Periodic Notes Plugin](https://github.com/liamcain/obsidian-periodic-notes)
 
 
+## How Alfred Chrono Notes works
+
+### What makes up a ChronoNote?
+
+#### Intervals
+- Daily
+- Weekly
+- Monthly
+- Quarterly
+- Annually
+
+#### Ordinal
+- Current
+- Next
+- Previous
+
+### Date Format Tokens
+https://moment.github.io/luxon/#/formatting?id=table-of-tokens
+
 ### Testing
 
 We have unit tests, but there currently isn't a way to an integrate test with an alfred environment.  All PRs need to have a screenshot or gif of it working

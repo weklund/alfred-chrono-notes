@@ -4,6 +4,9 @@ import path from "path";
 import {InvalidFilePathSchemaException} from "../../Exceptions/InvalidFilePathSchemaException.js";
 import {FileDoesNotExistException} from "../../Exceptions/FileDoesNotExistException.js";
 import {PathNotFileException} from "../../Exceptions/PathNotFileException.js";
+import {FileAlreadyExistsException} from "../../Exceptions/FileAlreadyExistsException.js";
+import {FatalReadFileSyncException} from "../../Exceptions/FatalReadFileSyncException.js";
+import {FatalWriteFileSyncException} from "../../Exceptions/FatalWriteFileSyncException.js";
 
 export interface IFileProvider {
     readTemplate: (filePath: string) => string,
@@ -74,11 +77,8 @@ export class FileProvider implements IFileProvider {
 
         const regex = RegExp(`^(?=${userInfo.homedir})[a-zA-Z0-9._/ -]*$`);
 
-        console.log(`Generated Regex expression: ${regex.source}`)
-        console.log(`IsValidPathSchema: ${regex.test(path)}`)
-
-        // Get current mac user from node env or os
-        // const regex = /^(?:\/Users\/[a-zA-Z0-9_-]+\/)?[a-zA-Z0-9._/-]*$/;
+        console.info(`Generated Regex expression: ${regex.source}`)
+        console.info(`IsValidPathSchema: ${regex.test(path)}`)
 
         return regex.test(path);
     }
@@ -134,7 +134,7 @@ export class FileProvider implements IFileProvider {
     createTemplatedNote(filePath: string, templateFilePath: string): void {
         // 1. Check that the provided filePath does not exist.
         if (this.doesFileExist(filePath)) {
-            throw new Error(`File already exists at ${filePath}`)
+            throw new FileAlreadyExistsException(`File already exists at ${filePath}`)
         }
 
         // 2. Check if templateFilePath given is actually a file
@@ -147,7 +147,7 @@ export class FileProvider implements IFileProvider {
         try {
             templateFileContent = this.driver.readFileSync(fullTemplateFilePath, 'utf8')
         } catch (e) {
-            throw new Error(`Could not read template file at ${fullTemplateFilePath}`)
+            throw new FatalReadFileSyncException(`Could not read template file at ${fullTemplateFilePath}`)
         }
 
         const fullFilePath = this.resolveHomePath(filePath)
@@ -156,7 +156,7 @@ export class FileProvider implements IFileProvider {
         try{
             this.driver.writeFileSync(fullFilePath, templateFileContent)
         } catch (e) {
-            throw new Error(`Could not create templated file at ${filePath}`)
+            throw new FatalWriteFileSyncException(`Could not create templated file at ${filePath}`)
         }
     }
 
