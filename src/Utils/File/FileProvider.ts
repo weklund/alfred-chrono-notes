@@ -1,12 +1,12 @@
-import * as os from "os";
-import * as fs from "fs";
-import path from "path";
-import {InvalidFilePathSchemaException} from "../../Exceptions/InvalidFilePathSchemaException.js";
-import {FileDoesNotExistException} from "../../Exceptions/FileDoesNotExistException.js";
-import {PathNotFileException} from "../../Exceptions/PathNotFileException.js";
-import {FileAlreadyExistsException} from "../../Exceptions/FileAlreadyExistsException.js";
-import {FatalReadFileSyncException} from "../../Exceptions/FatalReadFileSyncException.js";
-import {FatalWriteFileSyncException} from "../../Exceptions/FatalWriteFileSyncException.js";
+import * as os from "os"
+import * as fs from "fs"
+import path from "path"
+import {InvalidFilePathSchemaException} from "../../Exceptions/InvalidFilePathSchemaException.js"
+import {FileDoesNotExistException} from "../../Exceptions/FileDoesNotExistException.js"
+import {PathNotFileException} from "../../Exceptions/PathNotFileException.js"
+import {FileAlreadyExistsException} from "../../Exceptions/FileAlreadyExistsException.js"
+import {FatalReadFileSyncException} from "../../Exceptions/FatalReadFileSyncException.js"
+import {FatalWriteFileSyncException} from "../../Exceptions/FatalWriteFileSyncException.js"
 
 export interface IFileProvider {
     readTemplate: (filePath: string) => string,
@@ -18,7 +18,7 @@ export interface IFileProvider {
 }
 
 export class FileProvider implements IFileProvider {
-    private driver: typeof fs;
+    private driver: typeof fs
 
     constructor() {
         this.driver = fs
@@ -44,9 +44,9 @@ export class FileProvider implements IFileProvider {
      */
     resolveHomePath(filepath: string): string {
         if (filepath.startsWith("~") && process.env.HOME) {
-            return path.join(process.env.HOME, filepath.slice(1));
+            return path.join(process.env.HOME, filepath.slice(1))
         }
-        return filepath;
+        return filepath
     }
 
     /**
@@ -56,7 +56,7 @@ export class FileProvider implements IFileProvider {
      * @returns {boolean}
      */
     doesFileExist(filePath: string): boolean {
-        const path = this.resolveHomePath(filePath);
+        const path = this.resolveHomePath(filePath)
 
         return this.driver.existsSync(path) && this.driver.statSync(path).isFile()
     }
@@ -75,12 +75,12 @@ export class FileProvider implements IFileProvider {
     isValidPathSchema(path: string): boolean {
         const userInfo = os.userInfo()
 
-        const regex = RegExp(`^(?=${userInfo.homedir})[a-zA-Z0-9._/ -]*$`);
+        const regex = RegExp(`^(?=${userInfo.homedir})[a-zA-Z0-9._/ -]*$`)
 
         console.info(`Generated Regex expression: ${regex.source}`)
         console.info(`IsValidPathSchema: ${regex.test(path)}`)
 
-        return regex.test(path);
+        return regex.test(path)
     }
 
     /**
@@ -92,7 +92,7 @@ export class FileProvider implements IFileProvider {
      * @throws {PathNotFileException} if the provided path is not a file
      */
     checkIfFileExists(filePath: string): void {
-        const path = this.resolveHomePath(filePath);
+        const path = this.resolveHomePath(filePath)
 
         if(!this.isValidPathSchema(path)) {
             throw new InvalidFilePathSchemaException(`Invalid path schema: ${path}`)

@@ -1,9 +1,9 @@
-import open from "open";
-import {validateExistingEnvVar} from "./Utils/CommonUtils.js";
-import {ConfigProvider, IConfigProvider} from "./Utils/Config/ConfigProvider.js";
-import {parseChronoNoteArg, ChronoNote} from "./Utils/Chrono/ChronoNote.js";
-import {FileProvider, IFileProvider} from "./Utils/File/FileProvider.js";
-import {ObsidianOpenNoteException} from "./Exceptions/ObsidianOpenNoteException.js";
+import open from "open"
+import {validateExistingEnvVar} from "./Utils/CommonUtils.js"
+import {ConfigProvider, IConfigProvider} from "./Utils/Config/ConfigProvider.js"
+import {parseChronoNoteArg, ChronoNote} from "./Utils/Chrono/ChronoNote.js"
+import {FileProvider, IFileProvider} from "./Utils/File/FileProvider.js"
+import {ObsidianOpenNoteException} from "./Exceptions/ObsidianOpenNoteException.js"
 
 // TODO:  Check installation of Obsidian, and Obsidian Periodic Notes plugin
 
@@ -12,14 +12,14 @@ import {ObsidianOpenNoteException} from "./Exceptions/ObsidianOpenNoteException.
  *
  */
 export class Entrypoint {
-    private readonly configProvider: IConfigProvider;
+    private readonly configProvider: IConfigProvider
     private readonly fileProvider: IFileProvider
 
     constructor(
         configProvider: IConfigProvider,
         fileProvider: IFileProvider,
     ) {
-        this.configProvider = configProvider;
+        this.configProvider = configProvider
         this.fileProvider = fileProvider
     }
 
@@ -89,7 +89,7 @@ export function createEntrypoint(
     configProvider: IConfigProvider,
     fileProvider: IFileProvider,
 ): Entrypoint {
-    return new Entrypoint(configProvider, fileProvider);
+    return new Entrypoint(configProvider, fileProvider)
 }
 
 const main = createEntrypoint(
@@ -97,4 +97,4 @@ const main = createEntrypoint(
     new FileProvider()
 );
 
-await main.handle();
+await main.handle()

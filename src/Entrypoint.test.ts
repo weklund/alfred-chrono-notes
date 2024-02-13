@@ -1,7 +1,7 @@
 
-describe('Entrypoint Tests', () => {
+describe('Entrypoint', () => {
 
-    describe('handle execution tests', () => {
+    describe('handle exceptions', () => {
 
         it('should throw InvalidEntrypointArguments when args are invalid', () => {
 

@@ -1,5 +1,5 @@
-import {MissingConfigurationException} from "../Exceptions/MissingConfigurationException.js";
-import {EnvironmentVariable} from "./Config/ConfigProvider.js";
+import {MissingConfigurationException} from "../Exceptions/MissingConfigurationException.js"
+import {EnvironmentVariable} from "./Config/ConfigProvider.js"
 
 /**
  * Checks if the environment variable was set.  Will throw an exception if not.

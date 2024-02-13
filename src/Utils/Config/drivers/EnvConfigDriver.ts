@@ -1,6 +1,6 @@
-import {isEnvVarSet} from "../../CommonUtils.js";
-import {ConfigDriver, EnvironmentVariable, IntervalConfig} from "../ConfigProvider.js";
-import {MissingConfigurationException} from "../../../Exceptions/MissingConfigurationException.js";
+import {isEnvVarSet} from "../../CommonUtils.js"
+import {ConfigDriver, EnvironmentVariable, IntervalConfig} from "../ConfigProvider.js"
+import {MissingConfigurationException} from "../../../Exceptions/MissingConfigurationException.js"
 
 /**
  * @class EnvConfigDriver
@@ -10,14 +10,14 @@ import {MissingConfigurationException} from "../../../Exceptions/MissingConfigur
  */
 export class EnvConfigDriver implements ConfigDriver {
     get(key: string): EnvironmentVariable {
-        return process.env[key];
+        return process.env[key]
     }
 
     // Method to get interval configurations, assuming intervals are known
     getIntervalConfig(interval: string): IntervalConfig {
-        const fileFormatVar = `${interval.toUpperCase()}_FILE_FORMAT`;
-        const folderPathVar = `${interval.toUpperCase()}_PATH`;
-        const templatePathVar = `${interval.toUpperCase()}_TEMPLATE_PATH`;
+        const fileFormatVar = `${interval.toUpperCase()}_FILE_FORMAT`
+        const folderPathVar = `${interval.toUpperCase()}_PATH`
+        const templatePathVar = `${interval.toUpperCase()}_TEMPLATE_PATH`
 
         console.log(`File Format: ${this.get(fileFormatVar)}`)
         console.log(`Folder path: ${this.get(folderPathVar)}`)
@@ -39,7 +39,7 @@ export class EnvConfigDriver implements ConfigDriver {
      */
     validateIntervalConfig(intervalVars: IntervalConfig) {
         Object.keys(intervalVars).forEach((key) => {
-            const typedKey = key as keyof IntervalConfig;
+            const typedKey = key as keyof IntervalConfig
 
             if (!isEnvVarSet(intervalVars[typedKey])) {
                 throw new MissingConfigurationException(`Missing environment variable: ${typedKey}`)

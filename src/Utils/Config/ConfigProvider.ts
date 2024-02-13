@@ -10,10 +10,10 @@ export interface ConfigDriver {
 }
 
 export interface IntervalConfig {
-    // The folder where the notes are stored
-    FOLDER_PATH: string;
     // The file name format to use
     FILE_FORMAT: string;
+    // The folder where the notes are stored
+    FOLDER_PATH: string;
     // The file path where the desired note template is
     TEMPLATE_PATH: string;
 }

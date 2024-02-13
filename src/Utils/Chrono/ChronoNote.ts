@@ -1,8 +1,7 @@
-import {DateTime} from "luxon";
-
-import {FileProvider, IFileProvider} from "../File/FileProvider.js";
-import {InvalidEntrypointArguments} from "../../Exceptions/InvalidEntrypointArguments.js";
-import {InvalidDateFormatException} from "../../Exceptions/InvalidDateFormatException.js";
+import {DateTime} from "luxon"
+import {FileProvider, IFileProvider} from "../File/FileProvider.js"
+import {InvalidEntrypointArguments} from "../../Exceptions/InvalidEntrypointArguments.js"
+import {InvalidDateFormatException} from "../../Exceptions/InvalidDateFormatException.js"
 
 export enum Ordinal {
     Current = "Current",
@@ -33,8 +32,8 @@ const intervalMap = {
 }
 
 export interface ChronoType {
-    ordinal: Ordinal;
-    interval: Interval;
+    ordinal: Ordinal
+    interval: Interval
 }
 
 export interface IChronoNote {
@@ -52,28 +51,28 @@ export interface IChronoNote {
 export function parseChronoNoteArg(input: string): ChronoType {
 
     // Attempt to extract ordinal and interval from the input string
-    let ordinal: Ordinal | null = null;
-    let interval: Interval | null = null;
+    let ordinal: Ordinal | null = null
+    let interval: Interval | null = null
 
     // Check each Ordinal and Interval to find a match
     Object.values(Ordinal).forEach((o) => {
         if (input.toLowerCase().includes(o.toLowerCase())) {
-            ordinal = Ordinal[o as keyof typeof Ordinal];
+            ordinal = Ordinal[o as keyof typeof Ordinal]
         }
-    });
+    })
 
     Object.values(Interval).forEach((i) => {
         if (input.toLowerCase().includes(i.toLowerCase())) {
-            interval = Interval[i as keyof typeof Interval];
+            interval = Interval[i as keyof typeof Interval]
         }
-    });
+    })
 
     // If both ordinal and interval are found, return the result
     if (ordinal && interval) {
-        return { interval, ordinal } as ChronoType;
+        return { interval, ordinal } as ChronoType
     } else {
         // If either is not found, throw exemption
-        throw new InvalidEntrypointArguments("Provided entrypoint arguments are invalid");
+        throw new InvalidEntrypointArguments("Provided entrypoint arguments are invalid")
     }
 }
 
@@ -81,32 +80,38 @@ export function parseChronoNoteArg(input: string): ChronoType {
  * ChronoNote is a class that represents a chronological note.
  */
 export class ChronoNote implements IChronoNote {
-    private readonly type: ChronoType;
+    private readonly type: ChronoType
     private fileHelper: IFileProvider
-    private date: DateTime = DateTime.now();
+    private date: DateTime = DateTime.now()
 
     constructor(
         type: ChronoType,
         fileHelper: IFileProvider = new FileProvider(),
+        providedDate: DateTime = DateTime.now()
     ) {
-        this.type = type;
-        this.fileHelper = fileHelper;
-        this.setDate();
+        this.type = type
+        this.fileHelper = fileHelper
+        this.setDate(providedDate)
     }
 
     /**
      *
      */
     getInterval(){
-        return this.type.interval;
+        return this.type.interval
     }
 
     getDate(): DateTime {
-        return this.date;
+        return this.date
     }
 
+    /**
+     * Fetch the template file content based on the given template path.
+     *
+     * @param templatePath
+     */
     getTemplate(templatePath: string): string {
-        return this.fileHelper.readTemplate(templatePath);
+        return this.fileHelper.readTemplate(templatePath)
     }
 
     /**
@@ -118,9 +123,11 @@ export class ChronoNote implements IChronoNote {
      * We also need the amount to add or subtract, which is captured
      * by the {@link ordinalMap} context.
      *
+     * @param providedDate {DateTime}
+     *
      */
-    setDate(): void {
-        this.date = this.date.plus({
+    setDate(providedDate: DateTime): void {
+        this.date = providedDate.plus({
             [intervalMap[this.type.interval]]: ordinalMap[this.type.ordinal]
         })
         console.info(`Date with ${this.type.interval} interval and ${this.type.ordinal} ordinal set to: ${this.date.toFormat("yyyy-MM-dd")}`)
@@ -172,7 +179,7 @@ export class ChronoNote implements IChronoNote {
         }
 
         // Manually format the date using yyyy-'W'WW format token
-        return `${this.date.toFormat("yyyy")}-W${weekNumber}`;
+        return `${this.date.toFormat("yyyy")}-W${weekNumber}`
 
 
         // return date.toFormat(formatToken, {locale: "en-US"})
