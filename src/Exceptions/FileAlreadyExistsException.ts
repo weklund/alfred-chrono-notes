@@ -1,13 +1,13 @@
 /**
- * @class InvalidDateFormatException
- * @description This exception is called when the date format is invalid.
+ * @class FileAlreadyExistsException
+ * @description This exception is thrown when a file already exists and it shouldn't.
  * @extends Error
  * @param {string} message - The error message.
  */
-export class InvalidDateFormatException extends Error {
+export class FileAlreadyExistsException extends Error {
     constructor(message: string) {
         super(message);
-        this.name = 'InvalidDateFormatException';
+        this.name = 'FileAlreadyExistsException';
         this.message = message;
         console.error(`${this.name}: ${this.message}`);
     }

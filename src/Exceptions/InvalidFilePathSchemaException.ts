@@ -1,0 +1,14 @@
+/**
+ * @class InvalidFilePathSchemaException
+ * @description This exception is called when the given file path is invalid
+ * @extends Error
+ * @param {string} message - The error message.
+ */
+export class InvalidFilePathSchemaException extends Error {
+    constructor(message: string) {
+        super(message);
+        this.name = 'InvalidFilePathSchemaException';
+        this.message = message;
+        console.error(`${this.name}: ${this.message}`);
+    }
+}
