@@ -1,7 +1,6 @@
 import {DateTime} from "luxon"
-import {FileProvider, IFileProvider} from "../File/FileProvider.js"
+import {IFileProvider} from "../File/FileProvider.js"
 import {InvalidEntrypointArguments} from "../../Exceptions/InvalidEntrypointArguments.js"
-import {InvalidDateFormatException} from "../../Exceptions/InvalidDateFormatException.js"
 
 export enum Ordinal {
     Current = "Current",
@@ -36,8 +35,21 @@ export interface ChronoType {
     interval: Interval
 }
 
+/**
+ * IChronoNote is an interface that represents a chronological note.
+ *
+ * It contains methods for getting the interval, date, and template. It also contains a method for formatting the date.
+ *
+ * @template getInterval {Interval} returns the interval of the note
+ * @template getOrdinal {Ordinal} returns the ordinal of the note
+ * @template getDate {DateTime} returns the date of the note
+ * @template getTemplate {string} returns the template of the note
+ * @template formatDate {string} returns the formatted date of the note
+ *
+ */
 export interface IChronoNote {
     getInterval: () => Interval
+    getOrdinal: () => Ordinal
     getDate: () => DateTime
     getTemplate: (templatePath: string) => string
     formatDate: (formatToken: string) => string
@@ -81,16 +93,16 @@ export function parseChronoNoteArg(input: string): ChronoType {
  */
 export class ChronoNote implements IChronoNote {
     private readonly type: ChronoType
-    private fileHelper: IFileProvider
+    private fileProvider: IFileProvider
     private date: DateTime = DateTime.now()
 
     constructor(
         type: ChronoType,
-        fileHelper: IFileProvider = new FileProvider(),
+        fileProvider: IFileProvider,
         providedDate: DateTime = DateTime.now()
     ) {
         this.type = type
-        this.fileHelper = fileHelper
+        this.fileProvider = fileProvider
         this.setDate(providedDate)
     }
 
@@ -101,6 +113,16 @@ export class ChronoNote implements IChronoNote {
         return this.type.interval
     }
 
+    /**
+     *
+     */
+    getOrdinal(){
+        return this.type.ordinal
+    }
+
+    /**
+     *
+     */
     getDate(): DateTime {
         return this.date
     }
@@ -108,10 +130,12 @@ export class ChronoNote implements IChronoNote {
     /**
      * Fetch the template file content based on the given template path.
      *
+     * TODO:  Make this generic enough to support more than one templates per {@link ChronoType}
+     *
      * @param templatePath
      */
     getTemplate(templatePath: string): string {
-        return this.fileHelper.readTemplate(templatePath)
+        return this.fileProvider.readTemplate(templatePath)
     }
 
     /**
@@ -138,19 +162,13 @@ export class ChronoNote implements IChronoNote {
      * @param formatToken
      */
     formatDate(formatToken: string): string {
-        const formattedDate = this.date.toFormat(formatToken)
-
-        if(!formattedDate) {
-            throw new InvalidDateFormatException(`The provided formatToken is invalid: ${formatToken}`)
-        }
-
         return this.date.toFormat(formatToken)
     }
 
     /**
      * Format date to yyyy-MM-dd cccc
      *
-     * TODO: Replace default argument after exhaustive data formats handled
+     * TODO: Replace default argument after exhaustive date formats handled
      *
      * @param {string} formatToken
      * @returns {string} yyyy-MM-dd cccc
@@ -162,7 +180,7 @@ export class ChronoNote implements IChronoNote {
     /**
      * Format date to YYYY-[W]ww
      *
-     * TODO: Replace default argument after exhaustive data formats handled
+     * TODO: Replace default argument after exhaustive date formats handled
      *
      * @param {string} formatToken
      * @returns {string}  dateTime in YYYY-'W'ww format

@@ -26,7 +26,7 @@ export class Entrypoint {
     /**
      *
      */
-    public async handle() {
+    public handle() {
         console.info("Begin Entrypoint handle flow")
         // 1. Retrieve env vars:
         const arg = process.argv[2]
@@ -35,7 +35,7 @@ export class Entrypoint {
         // 2. Parse arg and set ChronoNote context
         const chronoTypeInput = parseChronoNoteArg(arg)
         console.info(`Parsed argv with interval as ${chronoTypeInput.interval} and ordinal as ${chronoTypeInput.ordinal}`)
-        const chronoNote = new ChronoNote(chronoTypeInput)
+        const chronoNote = new ChronoNote(chronoTypeInput, this.fileProvider)
 
         // 3. Check that obsidian vault name is set and exists
         const OBSIDIAN_VAULT_NAME = this.configProvider.get('OBSIDIAN_VAULT_NAME')
@@ -74,9 +74,7 @@ export class Entrypoint {
 
         try {
             console.info('Attempting to open file in Obsidian')
-            await new Promise(() => {
-                void open(OBSIDIAN_NOTE_URI)
-            });
+            void open(OBSIDIAN_NOTE_URI)
 
         } catch (e: unknown) {
             throw new ObsidianOpenNoteException(e as string)
@@ -97,4 +95,4 @@ const main = createEntrypoint(
     new FileProvider()
 );
 
-await main.handle()
+main.handle()

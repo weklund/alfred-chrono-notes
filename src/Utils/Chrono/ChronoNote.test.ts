@@ -1,42 +1,93 @@
+import fs from "fs";
 import {DateTime} from "luxon"
-import {ChronoNote, ChronoType, Interval, Ordinal} from "./ChronoNote"
+import {ChronoNote, ChronoType, Interval, Ordinal, parseChronoNoteArg} from "./ChronoNote.js"
+import {InvalidEntrypointArguments} from "../../Exceptions/InvalidEntrypointArguments.js";
+import {FileProvider, IFileProvider} from "../File/FileProvider.js";
+
+jest.mock("fs")
 
 describe('ChronoNote', () => {
+    const readFileSyncMock = fs.readFileSync as jest.Mock
+
+    let fileProvider = {} as IFileProvider
     const opts = {locale: "en-US"};
+
+    beforeEach(() => {
+        fileProvider = new FileProvider()
+    })
+
+    test('fileProvider should be defined', () => {
+        expect(fileProvider).toBeDefined()
+    })
 
     describe('parseChronoNoteArg function', () => {
 
-        it('should parse and return a valid ChronoType from an arg string', () => {
+        it('should parse valid args correctly', () => {
+            const input = "CurrentDaily";
+            const expected = {
+                interval: Interval.Daily,
+                ordinal: Ordinal.Current
+            };
+            expect(parseChronoNoteArg(input)).toEqual(expected);
+        });
 
-        })
-
-        it('should throw InvalidEntrypointArguments when given invalid interval arg', () => {
-
-        })
-
-        it('should throw InvalidEntrypointArguments when given invalid ordinal arg', () => {
-
-        })
+        it('throws InvalidEntrypointArguments for invalid args', () => {
+            const input = "InvalidArgs";
+            expect(() => parseChronoNoteArg(input)).toThrow(InvalidEntrypointArguments);
+        });
     })
 
     it('should create a ChronoNote based on given ChronoType', () => {
-
+        const expectedChronoType: ChronoType = {
+            interval: Interval.Daily,
+            ordinal: Ordinal.Current
+        }
+        const note = new ChronoNote(expectedChronoType, fileProvider)
+        expect(note.getInterval()).toEqual(expectedChronoType.interval)
+        expect(note.getOrdinal()).toEqual(expectedChronoType.ordinal)
     })
 
-    it("should get an interval", () => {
+    it('should create a ChronoNote with the default date as now', () => {
+        const expectedWeekYear = DateTime.now().localWeekYear
 
+        const expectedChronoType: ChronoType = {
+            interval: Interval.Daily,
+            ordinal: Ordinal.Current
+        }
+        const note = new ChronoNote(expectedChronoType, fileProvider)
+        expect(note.getDate().localWeekYear).toEqual(expectedWeekYear)
     })
 
-    it("should get a date", () => {
+    describe('getTemplate', () => {
+        it('should return the template content for the given file path', () => {
+            // Setup
+            const expectedTemplateContent = "template content"
+            const expectedChronoType: ChronoType = {
+                interval: Interval.Daily,
+                ordinal: Ordinal.Current
+            }
+            const note = new ChronoNote(expectedChronoType, fileProvider)
 
+            readFileSyncMock.mockReturnValue(expectedTemplateContent)
+
+            // Execute
+            const actualResult = note.getTemplate("template file path")
+            // Verify
+            expect(actualResult).toEqual(expectedTemplateContent)
+        })
     })
 
-    it("should get a template", () => {
+    describe("formatDate", () => {
 
-    })
-
-    it("should format a date", () => {
-
+        it('should format a datetime when date token is valid', () => {
+            // Setup
+            const testFormatToken = "yyyy-MM-dd cccc"
+            const note = new ChronoNote({interval: Interval.Daily, ordinal: Ordinal.Current}, fileProvider)
+            // Execute
+            const actualResult = note.formatDate(testFormatToken)
+            // Verify
+            expect(actualResult).toEqual(DateTime.now().toFormat(testFormatToken))
+        })
     })
 
     describe("formatDayDate", () => {
@@ -63,7 +114,7 @@ describe('ChronoNote', () => {
         test.each(cases)(
             "given %p DateTime, expect %p date string",
             (givenDate, expectedResult) => {
-                const chronoNote = new ChronoNote(chronoTypeInput, undefined, givenDate as DateTime)
+                const chronoNote = new ChronoNote(chronoTypeInput, fileProvider, givenDate as DateTime)
                 const result = chronoNote.formatDayDate()
                 expect(result).toEqual(expectedResult)
             }
@@ -87,7 +138,7 @@ describe('ChronoNote', () => {
                     interval: Interval.Daily,
                     ordinal: Ordinal.Current
                 }
-                const chronoNote = new ChronoNote(chronoTypeInput, undefined, givenDate as DateTime)
+                const chronoNote = new ChronoNote(chronoTypeInput, fileProvider, givenDate as DateTime)
                 const result = chronoNote.formatWeekDate()
                 expect(result).toEqual(expectedResult)
             }
@@ -117,7 +168,7 @@ describe('ChronoNote', () => {
                     interval: Interval.Daily,
                     ordinal: Ordinal.Current
                 }
-                const chronoNote = new ChronoNote(chronoTypeInput, undefined, givenDate as DateTime)
+                const chronoNote = new ChronoNote(chronoTypeInput, fileProvider, givenDate as DateTime)
 
                 const result = chronoNote.getWeekNumber();
                 expect(result).toEqual(expectedResult as number);

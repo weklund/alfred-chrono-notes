@@ -1,8 +1,7 @@
-// Mocking the ConfigDriver
-import {ConfigProvider, IntervalConfig} from "./ConfigProvider";
-import {Interval} from "../Chrono/ChronoNote";
-import {MissingConfigurationException} from "../../Exceptions/MissingConfigurationException";
-import {EnvConfigDriver} from "./drivers/EnvConfigDriver";
+import {ConfigProvider, IntervalConfig} from "./ConfigProvider.js";
+import {Interval} from "../Chrono/ChronoNote.js";
+import {MissingConfigurationException} from "../../Exceptions/MissingConfigurationException.js";
+import {EnvConfigDriver} from "./drivers/EnvConfigDriver.js";
 
 jest.mock('./drivers/EnvConfigDriver', () => {
     return {
@@ -31,12 +30,29 @@ jest.mock('./drivers/EnvConfigDriver', () => {
 describe("ConfigProvider", () => {
     let configProvider: ConfigProvider;
 
-    beforeEach(() => {
-        // Use the mocked EnvConfigDriver
-        configProvider = new ConfigProvider(new EnvConfigDriver());
-    });
+    describe('constructor', () => {
+        it('should create a ConfigProvider instance', () => {
+            configProvider = new ConfigProvider(new EnvConfigDriver());
+            expect(configProvider).toBeInstanceOf(ConfigProvider);
+        });
+
+        it('should call the EnvConfigDriver constructor', () => {
+            const EnvConfigDriverMock = jest.mocked(EnvConfigDriver);
+            configProvider = new ConfigProvider(new EnvConfigDriver());
+            expect(EnvConfigDriverMock).toHaveBeenCalled();
+        });
+
+        it('should call the constructor without any parameters', () => {
+            const EnvConfigDriverMock = jest.mocked(EnvConfigDriver);
+            configProvider = new ConfigProvider();
+            expect(EnvConfigDriverMock).toHaveBeenCalled();
+        });
+    })
 
     describe('get method', () => {
+        // Use the mocked EnvConfigDriver
+        configProvider = new ConfigProvider(new EnvConfigDriver());
+
         it('should return the correct environment variable', () => {
             const key = 'TEST_KEY'
             const expectedValue = key + '_value'
@@ -46,6 +62,9 @@ describe("ConfigProvider", () => {
     });
 
     describe('getIntervalConfig method', () => {
+        // Use the mocked EnvConfigDriver
+        configProvider = new ConfigProvider(new EnvConfigDriver());
+
         it('should return the correct interval config', () => {
             const interval: Interval = Interval.Daily
             const expectedConfig = {
@@ -59,6 +78,9 @@ describe("ConfigProvider", () => {
     });
 
     describe('validateIntervalConfig method', () => {
+        // Use the mocked EnvConfigDriver
+        configProvider = new ConfigProvider(new EnvConfigDriver());
+
         it('should call validate on the driver with the correct config', () => {
             const invalidConfig = {
                 FILE_FORMAT: 'yyyy-MM-DD',
