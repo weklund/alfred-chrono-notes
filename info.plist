@@ -630,27 +630,6 @@
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>ond</string>
-				<key>subtext</key>
-				<string>Will create if does not exist</string>
-				<key>text</key>
-				<string>Open Next Day's Note</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>C4F39D7A-2292-4FDD-8375-0777C92E43AF</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
 				<string>onq</string>
 				<key>subtext</key>
 				<string>Will create if does not exist</string>
@@ -663,6 +642,27 @@
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>88F05F9F-6A5F-4CBC-994A-4DC5A91B8F0C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>ond</string>
+				<key>subtext</key>
+				<string>Will create if does not exist</string>
+				<key>text</key>
+				<string>Open Next Day's Note</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>C4F39D7A-2292-4FDD-8375-0777C92E43AF</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1012,23 +1012,6 @@
 			<key>config</key>
 			<dict>
 				<key>argument</key>
-				<string>NextWeekly</string>
-				<key>passthroughargument</key>
-				<false/>
-				<key>variables</key>
-				<dict/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>BBB3B955-D617-4D9F-AD68-B4E3F65AD3A7</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
 				<string>NextAnnually</string>
 				<key>passthroughargument</key>
 				<false/>
@@ -1039,6 +1022,23 @@
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
 			<string>B7B1E0D5-8CA1-4699-B66C-16688334D900</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>NextWeekly</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>BBB3B955-D617-4D9F-AD68-B4E3F65AD3A7</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1264,7 +1264,7 @@
 ###  NextAnnually
 ###  PreviousAnnually
 
-./node_modules/.bin/run-node workflow/entrypoint.js "$1"</string>
+./node_modules/.bin/run-node workflow/entrypoint.js --type "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>

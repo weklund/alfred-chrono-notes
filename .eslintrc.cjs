@@ -57,5 +57,17 @@ module.exports = {
          * https://github.com/eslint-community/eslint-plugin-security/issues/21#issuecomment-1157887653
          */
         'security/detect-object-injection': 0,
+        /**
+         * Prefer namespaces over modules
+         */
+        '@typescript-eslint/no-namespace': 0,
+        /**
+         * TODO:  Remove this ignore after fixing top level tsconfig issue
+         */
+        '@typescript-eslint/no-unsafe-call': 0,
+        /**
+         * TODO:  Remove this ignore after fixing top level tsconfig issue
+         */
+        '@typescript-eslint/no-unsafe-member-access': 0
     }
 };

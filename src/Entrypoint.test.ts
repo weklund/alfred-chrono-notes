@@ -1,53 +1,102 @@
+import open from "open"
+import {DateTime} from "luxon";
+import {ConfigProvider, IntervalConfig} from "./Utils/Config/ConfigProvider"
+import {FileProvider} from "./Utils/File/FileProvider"
+import {createEntrypoint, Entrypoint} from "./Entrypoint"
+import {MissingConfigurationException} from "./Exceptions/MissingConfigurationException";
 
+jest.mock('open')
+
+jest.mock('./Utils/Config/ConfigProvider', () => {
+    return {
+        ConfigProvider: jest.fn().mockImplementation(() => {
+            return {
+                get: jest.fn().mockImplementation((key: string) => key + "_value"),
+                getIntervalConfig: jest.fn().mockImplementation(() => ({
+                    FILE_FORMAT: 'yyyy-MM-dd cccc',
+                    FOLDER_PATH: 'mockPath',
+                    TEMPLATE_PATH: 'mockTemplatePath'
+                })),
+                validateIntervalConfig: jest.fn().mockImplementation((intervalConfig: IntervalConfig) => {
+                    if (!intervalConfig.FOLDER_PATH || !intervalConfig.FILE_FORMAT || !intervalConfig.TEMPLATE_PATH) {
+                        throw new MissingConfigurationException('Invalid configuration');
+                    }
+                }),
+            }
+        })
+    }
+})
+
+jest.mock('./Utils/File/FileProvider')
 
 describe('Entrypoint', () => {
+    let entrypoint: Entrypoint
 
-    describe('handle exceptions', () => {
+    let configProviderMock: ConfigProvider
+    let fileProviderMock: FileProvider
 
-        it('should throw InvalidEntrypointArguments when args are invalid', () => {
+    const openMock = open as jest.Mocked<typeof open>
 
+    describe('constructor', () => {
+        it('should instantiate correctly', () => {
+            const entrypoint = createEntrypoint(configProviderMock, fileProviderMock)
+            expect(entrypoint).toBeInstanceOf(Entrypoint)
         })
 
-        it('should throw MissingConfigurationException when obsidian vault name is not set', () => {
+        it('should create an instance of Entrypoint', () => {
 
+            entrypoint = new Entrypoint(
+                new ConfigProvider(),
+                new FileProvider()
+            )
+
+            expect(entrypoint).toBeInstanceOf(Entrypoint)
         })
 
-        it('should throw MissingConfigurationException when FILE_FORMAT is invalid', () => {
-
-        })
-
-        it('should throw MissingConfigurationException when FOLDER_PATH is invalid', () => {
-
-        })
-
-        it('should throw MissingConfigurationException when TEMPLATE_PATH is invalid', () => {
-
-        })
-
-        it('should throw InvalidDateFormatException when provided fileFormat is invalid', () => {
-
-        })
-
-        it('should throw InvalidFilePathSchemaException when provided template file path is invalid', () => {
-
-        })
-
-        it('should throw FileDoesNotExistException when provided template file does not exist', () => {
-
-        })
-
-        it('should throw PathNotFileException when provided template file is not a file', () => {
-
-        })
-
-        it('should throw FatalReadFileSyncException when provided valid file can not be read', () => {
-
-        })
-
-        it('should throw FatalWriteFileSyncException when provided valid fiel path and content can not be written', () => {
-
-        })
-
+        it('should call the configProvider constructor', () => {
+            const configProviderMock = jest.mocked(ConfigProvider)
+            const fileProviderMock = jest.mocked(FileProvider)
+            entrypoint = new Entrypoint(
+                new ConfigProvider(),
+                new FileProvider()
+            );
+            expect(configProviderMock).toHaveBeenCalled()
+            expect(fileProviderMock).toHaveBeenCalled()
+        });
     })
 
+    describe('handle method', () => {
+        let entrypoint: Entrypoint;
+
+        const originalArgv = process.argv;
+
+        beforeEach(() => {
+            entrypoint = createEntrypoint(new ConfigProvider(), new FileProvider())
+
+            process.argv = [...originalArgv];  // own shallow copy
+        })
+
+        afterEach(() => {
+            jest.restoreAllMocks()
+        })
+
+        it('should execute handle flow correctly', () => {
+            // Setup
+            process.argv[3] = 'CurrentDaily'
+            const expectedDate = DateTime.local(2022, 10, 10)
+            const expectedStringDate = "2022-10-10 Monday"
+
+            // Execute
+            entrypoint = createEntrypoint(
+                new ConfigProvider(),
+                new FileProvider(),
+                expectedDate,
+            )
+            entrypoint.handle()
+
+            // Verify
+            expect(openMock).toHaveBeenCalledTimes(1)
+            expect(openMock).toHaveBeenCalledWith(`obsidian://open?vault=OBSIDIAN_VAULT_NAME_value&file=${expectedStringDate}.md`)
+        })
+    })
 })

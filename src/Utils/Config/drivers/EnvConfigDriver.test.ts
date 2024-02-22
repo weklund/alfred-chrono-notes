@@ -35,13 +35,13 @@ describe("EnvConfigDriver", () => {
     describe("getIntervalConfig function", () => {
         it('should return correct interval configuration', () => {
             const interval = 'daily';
-            const config = getValidTestConfig();
+            const config = getValidTestConfig()
 
-            process.env.DAILY_FILE_FORMAT = config.FILE_FORMAT;
-            process.env.DAILY_PATH = config.FOLDER_PATH;
-            process.env.DAILY_TEMPLATE_PATH = config.TEMPLATE_PATH;
+            process.env.DAILY_FILE_FORMAT = config.FILE_FORMAT
+            process.env.DAILY_PATH = config.FOLDER_PATH
+            process.env.DAILY_TEMPLATE_PATH = config.TEMPLATE_PATH
 
-            expect(envConfigDriver.getIntervalConfig(interval)).toEqual(config);
+            expect(envConfigDriver.getIntervalConfig(interval)).toEqual(config)
         });
 
         it('should return empty string when environment variables are not set', () => {

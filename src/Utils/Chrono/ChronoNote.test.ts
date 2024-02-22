@@ -1,8 +1,7 @@
 import fs from "fs";
 import {DateTime} from "luxon"
-import {ChronoNote, ChronoType, Interval, Ordinal, parseChronoNoteArg} from "./ChronoNote.js"
-import {InvalidEntrypointArguments} from "../../Exceptions/InvalidEntrypointArguments.js";
-import {FileProvider, IFileProvider} from "../File/FileProvider.js";
+import {ChronoNote, ChronoType, Interval, Ordinal} from "./ChronoNote.js"
+import {FileProvider, IFileProvider} from "../File/FileProvider.js"
 
 jest.mock("fs")
 
@@ -10,7 +9,7 @@ describe('ChronoNote', () => {
     const readFileSyncMock = fs.readFileSync as jest.Mock
 
     let fileProvider = {} as IFileProvider
-    const opts = {locale: "en-US"};
+    const opts = {locale: "en-US"}
 
     beforeEach(() => {
         fileProvider = new FileProvider()
@@ -18,23 +17,6 @@ describe('ChronoNote', () => {
 
     test('fileProvider should be defined', () => {
         expect(fileProvider).toBeDefined()
-    })
-
-    describe('parseChronoNoteArg function', () => {
-
-        it('should parse valid args correctly', () => {
-            const input = "CurrentDaily";
-            const expected = {
-                interval: Interval.Daily,
-                ordinal: Ordinal.Current
-            };
-            expect(parseChronoNoteArg(input)).toEqual(expected);
-        });
-
-        it('throws InvalidEntrypointArguments for invalid args', () => {
-            const input = "InvalidArgs";
-            expect(() => parseChronoNoteArg(input)).toThrow(InvalidEntrypointArguments);
-        });
     })
 
     it('should create a ChronoNote based on given ChronoType', () => {
@@ -109,7 +91,7 @@ describe('ChronoNote', () => {
             [DateTime.local(2024, 3, 31, opts), "2024-03-31 Sunday"],
             [DateTime.local(2024, 12, 22, opts), "2024-12-22 Sunday"],
             [DateTime.local(2024, 12, 28, opts), "2024-12-28 Saturday"],
-        ];
+        ]
 
         test.each(cases)(
             "given %p DateTime, expect %p date string",
@@ -129,7 +111,7 @@ describe('ChronoNote', () => {
             [DateTime.local(2025, 2, 28, opts), "2025-W09"],
             [DateTime.local(2020, 2, 29, opts), "2020-W09"],
             [DateTime.local(2024, 3, 30, opts), "2024-W13"],
-        ];
+        ]
 
         test.each(cases)(
             "given %p DateTime, expect %p formatted week date string",
@@ -159,7 +141,7 @@ describe('ChronoNote', () => {
             [DateTime.local(2024, 3, 31, opts), "Sunday", 14],
             [DateTime.local(2024, 12, 22, opts), "Sunday", 52],
             [DateTime.local(2024, 12, 28, opts), "Saturday", 52],
-        ];
+        ]
 
         test.each(cases)(
             "given %p date, on %p, expect %p week number",
@@ -170,9 +152,9 @@ describe('ChronoNote', () => {
                 }
                 const chronoNote = new ChronoNote(chronoTypeInput, fileProvider, givenDate as DateTime)
 
-                const result = chronoNote.getWeekNumber();
-                expect(result).toEqual(expectedResult as number);
+                const result = chronoNote.getWeekNumber()
+                expect(result).toEqual(expectedResult as number)
             }
-        );
+        )
     })
 })

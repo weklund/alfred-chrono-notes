@@ -1,6 +1,5 @@
 import {DateTime} from "luxon"
 import {IFileProvider} from "../File/FileProvider.js"
-import {InvalidEntrypointArguments} from "../../Exceptions/InvalidEntrypointArguments.js"
 
 export enum Ordinal {
     Current = "Current",
@@ -53,39 +52,6 @@ export interface IChronoNote {
     getDate: () => DateTime
     getTemplate: (templatePath: string) => string
     formatDate: (formatToken: string) => string
-}
-
-/**
- * Parse ChronoType from args
- *
- * @param input
- */
-export function parseChronoNoteArg(input: string): ChronoType {
-
-    // Attempt to extract ordinal and interval from the input string
-    let ordinal: Ordinal | null = null
-    let interval: Interval | null = null
-
-    // Check each Ordinal and Interval to find a match
-    Object.values(Ordinal).forEach((o) => {
-        if (input.toLowerCase().includes(o.toLowerCase())) {
-            ordinal = Ordinal[o as keyof typeof Ordinal]
-        }
-    })
-
-    Object.values(Interval).forEach((i) => {
-        if (input.toLowerCase().includes(i.toLowerCase())) {
-            interval = Interval[i as keyof typeof Interval]
-        }
-    })
-
-    // If both ordinal and interval are found, return the result
-    if (ordinal && interval) {
-        return { interval, ordinal } as ChronoType
-    } else {
-        // If either is not found, throw exemption
-        throw new InvalidEntrypointArguments("Provided entrypoint arguments are invalid")
-    }
 }
 
 /**

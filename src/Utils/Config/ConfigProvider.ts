@@ -17,7 +17,15 @@ export interface IntervalConfig {
     // The file path where the desired note template is
     TEMPLATE_PATH: string;
 }
-
+/**
+ * Represents the interface of a {@link ConfigProvider}
+ *
+ * Defines the interface that consuming classes would need when injecting a class of type {@link IConfigProvider}
+ *
+ * @template get {string} returns the contents of the file
+ * @template getIntervalConfig {boolean} returns true if the file exists
+ * @template validateIntervalConfig {string} returns the full path to a file
+ */
 export interface IConfigProvider {
     get(key: string): EnvironmentVariable
     getIntervalConfig(interval: Interval): IntervalConfig
@@ -28,7 +36,7 @@ export class ConfigProvider implements IConfigProvider {
     private driver: ConfigDriver;
 
     constructor(driver?: ConfigDriver) {
-        this.driver = driver ?? new EnvConfigDriver();
+        this.driver = driver ?? new EnvConfigDriver()
     }
 
     get(key: string): EnvironmentVariable {

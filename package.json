@@ -8,7 +8,7 @@
   "license": "MIT",
   "version": "0.0.3",
   "description": "Alfred Workflow for easy access to your Obsidian Periodic Notes",
-  "main": "workflow/entrypoint.js",
+  "main": "workflow/Main.js",
   "type": "module",
   "repository": "https://github.com/weklund/alfred-chrono-notes",
   "scripts": {
@@ -64,6 +64,9 @@
     "typescript": "^4.9.5"
   },
   "jest": {
+    "testPathIgnorePatterns": [
+      "workflow"
+    ],
     "transform": {
       "\\.[jt]sx?$": "ts-jest"
     },
@@ -85,7 +88,8 @@
       }
     },
     "collectCoverageFrom": [
-      "src/**/*.ts"
+      "src/**/*.ts",
+      "!src/Main.ts"
     ]
   }
 }

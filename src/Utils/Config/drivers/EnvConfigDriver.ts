@@ -44,6 +44,6 @@ export class EnvConfigDriver implements ConfigDriver {
             if (!isEnvVarSet(intervalVars[typedKey])) {
                 throw new MissingConfigurationException(`Missing environment variable: ${typedKey}`)
             }
-        });
+        })
     }
 }

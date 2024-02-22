@@ -1,7 +1,7 @@
-import {ConfigProvider, IntervalConfig} from "./ConfigProvider.js";
-import {Interval} from "../Chrono/ChronoNote.js";
-import {MissingConfigurationException} from "../../Exceptions/MissingConfigurationException.js";
-import {EnvConfigDriver} from "./drivers/EnvConfigDriver.js";
+import {ConfigProvider, IntervalConfig} from "./ConfigProvider.js"
+import {Interval} from "../Chrono/ChronoNote.js"
+import {MissingConfigurationException} from "../../Exceptions/MissingConfigurationException.js"
+import {EnvConfigDriver} from "./drivers/EnvConfigDriver.js"
 
 jest.mock('./drivers/EnvConfigDriver', () => {
     return {
@@ -22,36 +22,36 @@ jest.mock('./drivers/EnvConfigDriver', () => {
                         throw new MissingConfigurationException('Invalid configuration');
                     }
                 }),
-            };
+            }
         })
-    };
-});
+    }
+})
 
 describe("ConfigProvider", () => {
-    let configProvider: ConfigProvider;
+    let configProvider: ConfigProvider
 
     describe('constructor', () => {
         it('should create a ConfigProvider instance', () => {
-            configProvider = new ConfigProvider(new EnvConfigDriver());
-            expect(configProvider).toBeInstanceOf(ConfigProvider);
+            configProvider = new ConfigProvider(new EnvConfigDriver())
+            expect(configProvider).toBeInstanceOf(ConfigProvider)
         });
 
         it('should call the EnvConfigDriver constructor', () => {
-            const EnvConfigDriverMock = jest.mocked(EnvConfigDriver);
-            configProvider = new ConfigProvider(new EnvConfigDriver());
-            expect(EnvConfigDriverMock).toHaveBeenCalled();
+            const EnvConfigDriverMock = jest.mocked(EnvConfigDriver)
+            configProvider = new ConfigProvider(new EnvConfigDriver())
+            expect(EnvConfigDriverMock).toHaveBeenCalled()
         });
 
         it('should call the constructor without any parameters', () => {
-            const EnvConfigDriverMock = jest.mocked(EnvConfigDriver);
-            configProvider = new ConfigProvider();
-            expect(EnvConfigDriverMock).toHaveBeenCalled();
+            const EnvConfigDriverMock = jest.mocked(EnvConfigDriver)
+            configProvider = new ConfigProvider()
+            expect(EnvConfigDriverMock).toHaveBeenCalled()
         });
     })
 
     describe('get method', () => {
         // Use the mocked EnvConfigDriver
-        configProvider = new ConfigProvider(new EnvConfigDriver());
+        configProvider = new ConfigProvider(new EnvConfigDriver())
 
         it('should return the correct environment variable', () => {
             const key = 'TEST_KEY'
@@ -63,7 +63,7 @@ describe("ConfigProvider", () => {
 
     describe('getIntervalConfig method', () => {
         // Use the mocked EnvConfigDriver
-        configProvider = new ConfigProvider(new EnvConfigDriver());
+        configProvider = new ConfigProvider(new EnvConfigDriver())
 
         it('should return the correct interval config', () => {
             const interval: Interval = Interval.Daily
@@ -79,7 +79,7 @@ describe("ConfigProvider", () => {
 
     describe('validateIntervalConfig method', () => {
         // Use the mocked EnvConfigDriver
-        configProvider = new ConfigProvider(new EnvConfigDriver());
+        configProvider = new ConfigProvider(new EnvConfigDriver())
 
         it('should call validate on the driver with the correct config', () => {
             const invalidConfig = {
@@ -87,7 +87,7 @@ describe("ConfigProvider", () => {
                 FOLDER_PATH: '', // Invalid because it's empty
                 TEMPLATE_PATH: 'path/to/template'
             };
-            expect(() => configProvider.validateIntervalConfig(invalidConfig)).toThrow('Invalid configuration');
-        });
-    });
+            expect(() => configProvider.validateIntervalConfig(invalidConfig)).toThrow('Invalid configuration')
+        })
+    })
 })

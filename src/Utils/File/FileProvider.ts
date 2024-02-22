@@ -30,6 +30,12 @@ export interface IFileProvider {
 }
 
 /**
+ * @class FileProvider
+ * @description This class implements the IFileProvider interface and provides functionality
+ * for resolving file paths, checking file existence, and creating templated files.
+ *
+ * It supports a single file provider driver type, but can add more.
+ *
  */
 export class FileProvider implements IFileProvider {
 

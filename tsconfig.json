@@ -48,7 +48,9 @@
     "strict": true,
     "noImplicitAny": true,
     "skipLibCheck": true,
-    "allowJs": true
+    "allowJs": true,
+    "diagnostics": true,
+    "listEmittedFiles": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

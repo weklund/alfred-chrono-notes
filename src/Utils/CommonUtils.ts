@@ -1,5 +1,41 @@
 import {MissingConfigurationException} from "../Exceptions/MissingConfigurationException.js"
 import {EnvironmentVariable} from "./Config/ConfigProvider.js"
+import {ChronoType, Interval, Ordinal} from "./Chrono/ChronoNote.js"
+import {InvalidEntrypointArguments} from "../Exceptions/InvalidEntrypointArguments.js"
+
+/**
+ * Parse ChronoType from args
+ *
+ * @param input
+ * @throws {InvalidEntrypointArguments} if input is not a valid ChronoType
+ * @returns {ChronoType}
+ */
+export function parseChronoNoteArg(input: string): ChronoType {
+
+    let ordinal: Ordinal | null = null
+    let interval: Interval | null = null
+
+    // Check each Ordinal and Interval to find a match
+    Object.values(Ordinal).forEach((o) => {
+        if (input.toLowerCase().includes(o.toLowerCase())) {
+            ordinal = Ordinal[o as keyof typeof Ordinal]
+        }
+    })
+
+    Object.values(Interval).forEach((i) => {
+        if (input.toLowerCase().includes(i.toLowerCase())) {
+            interval = Interval[i as keyof typeof Interval]
+        }
+    })
+
+    // If both ordinal and interval are found, return the result
+    if (ordinal && interval) {
+        return { interval, ordinal } as ChronoType
+    } else {
+        // If either is not found, throw exemption
+        throw new InvalidEntrypointArguments("Provided entrypoint arguments are invalid")
+    }
+}
 
 /**
  * Checks if the environment variable was set.  Will throw an exception if not.

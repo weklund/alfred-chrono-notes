@@ -1,8 +1,27 @@
 import {EnvironmentVariable} from "./Config/ConfigProvider"
-import {isEnvVarSet, validateExistingEnvVar} from "./CommonUtils"
+import {isEnvVarSet, parseChronoNoteArg, validateExistingEnvVar} from "./CommonUtils"
 import {MissingConfigurationException} from "../Exceptions/MissingConfigurationException"
+import {Interval, Ordinal} from "./Chrono/ChronoNote"
+import {InvalidEntrypointArguments} from "../Exceptions/InvalidEntrypointArguments"
 
 describe("Common Utilities", () => {
+    describe('parseChronoNoteArg function', () => {
+
+        it('should parse valid args correctly', () => {
+            const input = "CurrentDaily";
+            const expected = {
+                interval: Interval.Daily,
+                ordinal: Ordinal.Current
+            };
+            expect(parseChronoNoteArg(input)).toEqual(expected)
+        })
+
+        it('throws InvalidEntrypointArguments for invalid args', () => {
+            const input = "InvalidArgs";
+            expect(() => parseChronoNoteArg(input)).toThrow(InvalidEntrypointArguments)
+        })
+    })
+
     describe("isEnvVarSet", () => {
         it("should return true if the provided Environment Variable is set", () => {
             // Setup

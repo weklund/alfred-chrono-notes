@@ -1,14 +1,14 @@
 import path from "path"
-import * as fs from "fs";
-import * as os from "os";
+import * as fs from "fs"
+import * as os from "os"
 
 import {FileProvider} from "./FileProvider.js"
-import {InvalidFilePathSchemaException} from "../../Exceptions/InvalidFilePathSchemaException.js";
-import {FileDoesNotExistException} from "../../Exceptions/FileDoesNotExistException.js";
-import {PathNotFileException} from "../../Exceptions/PathNotFileException.js";
-import {FatalReadFileSyncException} from "../../Exceptions/FatalReadFileSyncException.js";
-import {FileAlreadyExistsException} from "../../Exceptions/FileAlreadyExistsException.js";
-import {FatalWriteFileSyncException} from "../../Exceptions/FatalWriteFileSyncException.js";
+import {InvalidFilePathSchemaException} from "../../Exceptions/InvalidFilePathSchemaException.js"
+import {FileDoesNotExistException} from "../../Exceptions/FileDoesNotExistException.js"
+import {PathNotFileException} from "../../Exceptions/PathNotFileException.js"
+import {FatalReadFileSyncException} from "../../Exceptions/FatalReadFileSyncException.js"
+import {FileAlreadyExistsException} from "../../Exceptions/FileAlreadyExistsException.js"
+import {FatalWriteFileSyncException} from "../../Exceptions/FatalWriteFileSyncException.js"
 
 jest.mock("fs")
 jest.mock("path")
