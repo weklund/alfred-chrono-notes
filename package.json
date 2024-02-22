@@ -20,6 +20,7 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "prettier-check": "prettier --check .",
+    "prettier-fix": "prettier --write .",
     "eslint": "eslint .",
     "eslint-fix": "eslint . --fix"
   },
@@ -78,7 +79,9 @@
     "moduleNameMapper": {
       "(.+)\\.js": "$1"
     },
-    "extensionsToTreatAsEsm": [".ts"],
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 90,

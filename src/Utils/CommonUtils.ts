@@ -1,7 +1,7 @@
-import {MissingConfigurationException} from "../Exceptions/MissingConfigurationException.js"
-import {EnvironmentVariable} from "./Config/ConfigProvider.js"
-import {ChronoType, Interval, Ordinal} from "./Chrono/ChronoNote.js"
-import {InvalidEntrypointArguments} from "../Exceptions/InvalidEntrypointArguments.js"
+import { MissingConfigurationException } from "../Exceptions/MissingConfigurationException.js";
+import { EnvironmentVariable } from "./Config/ConfigProvider.js";
+import { ChronoType, Interval, Ordinal } from "./Chrono/ChronoNote.js";
+import { InvalidEntrypointArguments } from "../Exceptions/InvalidEntrypointArguments.js";
 
 /**
  * Parse ChronoType from args
@@ -11,30 +11,31 @@ import {InvalidEntrypointArguments} from "../Exceptions/InvalidEntrypointArgumen
  * @returns {ChronoType}
  */
 export function parseChronoNoteArg(input: string): ChronoType {
+  let ordinal: Ordinal | null = null;
+  let interval: Interval | null = null;
 
-    let ordinal: Ordinal | null = null
-    let interval: Interval | null = null
-
-    // Check each Ordinal and Interval to find a match
-    Object.values(Ordinal).forEach((o) => {
-        if (input.toLowerCase().includes(o.toLowerCase())) {
-            ordinal = Ordinal[o as keyof typeof Ordinal]
-        }
-    })
-
-    Object.values(Interval).forEach((i) => {
-        if (input.toLowerCase().includes(i.toLowerCase())) {
-            interval = Interval[i as keyof typeof Interval]
-        }
-    })
-
-    // If both ordinal and interval are found, return the result
-    if (ordinal && interval) {
-        return { interval, ordinal } as ChronoType
-    } else {
-        // If either is not found, throw exemption
-        throw new InvalidEntrypointArguments("Provided entrypoint arguments are invalid")
+  // Check each Ordinal and Interval to find a match
+  Object.values(Ordinal).forEach((o) => {
+    if (input.toLowerCase().includes(o.toLowerCase())) {
+      ordinal = Ordinal[o as keyof typeof Ordinal];
     }
+  });
+
+  Object.values(Interval).forEach((i) => {
+    if (input.toLowerCase().includes(i.toLowerCase())) {
+      interval = Interval[i as keyof typeof Interval];
+    }
+  });
+
+  // If both ordinal and interval are found, return the result
+  if (ordinal && interval) {
+    return { interval, ordinal } as ChronoType;
+  } else {
+    // If either is not found, throw exemption
+    throw new InvalidEntrypointArguments(
+      "Provided entrypoint arguments are invalid",
+    );
+  }
 }
 
 /**
@@ -44,12 +45,17 @@ export function parseChronoNoteArg(input: string): ChronoType {
  * @param {string} friendlyName
  * @throws {MissingConfigurationException} if environment variable wasn't set
  */
-export function validateExistingEnvVar(environmentVariable: EnvironmentVariable | undefined | null, friendlyName: string = 'Environment variable'): void {
-    console.info(`Checking if ${friendlyName} variable is set`)
+export function validateExistingEnvVar(
+  environmentVariable: EnvironmentVariable | undefined | null,
+  friendlyName: string = "Environment variable",
+): void {
+  console.info(`Checking if ${friendlyName} variable is set`);
 
-    if (!isEnvVarSet(environmentVariable)) {
-        throw new MissingConfigurationException('Missing environment variable: ' + environmentVariable)
-    }
+  if (!isEnvVarSet(environmentVariable)) {
+    throw new MissingConfigurationException(
+      "Missing environment variable: " + environmentVariable,
+    );
+  }
 }
 
 /**
@@ -59,9 +65,12 @@ export function validateExistingEnvVar(environmentVariable: EnvironmentVariable 
  * @returns {boolean}
  */
 export function isEnvVarSet(environmentVariable: EnvironmentVariable): boolean {
-    return environmentVariable !== undefined && environmentVariable !== null && environmentVariable !== ''
+  return (
+    environmentVariable !== undefined &&
+    environmentVariable !== null &&
+    environmentVariable !== ""
+  );
 }
-
 
 // TODO:  Reconsider supporting both moment and luxon
 // const momentToLuxonMap: Record<string, string> = {

@@ -1,37 +1,37 @@
-import {DateTime} from "luxon"
-import {IFileProvider} from "../File/FileProvider.js"
+import { DateTime } from "luxon";
+import { IFileProvider } from "../File/FileProvider.js";
 
 export enum Ordinal {
-    Current = "Current",
-    Next = "Next",
-    Previous = "Previous"
+  Current = "Current",
+  Next = "Next",
+  Previous = "Previous",
 }
 
 const ordinalMap = {
-    [Ordinal.Current]: 0,
-    [Ordinal.Next]: 1,
-    [Ordinal.Previous]: -1
-}
+  [Ordinal.Current]: 0,
+  [Ordinal.Next]: 1,
+  [Ordinal.Previous]: -1,
+};
 
 export enum Interval {
-    Daily = "Daily",
-    Weekly = "Weekly",
-    Monthly = "Monthly",
-    Quarterly = "Quarterly",
-    Annually = "Annually"
+  Daily = "Daily",
+  Weekly = "Weekly",
+  Monthly = "Monthly",
+  Quarterly = "Quarterly",
+  Annually = "Annually",
 }
 
 const intervalMap = {
-    [Interval.Annually]: 'year',
-    [Interval.Daily]: 'day',
-    [Interval.Monthly]: 'month',
-    [Interval.Quarterly]: 'quarter',
-    [Interval.Weekly]: 'week'
-}
+  [Interval.Annually]: "year",
+  [Interval.Daily]: "day",
+  [Interval.Monthly]: "month",
+  [Interval.Quarterly]: "quarter",
+  [Interval.Weekly]: "week",
+};
 
 export interface ChronoType {
-    ordinal: Ordinal
-    interval: Interval
+  ordinal: Ordinal;
+  interval: Interval;
 }
 
 /**
@@ -47,136 +47,136 @@ export interface ChronoType {
  *
  */
 export interface IChronoNote {
-    getInterval: () => Interval
-    getOrdinal: () => Ordinal
-    getDate: () => DateTime
-    getTemplate: (templatePath: string) => string
-    formatDate: (formatToken: string) => string
+  getInterval: () => Interval;
+  getOrdinal: () => Ordinal;
+  getDate: () => DateTime;
+  getTemplate: (templatePath: string) => string;
+  formatDate: (formatToken: string) => string;
 }
 
 /**
  * ChronoNote is a class that represents a chronological note.
  */
 export class ChronoNote implements IChronoNote {
-    private readonly type: ChronoType
-    private fileProvider: IFileProvider
-    private date: DateTime = DateTime.now()
+  private readonly type: ChronoType;
+  private fileProvider: IFileProvider;
+  private date: DateTime = DateTime.now();
 
-    constructor(
-        type: ChronoType,
-        fileProvider: IFileProvider,
-        providedDate: DateTime = DateTime.now()
-    ) {
-        this.type = type
-        this.fileProvider = fileProvider
-        this.setDate(providedDate)
+  constructor(
+    type: ChronoType,
+    fileProvider: IFileProvider,
+    providedDate: DateTime = DateTime.now(),
+  ) {
+    this.type = type;
+    this.fileProvider = fileProvider;
+    this.setDate(providedDate);
+  }
+
+  /**
+   *
+   */
+  getInterval() {
+    return this.type.interval;
+  }
+
+  /**
+   *
+   */
+  getOrdinal() {
+    return this.type.ordinal;
+  }
+
+  /**
+   *
+   */
+  getDate(): DateTime {
+    return this.date;
+  }
+
+  /**
+   * Fetch the template file content based on the given template path.
+   *
+   * TODO:  Make this generic enough to support more than one templates per {@link ChronoType}
+   *
+   * @param templatePath
+   */
+  getTemplate(templatePath: string): string {
+    return this.fileProvider.readTemplate(templatePath);
+  }
+
+  /**
+   * Uses the ChronoType to set the correct date using both the given Ordinal and Interval.
+   *
+   * Luxon has an identifier to know what interval to add or subtract to a {@link DateTime} context,
+   * which is captured by the {@link intervalMap} context.
+   *
+   * We also need the amount to add or subtract, which is captured
+   * by the {@link ordinalMap} context.
+   *
+   * @param providedDate {DateTime}
+   *
+   */
+  setDate(providedDate: DateTime): void {
+    this.date = providedDate.plus({
+      [intervalMap[this.type.interval]]: ordinalMap[this.type.ordinal],
+    });
+    console.info(
+      `Date with ${this.type.interval} interval and ${this.type.ordinal} ordinal set to: ${this.date.toFormat("yyyy-MM-dd")}`,
+    );
+  }
+
+  /**
+   *
+   * @param formatToken
+   */
+  formatDate(formatToken: string): string {
+    return this.date.toFormat(formatToken);
+  }
+
+  /**
+   * Format date to yyyy-MM-dd cccc
+   *
+   * TODO: Replace default argument after exhaustive date formats handled
+   *
+   * @param {string} formatToken
+   * @returns {string} yyyy-MM-dd cccc
+   */
+  formatDayDate(formatToken: string = "yyyy-MM-dd cccc"): string {
+    return this.date.toFormat(formatToken);
+  }
+
+  /**
+   * Format date to YYYY-[W]ww
+   *
+   * TODO: Replace default argument after exhaustive date formats handled
+   *
+   * @param {string} formatToken
+   * @returns {string}  dateTime in YYYY-'W'ww format
+   */
+  formatWeekDate(formatToken: string = "yyyy-'W'WW"): string {
+    console.log(formatToken);
+
+    // TODO: Troubleshoot why .toFormat can't take in localWeekNumber so we can dynamically format
+    // Format given weeknumber to make sure it's 2 digits, so a single digit number will have a 0 prefixed
+    let weekNumber = this.getWeekNumber().toString();
+
+    if (weekNumber.length === 1) {
+      weekNumber = `0${weekNumber}`;
     }
 
-    /**
-     *
-     */
-    getInterval(){
-        return this.type.interval
-    }
+    // Manually format the date using yyyy-'W'WW format token
+    return `${this.date.toFormat("yyyy")}-W${weekNumber}`;
 
-    /**
-     *
-     */
-    getOrdinal(){
-        return this.type.ordinal
-    }
+    // return date.toFormat(formatToken, {locale: "en-US"})
+  }
 
-    /**
-     *
-     */
-    getDate(): DateTime {
-        return this.date
-    }
-
-    /**
-     * Fetch the template file content based on the given template path.
-     *
-     * TODO:  Make this generic enough to support more than one templates per {@link ChronoType}
-     *
-     * @param templatePath
-     */
-    getTemplate(templatePath: string): string {
-        return this.fileProvider.readTemplate(templatePath)
-    }
-
-    /**
-     * Uses the ChronoType to set the correct date using both the given Ordinal and Interval.
-     *
-     * Luxon has an identifier to know what interval to add or subtract to a {@link DateTime} context,
-     * which is captured by the {@link intervalMap} context.
-     *
-     * We also need the amount to add or subtract, which is captured
-     * by the {@link ordinalMap} context.
-     *
-     * @param providedDate {DateTime}
-     *
-     */
-    setDate(providedDate: DateTime): void {
-        this.date = providedDate.plus({
-            [intervalMap[this.type.interval]]: ordinalMap[this.type.ordinal]
-        })
-        console.info(`Date with ${this.type.interval} interval and ${this.type.ordinal} ordinal set to: ${this.date.toFormat("yyyy-MM-dd")}`)
-    }
-
-    /**
-     *
-     * @param formatToken
-     */
-    formatDate(formatToken: string): string {
-        return this.date.toFormat(formatToken)
-    }
-
-    /**
-     * Format date to yyyy-MM-dd cccc
-     *
-     * TODO: Replace default argument after exhaustive date formats handled
-     *
-     * @param {string} formatToken
-     * @returns {string} yyyy-MM-dd cccc
-     */
-    formatDayDate(formatToken: string = "yyyy-MM-dd cccc"): string {
-        return this.date.toFormat(formatToken)
-    }
-
-    /**
-     * Format date to YYYY-[W]ww
-     *
-     * TODO: Replace default argument after exhaustive date formats handled
-     *
-     * @param {string} formatToken
-     * @returns {string}  dateTime in YYYY-'W'ww format
-     */
-    formatWeekDate(formatToken: string = "yyyy-'W'WW"): string {
-        console.log(formatToken)
-
-        // TODO: Troubleshoot why .toFormat can't take in localWeekNumber so we can dynamically format
-        // Format given weeknumber to make sure it's 2 digits, so a single digit number will have a 0 prefixed
-        let weekNumber = this.getWeekNumber().toString()
-
-        if (weekNumber.length === 1) {
-            weekNumber = `0${weekNumber}`
-        }
-
-        // Manually format the date using yyyy-'W'WW format token
-        return `${this.date.toFormat("yyyy")}-W${weekNumber}`
-
-
-        // return date.toFormat(formatToken, {locale: "en-US"})
-    }
-
-    /**
-     * Get the Week number based on the given Date
-     *
-     * Not ISO 8601 as this implementation sets Sunday as the first day of the week, not the last day.
-     *
-     */
-    getWeekNumber(): number {
-        return this.date.localWeekNumber
-    }
-
+  /**
+   * Get the Week number based on the given Date
+   *
+   * Not ISO 8601 as this implementation sets Sunday as the first day of the week, not the last day.
+   *
+   */
+  getWeekNumber(): number {
+    return this.date.localWeekNumber;
+  }
 }

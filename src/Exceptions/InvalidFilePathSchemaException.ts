@@ -5,10 +5,10 @@
  * @param {string} message - The error message.
  */
 export class InvalidFilePathSchemaException extends Error {
-    constructor(message: string) {
-        super(message);
-        this.name = 'InvalidFilePathSchemaException';
-        this.message = message;
-        console.error(`${this.name}: ${this.message}`);
-    }
+  constructor(message: string) {
+    super(message);
+    this.name = "InvalidFilePathSchemaException";
+    this.message = message;
+    console.error(`${this.name}: ${this.message}`);
+  }
 }

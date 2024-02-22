@@ -47,8 +47,6 @@ jobs:
 
       - uses: coverallsapp/github-action@v2.2.3
         name: Coveralls GitHub Action
-                
-            
-            
 
-      
+      - name: Run Prettier check
+        run: pnpm prettier-check

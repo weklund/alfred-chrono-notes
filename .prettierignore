@@ -1,0 +1,6 @@
+# Ignore artifacts:
+coverage
+node_modules
+.idea
+workflow
+pnpm-lock.yaml

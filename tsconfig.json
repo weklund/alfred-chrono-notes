@@ -50,8 +50,8 @@
     "skipLibCheck": true,
     "allowJs": true,
     "diagnostics": true,
-    "listEmittedFiles": true
+    "listEmittedFiles": true,
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
 }
