@@ -47,9 +47,6 @@ jobs:
 
       - uses: coverallsapp/github-action@v2.2.3
         name: Coveralls GitHub Action
-
-      - uses: ossf/scorecard-action@v2.3.1
-        name: OSSF Scorecard action
                 
             
             
