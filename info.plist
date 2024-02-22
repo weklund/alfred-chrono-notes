@@ -1264,7 +1264,7 @@
 ###  NextAnnually
 ###  PreviousAnnually
 
-./node_modules/.bin/run-node workflow/entrypoint.js --type "$1"</string>
+./node_modules/.bin/run-node workflow/Main.js --type "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
