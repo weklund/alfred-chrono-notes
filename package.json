@@ -39,6 +39,9 @@
     "workflow",
     "productivity"
   ],
+  "release": {
+    "branches": ["main"]
+  },
   "engines": {
     "npm": ">=6.12.0 <10.3.0",
     "node": ">=13.0.0 <=21.6.1"
