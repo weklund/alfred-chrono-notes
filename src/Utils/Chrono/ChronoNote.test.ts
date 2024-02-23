@@ -54,6 +54,7 @@ describe("ChronoNote", () => {
 
       // Execute
       const actualResult = note.getTemplate("template file path");
+
       // Verify
       expect(actualResult).toEqual(expectedTemplateContent);
     });
@@ -67,8 +68,10 @@ describe("ChronoNote", () => {
         { interval: Interval.Daily, ordinal: Ordinal.Current },
         fileProvider,
       );
+
       // Execute
       const actualResult = note.formatDate(testFormatToken);
+
       // Verify
       expect(actualResult).toEqual(DateTime.now().toFormat(testFormatToken));
     });

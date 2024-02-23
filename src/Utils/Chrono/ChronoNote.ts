@@ -1,18 +1,29 @@
 import { DateTime } from "luxon";
 import { IFileProvider } from "../File/FileProvider.js";
 
+/**
+ * {@link Ordinal} is an enum that represents the position in a series of {@link Interval} of a note.
+ * It can be Current, Next, or Previous.
+ */
 export enum Ordinal {
   Current = "Current",
   Next = "Next",
   Previous = "Previous",
 }
 
+/**
+ * ordinalMap is a map that maps {@link Ordinal} enums to integers.
+ * Used to convert {@link Ordinal} enums to integers for use in luxon date calculations.
+ */
 const ordinalMap = {
   [Ordinal.Current]: 0,
   [Ordinal.Next]: 1,
   [Ordinal.Previous]: -1,
 };
 
+/**
+ * {@link Interval} is an enum that represents the time interval of a note.
+ */
 export enum Interval {
   Daily = "Daily",
   Weekly = "Weekly",
@@ -21,6 +32,9 @@ export enum Interval {
   Annually = "Annually",
 }
 
+/**
+ * intervalMap maps {@link Interval} enums to Luxon strings.
+ */
 const intervalMap = {
   [Interval.Annually]: "year",
   [Interval.Daily]: "day",
@@ -73,21 +87,24 @@ export class ChronoNote implements IChronoNote {
   }
 
   /**
-   *
+   * Returns the interval of the note.
+   * @returns {Interval} the interval of the note.
    */
-  getInterval() {
+  getInterval(): Interval {
     return this.type.interval;
   }
 
   /**
-   *
+   * Returns the ordinal of the note.
+   * @returns {Ordinal} the ordinal of the note.
    */
-  getOrdinal() {
+  getOrdinal(): Ordinal {
     return this.type.ordinal;
   }
 
   /**
-   *
+   * Returns the date of the note.
+   * @returns {DateTime} the date of the note.
    */
   getDate(): DateTime {
     return this.date;
@@ -126,8 +143,10 @@ export class ChronoNote implements IChronoNote {
   }
 
   /**
+   * Format date using the given format token.
    *
    * @param formatToken
+   * @returns {string}
    */
   formatDate(formatToken: string): string {
     return this.date.toFormat(formatToken);
@@ -175,6 +194,7 @@ export class ChronoNote implements IChronoNote {
    *
    * Not ISO 8601 as this implementation sets Sunday as the first day of the week, not the last day.
    *
+   * @returns {number}
    */
   getWeekNumber(): number {
     return this.date.localWeekNumber;
