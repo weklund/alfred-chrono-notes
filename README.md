@@ -11,9 +11,40 @@ Alfred Workflow for easy access to your Obsidian Periodic Notes.
 1. [Obsidian](https://obsidian.md/)
 1. [Periodic Notes Plugin(Optional)](https://github.com/liamcain/obsidian-periodic-notes)
 
+### Setup
+
+#### Install
+```sh
+npm install alfred-chrono-notes
+```
+
+#### Configure
+Current onboarding is painful, a better config onboarding is coming soon!
+
+For now, users will onboard their ChronoNote Types by adding environment variables for each Interval:
+
+- FILE_FORMAT
+- PATH
+- TEMPLATE_PATH
+
+If you are a user of [Obsidian Periodic Notes](https://github.com/liamcain/obsidian-periodic-notes), these should be familiar to you already.
+
+Each of these environment variables will be prefixed by the Interval.  For example:
+
+Environment Variable Name:
+- `DAILY_FILE_FORMAT`: 'yyyy'
+- `DAILY_PATH`: '~/my-obsidian/my-vault/my-daily-folder'
+- `DAILY_TEMPLATE_PATH`: '~/my-obsidian/my-vault/my-daily-folder'
+
+![Alfred Environment Variables](./docs/env-var.jpg)
+
+### Usage
+
+
+
 ## How Alfred Chrono Notes works
 
-### What makes up a ChronoNote?
+### What makes up a Chrono Note?
 
 #### Intervals
 

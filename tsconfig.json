@@ -1,40 +1,3 @@
-//{
-//  "compilerOptions": {
-//    "target": "es2022",
-//    "lib": ["es2022"],
-//    "module": "node",
-//    "moduleResolution": "nodenext",
-////    "allowSyntheticDefaultImports": true,
-//    "baseUrl": "./",
-//    "outDir": "workflow",
-//    "esModuleInterop": true,
-//    "forceConsistentCasingInFileNames": true,
-//    "strict": true,
-//    "noImplicitAny": true,
-//    "skipLibCheck": true,
-//    "allowJs": true
-//  },
-//  "include": ["src/**/*"],
-//  "exclude": ["node_modules"]
-//}
-//
-//{
-//  "compilerOptions": {
-//    "esModuleInterop": false,
-//    "allowSyntheticDefaultImports": true,
-//    "lib": ["es2020"],
-//    "module": "es2022",
-//    "preserveConstEnums": true,
-//    "moduleResolution": "node",
-//    "strict": true,
-//    "target": "es2022",
-//    "outDir": "workflow",
-//    "allowJs": true
-////    "types": ["node"]
-//  },
-//  "include": ["src/**/*"],
-//  "exclude": ["node_modules"]
-//}
 {
   "compilerOptions": {
     "target": "es2022",
@@ -50,8 +13,8 @@
     "skipLibCheck": true,
     "allowJs": true,
     "diagnostics": true,
-    "listEmittedFiles": true,
+    "listEmittedFiles": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }

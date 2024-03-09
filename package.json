@@ -40,7 +40,9 @@
     "productivity"
   ],
   "release": {
-    "branches": ["main"]
+    "branches": [
+      "main"
+    ]
   },
   "engines": {
     "npm": ">=6.12.0 <10.3.0",
