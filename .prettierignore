@@ -4,3 +4,4 @@ node_modules
 .idea
 workflow
 pnpm-lock.yaml
+tsconfig.json

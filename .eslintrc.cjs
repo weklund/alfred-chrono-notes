@@ -26,7 +26,7 @@ module.exports = {
     project: true,
     tsconfigRootDir: __dirname,
   },
-  ignorePatterns: ["workflow/**/*.js", "coverage", "*.js"],
+  ignorePatterns: ["workflow/**/*.js", "coverage", "*.js", "tsconfig.json"],
   rules: {
     "write-good-comments/write-good-comments": [
       "warn",
