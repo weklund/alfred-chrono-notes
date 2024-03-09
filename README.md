@@ -14,11 +14,13 @@ Alfred Workflow for easy access to your Obsidian Periodic Notes.
 ### Setup
 
 #### Install
+
 ```sh
 npm install alfred-chrono-notes
 ```
 
 #### Configure
+
 Current onboarding is painful, a better config onboarding is coming soon!
 
 For now, users will onboard their ChronoNote Types by adding environment variables for each Interval:
@@ -29,9 +31,10 @@ For now, users will onboard their ChronoNote Types by adding environment variabl
 
 If you are a user of [Obsidian Periodic Notes](https://github.com/liamcain/obsidian-periodic-notes), these should be familiar to you already.
 
-Each of these environment variables will be prefixed by the Interval.  For example:
+Each of these environment variables will be prefixed by the Interval. For example:
 
 Environment Variable Name:
+
 - `DAILY_FILE_FORMAT`: 'yyyy'
 - `DAILY_PATH`: '~/my-obsidian/my-vault/my-daily-folder'
 - `DAILY_TEMPLATE_PATH`: '~/my-obsidian/my-vault/my-daily-folder'
@@ -39,8 +42,6 @@ Environment Variable Name:
 ![Alfred Environment Variables](./docs/env-var.jpg)
 
 ### Usage
-
-
 
 ## How Alfred Chrono Notes works
 
