@@ -1,39 +1,37 @@
-name: Publish
-
+name: Release
 on:
-  release:
-    # This specifies that the build will be triggered when we publish a release
-    types: [published]
+  workflow_run:
+    workflows: [tests]
+    types:
+      - completed
 
 jobs:
   publish:
+    if: ${{ github.ref_name == 'main' && github.event.workflow_run.conclusion == 'success' }}
     runs-on: macos-latest
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
     steps:
-      - uses: actions/checkout@v2
+      - run: codfish/semantic-release-action@v3
         with:
-          # "ref" specifies the branch to check out.
-          # "github.event.release.target_commitish" is a global variable and specifies the branch the release targeted
-          ref: ${{ github.event.release.target_commitish }}
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 18
-      - run: npm ci --ignore-scripts
-
-      # set up git since we will later push to the repo
-      - run: git config --global user.name "GitHub Publish Action"
-      - run: git config --global user.email ""
-
-      # upgrade npm version in package.json to the tag used in the release.
-      - run: npm version ${{ github.event.release.tag_name }}
-
-      - run: npm test
-
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-
-      # push the version changes to GitHub
-      - run: git push
+          dry-run: true
+          branches: |
+            [
+              '+([0-9])?(.{+([0-9]),x}).x',
+              'main',
+              'next',
+              'next-major'
+            ]
+          repository-url: https://github.com/weklund/alfred-chrono-notes.git
+          tag-format: "v${version}"
+          extends: "@semantic-release/apm-config"
+          additional-packages: |
+            ['@semantic-release/apm@4.0.0', '@semantic-release/git']
+          plugins: |
+            ['@semantic-release/commit-analyzer', '@semantic-release/release-notes-generator', '@semantic-release/github', '@semantic-release/apm', '@semantic-release/git']
         env:
-          # The secret is passed automatically. Nothing to configure.
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
