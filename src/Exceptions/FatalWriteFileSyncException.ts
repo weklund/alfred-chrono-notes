@@ -1,8 +1,8 @@
 /**
  * @class FatalWriteFileSyncException
  * @description This exception is thrown when an attempted file write could not be complete.
- * @extends Error
  * @param {string} message - The error message.
+ * @augments Error
  */
 export class FatalWriteFileSyncException extends Error {
   constructor(message: string) {

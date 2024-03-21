@@ -18,13 +18,12 @@ export interface IntervalConfig {
   TEMPLATE_PATH: string;
 }
 /**
- * Represents the interface of a {@link ConfigProvider}
+ * Represents the interface of a {@link ConfigProvider}.
  *
- * Defines the interface that consuming classes would need when injecting a class of type {@link IConfigProvider}
- *
- * @template get {string} returns the contents of the file
- * @template getIntervalConfig {boolean} returns true if the file exists
- * @template validateIntervalConfig {string} returns the full path to a file
+ * Defines the interface that consuming classes would need when injecting a class of type {@link IConfigProvider}.
+ * @template get {string} returns the contents of the file.
+ * @template getIntervalConfig {boolean} returns true if the file exists.
+ * @template validateIntervalConfig {string} returns the full path to a file.
  */
 export interface IConfigProvider {
   get(key: string): EnvironmentVariable;

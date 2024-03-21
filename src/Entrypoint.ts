@@ -12,11 +12,9 @@ import { ChronoNote } from "./Utils/Chrono/ChronoNote.js";
 
 /**
  * @class Entrypoint
- *
- * @description Handles the entrypoint logic for the Chrono Notes Alfred Workflow
- *
- * @property {IConfigProvider}
- * @property {IFileProvider}
+ * @description Handles the entrypoint logic for the Chrono Notes Alfred Workflow.
+ * @property {IConfigProvider} configProvider Argument for injecting ConfigProvider.
+ * @property {IFileProvider} fileProvider Argument for injecting FileProvider.
  */
 export class Entrypoint {
   private readonly configProvider: IConfigProvider;
@@ -24,11 +22,11 @@ export class Entrypoint {
   private readonly dateTime: DateTime;
 
   /**
-   * Entrypoint constructor
-   *
-   * @param {IConfigProvider} configProvider
-   * @param {IFileProvider} fileProvider
-   * @param {DateTime} customDateTime
+   * Constructor for the Entrypoint class.
+   * Initializes the class with injected dependencies for configuration,file access, and a custom date/time object.
+   * @param {IConfigProvider} configProvider - Argument for injecting a ConfigProvider.
+   * @param {IFileProvider} fileProvider - Argument for injecting a FileProvider.
+   * @param {DateTime} customDateTime - Argument for injecting a custom DateTime object.
    */
   constructor(
     configProvider: IConfigProvider,
@@ -41,24 +39,23 @@ export class Entrypoint {
   }
 
   /**
-   * Handles the entrypoint logic for the Chrono Notes Alfred Workflow
+   * Handles the entrypoint logic for the Chrono Notes Alfred Workflow.
    *
    * Execute flow:
-   *  1. Parses command line arguments
-   *  2. Set up the ChronoNote context
-   *  3. Check that obsidian vault name is set and exists
-   *  4. Retrieve required ChronoNote config and check if valid
-   *  5. Get the obsidian file name for the ChronoNote
-   *  6. Get the full path for the ChronoNote
-   *  7. Check if file exists
-   *   7.a If it doesn't then create the ChronoNote based on provided template path
-   *  8. Open the ChronoNote in Obsidian
-   *
-   * @throws InvalidEntrypointArguments
-   * @throws ObsidianOpenNoteException
-   * @throws MissingConfigurationException
-   * @throws FileAlreadyExistsException
-   * @throws FatalReadFileSyncException
+   * 1. Parses command line arguments
+   * 2. Set up the ChronoNote context
+   * 3. Check that obsidian vault name is set and exists
+   * 4. Retrieve required ChronoNote config and check if valid
+   * 5. Get the obsidian file name for the ChronoNote
+   * 6. Get the full path for the ChronoNote
+   * 7. Check if file exists
+   * 7.a If it doesn't then create the ChronoNote based on provided template path
+   * 8. Open the ChronoNote in Obsidian.
+   * @throws InvalidEntrypointArguments.
+   * @throws ObsidianOpenNoteException.
+   * @throws MissingConfigurationException.
+   * @throws FileAlreadyExistsException.
+   * @throws FatalReadFileSyncException.
    */
   public handle() {
     console.log("Begin Entrypoint handle flow");
@@ -123,7 +120,13 @@ export class Entrypoint {
   }
 }
 
-// Factory function for entrypoint
+/**
+ * Factory function for entrypoint.
+ * @param {IConfigProvider} configProvider - Argument for injecting ConfigProvider.
+ * @param  {IFileProvider} fileProvider -  Argument for injecting FileProvider.
+ * @param {DateTime} customDateTime - Argument for injecting custom DateTime object.
+ * @returns {Entrypoint} Returns a new instance of Entrypoint.
+ */
 export function createEntrypoint(
   configProvider: IConfigProvider,
   fileProvider: IFileProvider,

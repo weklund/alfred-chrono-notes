@@ -4,11 +4,10 @@ import { ChronoType, Interval, Ordinal } from "./Chrono/ChronoNote.js";
 import { InvalidEntrypointArguments } from "../Exceptions/InvalidEntrypointArguments.js";
 
 /**
- * Parse ChronoType from args
- *
- * @param input
- * @throws {InvalidEntrypointArguments} if input is not a valid ChronoType
- * @returns {ChronoType}
+ * Parse ChronoType from args.
+ * @param {string} input - The input string to parse a combined {@link Interval} and {@link Ordinal} from.
+ * @returns {ChronoType} Returns an instance of {@link ChronoType} with the parsed {@link Interval} and {@link Ordinal}.
+ * @throws {InvalidEntrypointArguments} If input is not a valid ChronoType.
  */
 export function parseChronoNoteArg(input: string): ChronoType {
   let ordinal: Ordinal | null = null;
@@ -40,10 +39,9 @@ export function parseChronoNoteArg(input: string): ChronoType {
 
 /**
  * Checks if the environment variable was set.  Will throw an exception if not.
- *
- * @param {string} environmentVariable
- * @param {string} friendlyName
- * @throws {MissingConfigurationException} if environment variable wasn't set
+ * @param {string} environmentVariable - The running environment's variable.
+ * @param {string} friendlyName - A user-friendly name that describes the env var.
+ * @throws {MissingConfigurationException} If environment variable wasn't set.
  */
 export function validateExistingEnvVar(
   environmentVariable: EnvironmentVariable | undefined | null,
@@ -60,9 +58,8 @@ export function validateExistingEnvVar(
 
 /**
  * Returns a boolean if the environment variable exists or not.
- *
- * @param environmentVariable {EnvironmentVariable}
- * @returns {boolean}
+ * @param {EnvironmentVariable} environmentVariable - The running environment's variable.
+ * @returns {boolean} Returns a boolean if the environment variable exists or not.
  */
 export function isEnvVarSet(environmentVariable: EnvironmentVariable): boolean {
   return (

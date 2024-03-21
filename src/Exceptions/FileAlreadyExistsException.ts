@@ -1,8 +1,8 @@
 /**
  * @class FileAlreadyExistsException
  * @description This exception is thrown when a file already exists and it shouldn't.
- * @extends Error
  * @param {string} message - The error message.
+ * @augments Error
  */
 export class FileAlreadyExistsException extends Error {
   constructor(message: string) {

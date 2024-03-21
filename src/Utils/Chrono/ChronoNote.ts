@@ -12,7 +12,7 @@ export enum Ordinal {
 }
 
 /**
- * ordinalMap is a map that maps {@link Ordinal} enums to integers.
+ * The ordinalMap is a map that maps {@link Ordinal} enums to integers.
  * Used to convert {@link Ordinal} enums to integers for use in luxon date calculations.
  */
 const ordinalMap = {
@@ -33,7 +33,7 @@ export enum Interval {
 }
 
 /**
- * intervalMap maps {@link Interval} enums to Luxon strings.
+ * The intervalMap maps {@link Interval} enums to Luxon strings.
  */
 const intervalMap = {
   [Interval.Annually]: "year",
@@ -52,13 +52,11 @@ export interface ChronoType {
  * IChronoNote is an interface that represents a chronological note.
  *
  * It contains methods for getting the interval, date, and template. It also contains a method for formatting the date.
- *
- * @template getInterval {Interval} returns the interval of the note
- * @template getOrdinal {Ordinal} returns the ordinal of the note
- * @template getDate {DateTime} returns the date of the note
- * @template getTemplate {string} returns the template of the note
- * @template formatDate {string} returns the formatted date of the note
- *
+ * @template {Interval} getInterval - Returns the interval of the note.
+ * @template {Ordinal} getOrdinal - Returns the ordinal of the note.
+ * @template {DateTime} getDate - Returns the date of the note.
+ * @template {string} getTemplate - Returns the template of the note.
+ * @template {string} formatDate - Returns the formatted date of the note.
  */
 export interface IChronoNote {
   getInterval: () => Interval;
@@ -87,24 +85,24 @@ export class ChronoNote implements IChronoNote {
   }
 
   /**
-   * Returns the interval of the note.
-   * @returns {Interval} the interval of the note.
+   * Function that gets the {@link Interval} of the ChronoNote.
+   * @returns {Interval} - Returns the {@link Interval}.
    */
   getInterval(): Interval {
     return this.type.interval;
   }
 
   /**
-   * Returns the ordinal of the note.
-   * @returns {Ordinal} the ordinal of the note.
+   * Function that gets the {@link Ordinal} of the ChronoNote.
+   * @returns {Ordinal} Returns the {@link Ordinal}.
    */
   getOrdinal(): Ordinal {
     return this.type.ordinal;
   }
 
   /**
-   * Returns the date of the note.
-   * @returns {DateTime} the date of the note.
+   * Function that gets the {@link DateTime} of the ChronoNote.
+   * @returns {DateTime} - The datetime of the note.
    */
   getDate(): DateTime {
     return this.date;
@@ -113,9 +111,9 @@ export class ChronoNote implements IChronoNote {
   /**
    * Fetch the template file content based on the given template path.
    *
-   * TODO:  Make this generic enough to support more than one templates per {@link ChronoType}
-   *
-   * @param templatePath
+   * TODO:  Make this generic enough to support more than one templates per {@link ChronoType}.
+   * @param {string} templatePath - The path to the template file.
+   * @returns {string} The template file content.
    */
   getTemplate(templatePath: string): string {
     return this.fileProvider.readTemplate(templatePath);
@@ -129,9 +127,7 @@ export class ChronoNote implements IChronoNote {
    *
    * We also need the amount to add or subtract, which is captured
    * by the {@link ordinalMap} context.
-   *
-   * @param providedDate {DateTime}
-   *
+   * @param {DateTime} providedDate - The date to set the note to based on the configured {@link Interval} and {@link Ordinal}.
    */
   setDate(providedDate: DateTime): void {
     this.date = providedDate.plus({
@@ -144,33 +140,30 @@ export class ChronoNote implements IChronoNote {
 
   /**
    * Format date using the given format token.
-   *
-   * @param formatToken
-   * @returns {string}
+   * @param {string} formatToken - The format token from Luxon to use for formatting the date.
+   * @returns {string} The formatted datetime string.
    */
   formatDate(formatToken: string): string {
     return this.date.toFormat(formatToken);
   }
 
   /**
-   * Format date to yyyy-MM-dd cccc
+   * Format date to yyyy-MM-dd cccc.
    *
-   * TODO: Replace default argument after exhaustive date formats handled
-   *
-   * @param {string} formatToken
-   * @returns {string} yyyy-MM-dd cccc
+   * TODO: Replace default argument after exhaustive date formats handled.
+   * @param {string} formatToken - The format token from Luxon to use for formatting the date.
+   * @returns {string} Yyyy-MM-dd cccc.
    */
   formatDayDate(formatToken: string = "yyyy-MM-dd cccc"): string {
     return this.date.toFormat(formatToken);
   }
 
   /**
-   * Format date to YYYY-[W]ww
+   * Format date to YYYY-[W]ww.
    *
-   * TODO: Replace default argument after exhaustive date formats handled
-   *
-   * @param {string} formatToken
-   * @returns {string}  dateTime in YYYY-'W'ww format
+   * TODO: Replace default argument after exhaustive date formats handled.
+   * @param {string} formatToken - The format token from Luxon to use for formatting the date.
+   * @returns {string} - DateTime in YYYY-'W'ww format.
    */
   formatWeekDate(formatToken: string = "yyyy-'W'WW"): string {
     console.log(formatToken);
@@ -190,11 +183,9 @@ export class ChronoNote implements IChronoNote {
   }
 
   /**
-   * Get the Week number based on the given Date
-   *
+   * Get the Week number based on the given Date.
    * Not ISO 8601 as this implementation sets Sunday as the first day of the week, not the last day.
-   *
-   * @returns {number}
+   * @returns {number} - Returns the luxon {@link DateTime} week number.
    */
   getWeekNumber(): number {
     return this.date.localWeekNumber;

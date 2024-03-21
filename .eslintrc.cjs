@@ -8,6 +8,7 @@ module.exports = {
     "security",
     "sonarjs",
     "promise",
+    "jsdoc",
     "jest",
   ],
   extends: [
@@ -15,6 +16,7 @@ module.exports = {
     "prettier",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
+    "plugin:jsdoc/recommended",
     "plugin:sonarjs/recommended",
     "plugin:promise/recommended",
     "plugin:security/recommended-legacy",
@@ -65,5 +67,14 @@ module.exports = {
      * TODO:  Remove this ignore after fixing top level tsconfig issue
      */
     "@typescript-eslint/no-unsafe-member-access": 0,
+    /**
+     * jsdoc rule adds
+     */
+    "jsdoc/require-description": 1,
+    "jsdoc/require-description-complete-sentence": 1,
+    "jsdoc/require-hyphen-before-param-description": 1,
+    "jsdoc/informative-docs": 1,
+    "jsdoc/sort-tags": 1,
+    "jsdoc/require-throws": 1,
   },
 };

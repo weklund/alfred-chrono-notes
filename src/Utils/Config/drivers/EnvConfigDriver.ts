@@ -8,16 +8,19 @@ import { MissingConfigurationException } from "../../../Exceptions/MissingConfig
 
 /**
  * @class EnvConfigDriver
- *
- * @description The default Env ConfigDriver that uses process.env
- * @implements ConfigDriver
+ * @implements {ConfigDriver} ConfigDriver
+ * @description The default Env ConfigDriver that uses process.env.
  */
 export class EnvConfigDriver implements ConfigDriver {
   get(key: string): EnvironmentVariable {
     return process.env[key];
   }
 
-  // Method to get interval configurations, assuming intervals are known
+  /**
+   * Method to get interval configurations, assuming intervals are known.
+   * @param {string} interval - The interval to get the config for.
+   * @returns {IntervalConfig} - The interval config for the given interval.
+   */
   getIntervalConfig(interval: string): IntervalConfig {
     const fileFormatVar = `${interval.toUpperCase()}_FILE_FORMAT`;
     const folderPathVar = `${interval.toUpperCase()}_PATH`;
@@ -37,9 +40,9 @@ export class EnvConfigDriver implements ConfigDriver {
   /**
    * Check that the required interval config variables are set
    * Specifically checking 3 variables in {@link IntervalConfig}
-   * If it's not set then throw {@link MissingConfigurationException}
-   *
-   * @param intervalVars
+   * If it's not set then throw {@link MissingConfigurationException}.
+   * @param {IntervalConfig} intervalVars - The interval config variables to check.
+   * @throws {MissingConfigurationException} - If any of the required variables are not set.
    */
   validateIntervalConfig(intervalVars: IntervalConfig) {
     Object.keys(intervalVars).forEach((key) => {

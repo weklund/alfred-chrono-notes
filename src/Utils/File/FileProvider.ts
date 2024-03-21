@@ -9,16 +9,15 @@ import { FatalReadFileSyncException } from "../../Exceptions/FatalReadFileSyncEx
 import { FatalWriteFileSyncException } from "../../Exceptions/FatalWriteFileSyncException.js";
 
 /**
- * Represents the interface of a {@link FileProvider}
+ * Represents the interface of a {@link FileProvider}.
  *
- * Defines the interface that consuming classes would need when injecting a class of type {@link IFileProvider}
- *
- * @template readTemplate {string} returns the contents of the file
- * @template doesFileExist {boolean} returns true if the file exists
- * @template resolveHomePath {string} returns the full path to a file
- * @template checkIfFileExists {void} checks if a file exists or not
- * @template resolveNoteFullPath {string} returns the full path to a file using the correct date format
- * @template createTemplatedNote {void} creates a file based on a template file
+ * Defines the interface that consuming classes would need when injecting a class of type {@link IFileProvider}.
+ * @template readTemplate {string} returns the contents of the file.
+ * @template doesFileExist {boolean} returns true if the file exists.
+ * @template resolveHomePath {string} returns the full path to a file.
+ * @template checkIfFileExists {void} checks if a file exists or not.
+ * @template resolveNoteFullPath {string} returns the full path to a file using the correct date format.
+ * @template createTemplatedNote {void} creates a file based on a template file.
  */
 export interface IFileProvider {
   readTemplate: (filePath: string) => string;
@@ -35,27 +34,24 @@ export interface IFileProvider {
  * for resolving file paths, checking file existence, and creating templated files.
  *
  * It supports a single file provider driver type, but can add more.
- *
  */
 export class FileProvider implements IFileProvider {
   // TODO:  Support more FileProvider driver types as needed
 
   /**
-   * Get the full path to a file using the correct date format
-   *
-   * @param directoryPath {string}
-   * @param formattedDate {string}
-   * @returns {string}
+   * Get the full path to a file using the correct date format.
+   * @param {string} directoryPath - The provided relative path.
+   * @param {string} formattedDate - The formatted date string.
+   * @returns {string} - The full absolute path to a given file and formatted date string.
    */
   resolveNoteFullPath(directoryPath: string, formattedDate: string): string {
     return `${path.join(this.resolveHomePath(directoryPath), formattedDate)}.md`;
   }
 
   /**
-   * A function that adds the entire path if not provided
-   *
-   * @param filepath {string}
-   * @returns {string]}
+   * A function that adds the entire path if not provided.
+   * @param {string} filepath - The provided relative path.
+   * @returns {string} - The full absolute path.
    */
   resolveHomePath(filepath: string): string {
     if (filepath.startsWith("~") && process.env.HOME) {
@@ -68,13 +64,12 @@ export class FileProvider implements IFileProvider {
    * Check if path is valid.
    *
    * Provides a security check to prevent an attacker to execute arbitrary code.
-   * Checks the given path to make sure it's in the directory of the current OS user, and not any other or any system directories
+   * Checks the given path to make sure it's in the directory of the current OS user, and not any other or any system directories.
    *
    * Mitigates the ESlint rule security/detect-non-literal-fs-filename
-   * @link https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-non-literal-fs-filename.md
-   *
-   * @param {string} path
-   * @returns {boolean}
+   * {@link https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-non-literal-fs-filename.md}.
+   * @param {string} path - The provided path to check.
+   * @returns {boolean} - True if the path is valid, false otherwise.
    */
   isValidPathSchema(path: string): boolean {
     const userInfo = os.userInfo();
@@ -85,10 +80,9 @@ export class FileProvider implements IFileProvider {
   }
 
   /**
-   * Function that checks if a file exists or not
-   *
-   * @param filePath {string}
-   * @returns {boolean}
+   * Function that checks if a file exists or not.
+   * @param {string} filePath - The provided path to check.
+   * @returns {boolean} - True if the file exists, false otherwise.
    */
   doesFileExist(filePath: string): boolean {
     const path = this.resolveHomePath(filePath);
@@ -98,11 +92,10 @@ export class FileProvider implements IFileProvider {
 
   /**
    * Check if file exists in vault.
-   *
-   * @param filePath {string} The path to the file.
-   * @throws {InvalidFilePathSchemaException} if the provided path is not valid
-   * @throws {FileDoesNotExistException} if the provided path does not exist
-   * @throws {PathNotFileException} if the provided path is not a file
+   * @param {string} filePath  - The path to the file.
+   * @throws {InvalidFilePathSchemaException} - If the provided path is not valid.
+   * @throws {FileDoesNotExistException} - If the provided path does not exist.
+   * @throws {PathNotFileException} - If the provided path is not a file.
    */
   checkIfFileExists(filePath: string): void {
     const path = this.resolveHomePath(filePath);
@@ -124,10 +117,9 @@ export class FileProvider implements IFileProvider {
    * Reads a file and returns the content.
    *
    * A markdown (.md) file that's used to define a user's Obsidian template.
-   *
-   * @param {string} filePath The path to the file.
+   * @param {string} filePath - The path to the file.
    * @returns {string} The contents of the file.
-   * @throws {Error} if the file cannot be read.
+   * @throws {Error} If the file cannot be read.
    */
   readTemplate(filePath: string): string {
     let templateFileContent: string = "";
@@ -145,9 +137,8 @@ export class FileProvider implements IFileProvider {
 
   /**
    * Given a file path and valid templateFilePath, create a new file.
-   *
-   * @param filePath {string}
-   * @param templateFilePath {string}
+   * @param {string} filePath - The path to the new file.
+   * @param {string} templateFilePath - The path to the template file.
    * @throws {FileDoesNotExistException}
    */
   createTemplatedNote(filePath: string, templateFilePath: string): void {
