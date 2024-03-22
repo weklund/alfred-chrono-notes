@@ -16,7 +16,7 @@ jobs:
       id-token: write # to enable use of OIDC for npm provenance
     steps:
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-        run: npm audit signatures
+        run: npm install && npm audit signatures
       - name: Semantic Release
         uses: codfish/semantic-release-action@v3
         with:
