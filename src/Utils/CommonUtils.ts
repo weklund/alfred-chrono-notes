@@ -8,6 +8,10 @@ import { InvalidEntrypointArguments } from "../Exceptions/InvalidEntrypointArgum
  * @param input - The input string to parse a combined {@link Interval} and {@link Ordinal} from.
  * @returns Returns an instance of {@link ChronoType} with the parsed {@link Interval} and {@link Ordinal}.
  * @throws {InvalidEntrypointArguments} If input is not a valid ChronoType.
+ * @example
+ * parseChronoNoteArg("CurrentDaily") => { interval: Interval.Current, ordinal: Ordinal.Daily }
+ * @example
+ * parseChronoNoteArg("NextMonthly") => { interval: Interval.Next, ordinal: Ordinal.Monthly }
  */
 export function parseChronoNoteArg(input: string): ChronoType {
   let ordinal: Ordinal | null = null;

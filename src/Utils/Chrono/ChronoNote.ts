@@ -49,7 +49,7 @@ export interface ChronoType {
 }
 
 /**
- * IChronoNote is an interface that represents a chronological note.
+ * {@link IChronoNote} is an interface that represents a chronological note.
  *
  * It contains methods for getting the interval, date, and template. It also contains a method for formatting the date.
  * @template {Interval} getInterval - Returns the interval of the note.
@@ -111,7 +111,7 @@ export class ChronoNote implements IChronoNote {
   /**
    * Fetch the template file content based on the given template path.
    *
-   * TODO:  Make this generic enough to support more than one templates per {@link ChronoType}.
+   * TODO:  Make this generic enough to support more than one templates type per {@link ChronoType}.
    * @param templatePath - The path to the template file.
    * @returns The template file content.
    */
@@ -125,8 +125,8 @@ export class ChronoNote implements IChronoNote {
    * Luxon has an identifier to know what interval to add or subtract to a {@link DateTime} context,
    * which is captured by the {@link intervalMap} context.
    *
-   * We also need the amount to add or subtract, which is captured
-   * by the {@link ordinalMap} context.
+   * We also need the amount to add or subtract, which is captured by the {@link ordinalMap} context.
+   * See {@link https://moment.github.io/luxon/api-docs/index.html#datetimeplus} for reference.
    * @param providedDate - The date to set the note to based on the configured {@link Interval} and {@link Ordinal}.
    */
   setDate(providedDate: DateTime): void {
