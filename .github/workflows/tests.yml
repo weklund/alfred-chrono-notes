@@ -40,7 +40,7 @@ jobs:
         run: SKIP_POSTINSTALL=1 pnpm i --frozen-lockfile
 
       - name: Run Eslint
-        run: pnpm eslint
+        run: pnpm lint
 
       - name: Run Tests and get Coverage
         run: pnpm coverage
@@ -49,4 +49,4 @@ jobs:
         name: Coveralls GitHub Action
 
       - name: Run Prettier check
-        run: pnpm prettier-check
+        run: pnpm check-format
