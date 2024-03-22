@@ -16,7 +16,7 @@ module.exports = {
     "prettier",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
-    "plugin:jsdoc/recommended",
+    "plugin:jsdoc/recommended-typescript",
     "plugin:sonarjs/recommended",
     "plugin:promise/recommended",
     "plugin:security/recommended-legacy",

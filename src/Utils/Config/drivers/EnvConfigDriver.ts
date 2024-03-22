@@ -7,8 +7,6 @@ import {
 import { MissingConfigurationException } from "../../../Exceptions/MissingConfigurationException.js";
 
 /**
- * @class EnvConfigDriver
- * @implements {ConfigDriver} ConfigDriver
  * @description The default Env ConfigDriver that uses process.env.
  */
 export class EnvConfigDriver implements ConfigDriver {
@@ -18,8 +16,8 @@ export class EnvConfigDriver implements ConfigDriver {
 
   /**
    * Method to get interval configurations, assuming intervals are known.
-   * @param {string} interval - The interval to get the config for.
-   * @returns {IntervalConfig} - The interval config for the given interval.
+   * @param interval - The interval to get the config for.
+   * @returns - The interval config for the given interval.
    */
   getIntervalConfig(interval: string): IntervalConfig {
     const fileFormatVar = `${interval.toUpperCase()}_FILE_FORMAT`;
@@ -41,7 +39,7 @@ export class EnvConfigDriver implements ConfigDriver {
    * Check that the required interval config variables are set
    * Specifically checking 3 variables in {@link IntervalConfig}
    * If it's not set then throw {@link MissingConfigurationException}.
-   * @param {IntervalConfig} intervalVars - The interval config variables to check.
+   * @param intervalVars - The interval config variables to check.
    * @throws {MissingConfigurationException} - If any of the required variables are not set.
    */
   validateIntervalConfig(intervalVars: IntervalConfig) {

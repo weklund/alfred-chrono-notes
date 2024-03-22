@@ -1,8 +1,6 @@
 /**
- * @class FileDoesNotExistException
  * @description This exception is thrown when a file does not exist.
  * @param {string} message - The error message.
- * @augments Error
  */
 export class FileDoesNotExistException extends Error {
   constructor(message: string) {

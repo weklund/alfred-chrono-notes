@@ -22,10 +22,10 @@
     "dev": "tsc --watch",
     "test": "jest",
     "coverage": "jest --coverage",
-    "prettier-check": "prettier --check .",
-    "prettier-fix": "prettier --write .",
-    "eslint": "eslint .",
-    "eslint-fix": "eslint . --fix"
+    "check-format": "prettier --check .",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "fix-lint": "eslint . --fix"
   },
   "files": [
     "workflow/**/*.js",

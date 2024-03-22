@@ -11,10 +11,7 @@ import { ChronoNote } from "./Utils/Chrono/ChronoNote.js";
 // TODO:  Check installation of Obsidian, and Obsidian Periodic Notes plugin
 
 /**
- * @class Entrypoint
- * @description Handles the entrypoint logic for the Chrono Notes Alfred Workflow.
- * @property {IConfigProvider} configProvider Argument for injecting ConfigProvider.
- * @property {IFileProvider} fileProvider Argument for injecting FileProvider.
+ * Handles the entrypoint logic for the Chrono Notes Alfred Workflow.
  */
 export class Entrypoint {
   private readonly configProvider: IConfigProvider;
@@ -24,9 +21,9 @@ export class Entrypoint {
   /**
    * Constructor for the Entrypoint class.
    * Initializes the class with injected dependencies for configuration,file access, and a custom date/time object.
-   * @param {IConfigProvider} configProvider - Argument for injecting a ConfigProvider.
-   * @param {IFileProvider} fileProvider - Argument for injecting a FileProvider.
-   * @param {DateTime} customDateTime - Argument for injecting a custom DateTime object.
+   * @param configProvider - Argument for injecting a ConfigProvider.
+   * @param fileProvider - Argument for injecting a FileProvider.
+   * @param customDateTime - Argument for injecting a custom DateTime object.
    */
   constructor(
     configProvider: IConfigProvider,
@@ -122,10 +119,10 @@ export class Entrypoint {
 
 /**
  * Factory function for entrypoint.
- * @param {IConfigProvider} configProvider - Argument for injecting ConfigProvider.
- * @param  {IFileProvider} fileProvider -  Argument for injecting FileProvider.
- * @param {DateTime} customDateTime - Argument for injecting custom DateTime object.
- * @returns {Entrypoint} Returns a new instance of Entrypoint.
+ * @param configProvider - Argument for injecting ConfigProvider.
+ * @param fileProvider -  Argument for injecting FileProvider.
+ * @param customDateTime - Argument for injecting custom DateTime object.
+ * @returns Returns a new instance of Entrypoint.
  */
 export function createEntrypoint(
   configProvider: IConfigProvider,
