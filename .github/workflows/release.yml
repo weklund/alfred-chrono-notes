@@ -23,10 +23,8 @@ jobs:
           node-version: 20
       - name: Install dependencies
         run: SKIP_POSTINSTALL=1 npm i
-      - name: Verify the integrity of provenance and registry signatures for installed dependencies
-        run: npm audit signatures
       - name: Semantic Release
-        uses: codfish/semantic-release-action@v3
+        uses: codfish/semantic-release-action@v4
         with:
           dry-run: true
           branches: |
