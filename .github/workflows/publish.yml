@@ -15,8 +15,16 @@ jobs:
       pull-requests: write # to be able to comment on released pull requests
       id-token: write # to enable use of OIDC for npm provenance
     steps:
-      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-        run: npm install
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: SKIP_POSTINSTALL=1 npm i
+      - name: Verify the integrity of provenance and registry signatures for installed dependencies
+        run: npm audit signatures
       - name: Semantic Release
         uses: codfish/semantic-release-action@v3
         with:
