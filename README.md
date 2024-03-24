@@ -1,4 +1,4 @@
-# alfred-chrono-notes [![CI](https://github.com/weklund/alfred-chrono-notes/actions/workflows/ci.yml/badge.svg)](https://github.com/weklund/alfred-chrono-notes/actions/workflows/ci.yml) [![Coverage Status](https://coveralls.io/repos/github/weklund/alfred-chrono-notes/badge.svg?t=2QlVvG)](https://coveralls.io/github/weklund/alfred-chrono-notes) ![GitHub License](https://img.shields.io/github/license/weklund/alfred-chrono-notes)
+# alfred-chrono-notes [![CI](https://github.com/weklund/alfred-chrono-notes/actions/workflows/ci.yml/badge.svg)](https://github.com/weklund/alfred-chrono-notes/actions/workflows/ci.yml) [![Coverage Status](https://coveralls.io/repos/github/weklund/alfred-chrono-notes/badge.svg?t=2QlVvG)](https://coveralls.io/github/weklund/alfred-chrono-notes) ![GitHub License](https://img.shields.io/github/license/weklund/alfred-chrono-notes) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/9b2850b09fd3468da7569d46ca2d75c2)](https://app.codacy.com/gh/weklund/alfred-chrono-notes/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)[![Release date][release-date-image]][release-url]
 
 Alfred Workflow for easy access to your Obsidian Periodic Notes.
 
@@ -68,3 +68,8 @@ https://moment.github.io/luxon/#/formatting?id=table-of-tokens
 ### Testing
 
 There are unit tests, but there currently isn't a way to an integrate test with an alfred environment. All PRs need to have a screenshot or gif of it working
+
+<!-- Links -->
+
+[release-date-image]: https://img.shields.io/github/release-date/weklund/alfred-chrono-notes
+[release-url]: https://github.com/weklund/alfred-chrono-notes/releases
