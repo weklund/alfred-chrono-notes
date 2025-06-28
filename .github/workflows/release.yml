@@ -18,12 +18,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install NodeJS
-        uses: actions/setup-node@v3
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: 20
+          bun-version: latest
       - name: Install dependencies
-        run: SKIP_POSTINSTALL=1 npm i
+        run: SKIP_POSTINSTALL=1 bun install
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4.1.0
         with:

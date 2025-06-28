@@ -12,41 +12,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install NodeJS
-        uses: actions/setup-node@v3
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: 20
-
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        with:
-          version: 8
-          run_install: false
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          bun-version: latest
 
       - name: Install dependencies
-        run: SKIP_POSTINSTALL=1 pnpm i --frozen-lockfile
+        run: SKIP_POSTINSTALL=1 bun install --frozen-lockfile
 
       - name: Run Eslint
-        run: pnpm lint
+        run: bun run lint
 
       - name: Run Tests and get Coverage
-        run: pnpm coverage
+        run: bun run coverage
 
       - uses: coverallsapp/github-action@v2.2.3
         name: Coveralls GitHub Action
 
       - name: Run Prettier check
-        run: pnpm check-format
+        run: bun run check-format

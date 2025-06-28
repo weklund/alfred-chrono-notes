@@ -5,3 +5,4 @@ import { FileProvider } from "./Utils/File/FileProvider.js";
 const main = createEntrypoint(new ConfigProvider(), new FileProvider());
 
 main.handle();
+j
