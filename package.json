@@ -15,17 +15,17 @@
     "url": "https://github.com/weklund/alfred-chrono-notes/issues"
   },
   "scripts": {
-    "prepublishOnly": "tsc",
-    "postinstall": "node skip-postinstall ||  alfy-init",
+    "prepublishOnly": "bun run build",
+    "postinstall": "node skip-postinstall || alfy-init",
     "preuninstall": "alfy-cleanup",
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "test": "jest",
-    "coverage": "jest --coverage",
-    "check-format": "prettier --check .",
-    "format": "prettier --write .",
-    "lint": "eslint .",
-    "fix-lint": "eslint . --fix"
+    "build": "bun tsc",
+    "dev": "bun tsc --watch",
+    "test": "bun run jest",
+    "coverage": "bun run jest --coverage",
+    "check-format": "bun prettier --check .",
+    "format": "bun prettier --write .",
+    "lint": "bun eslint .",
+    "fix-lint": "bun eslint . --fix"
   },
   "files": [
     "workflow/**/*.js",
@@ -46,11 +46,11 @@
     ]
   },
   "engines": {
-    "npm": ">=6.12.0 <10.3.0",
-    "node": ">=13.0.0 <=21.6.1"
+    "npm": ">=6.12.0",
+    "node": ">=20.0.0"
   },
   "dependencies": {
-    "alfy": "^0.12.2",
+    "alfy": "^2.1.0",
     "luxon": "^3.4.4",
     "open": "^8.4.0"
   },
