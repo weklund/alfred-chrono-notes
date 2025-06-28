@@ -11,7 +11,7 @@ This is an Alfred Workflow for macOS that provides quick access to Obsidian peri
 The codebase follows a clean architecture pattern with dependency injection:
 
 - **Entrypoint.ts**: Main workflow handler that orchestrates the entire flow
-- **ChronoNote**: Core domain model representing time-based notes with intervals (Daily, Weekly, Monthly, Quarterly, Annually) and ordinals (Current, Next, Previous)  
+- **ChronoNote**: Core domain model representing time-based notes with intervals (Daily, Weekly, Monthly, Quarterly, Annually) and ordinals (Current, Next, Previous)
 - **ConfigProvider**: Handles environment variable configuration with a driver pattern
 - **FileProvider**: Manages file system operations with security validation
 - **Custom Exceptions**: Specific exception types for different failure scenarios
@@ -21,34 +21,40 @@ The workflow uses Luxon for date manipulation and the `open` package to launch O
 ## Development Commands
 
 ### Package Management
+
 - `bun install` - Install dependencies using Bun
 - `bun install --frozen-lockfile` - Install dependencies with exact versions
 
 ### Build and Development
+
 - `bun run build` - Compile TypeScript to JavaScript in workflow/ directory
 - `bun run dev` - Watch mode compilation with TypeScript
 - `bun tsc` - Direct TypeScript compilation via Bun
 
 ### Testing
+
 - `bun test` - Run test suite using Bun's built-in test runner
 - `bun run coverage` - Run tests with coverage report
 - Tests ignore the `workflow/` directory and require 90% coverage thresholds
 
 ### Code Quality
+
 - `bun run lint` - Run ESLint via Bun
 - `bun run fix-lint` - Run ESLint with auto-fix via Bun
 - `bun run check-format` - Check Prettier formatting via Bun
 - `bun run format` - Apply Prettier formatting via Bun
 
 ### Alfred Workflow Management
+
 - `bun run postinstall` - Initialize Alfy (Alfred workflow helper)
 - `bun run preuninstall` - Cleanup Alfy configuration
 
 ## Configuration
 
 The workflow uses environment variables for configuration, prefixed by interval type:
+
 - `{INTERVAL}_FILE_FORMAT` - Luxon date format token for file names
-- `{INTERVAL}_FOLDER_PATH` - Path to the folder containing notes  
+- `{INTERVAL}_FOLDER_PATH` - Path to the folder containing notes
 - `{INTERVAL}_TEMPLATE_PATH` - Path to the template file for new notes
 - `OBSIDIAN_VAULT_NAME` - Name of the Obsidian vault
 
@@ -68,6 +74,7 @@ Example: `DAILY_FILE_FORMAT`, `WEEKLY_FOLDER_PATH`, etc.
 ## Release Process
 
 ### NPM Release Flow
+
 The project uses an automated release process triggered by successful CI runs on the `main` branch:
 
 1. **Trigger**: Code pushed to `main` → CI workflow runs (lint, test, coverage, format)
@@ -77,19 +84,24 @@ The project uses an automated release process triggered by successful CI runs on
 5. **Publish**: Package published to npm with compiled files only
 
 ### Published Package Contents
+
 - `workflow/**/*.js` - Compiled JavaScript (Alfred runtime files)
 - `info.plist` - Alfred workflow configuration
 - `icon.png` - Workflow icon
 - **Note**: Source TypeScript files are NOT published
 
 ### Installation Flow
+
 When users install via npm:
+
 1. Package downloads with compiled JS files
 2. `postinstall` runs `alfy-init` (registers workflow with Alfred)
 3. Alfred can discover and execute the workflow
 
 ### Dual Package Nature
+
 This package serves as both:
+
 - **NPM package** - Distributed through npm registry
 - **Alfred workflow** - Integrates with Alfred via `info.plist` and `alfy`
 
