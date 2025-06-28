@@ -4,9 +4,9 @@
  */
 export class FileAlreadyExistsException extends Error {
   constructor(message: string) {
-    super(message);
-    this.name = "FileAlreadyExistsException";
-    this.message = message;
-    console.error(`${this.name}: ${this.message}`);
+    super(message)
+    this.name = 'FileAlreadyExistsException'
+    this.message = message
+    console.error(`${this.name}: ${this.message}`)
   }
 }

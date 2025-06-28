@@ -4,9 +4,9 @@
  */
 export class FatalReadFileSyncException extends Error {
   constructor(message: string) {
-    super(message);
-    this.name = "FatalReadFileSyncException";
-    this.message = message;
-    console.error(`${this.name}: ${this.message}`);
+    super(message)
+    this.name = 'FatalReadFileSyncException'
+    this.message = message
+    console.error(`${this.name}: ${this.message}`)
   }
 }

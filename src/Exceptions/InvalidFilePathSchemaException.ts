@@ -4,9 +4,9 @@
  */
 export class InvalidFilePathSchemaException extends Error {
   constructor(message: string) {
-    super(message);
-    this.name = "InvalidFilePathSchemaException";
-    this.message = message;
-    console.error(`${this.name}: ${this.message}`);
+    super(message)
+    this.name = 'InvalidFilePathSchemaException'
+    this.message = message
+    console.error(`${this.name}: ${this.message}`)
   }
 }

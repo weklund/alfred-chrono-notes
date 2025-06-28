@@ -4,9 +4,9 @@
  */
 export class InvalidEntrypointArguments extends Error {
   constructor(message: string) {
-    super(message);
-    this.name = "InvalidEntrypointArguments";
-    this.message = message;
-    console.error(`${this.name}: ${this.message}`);
+    super(message)
+    this.name = 'InvalidEntrypointArguments'
+    this.message = message
+    console.error(`${this.name}: ${this.message}`)
   }
 }

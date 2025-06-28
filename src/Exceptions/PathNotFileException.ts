@@ -4,9 +4,9 @@
  */
 export class PathNotFileException extends Error {
   constructor(message: string) {
-    super(message);
-    this.name = "PathNotFileException";
-    this.message = message;
-    console.error(`${this.name}: ${message}`);
+    super(message)
+    this.name = 'PathNotFileException'
+    this.message = message
+    console.error(`${this.name}: ${message}`)
   }
 }
