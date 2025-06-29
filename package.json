@@ -22,10 +22,10 @@
     "dev": "bun tsc --watch",
     "test": "bun run jest",
     "coverage": "bun run jest --coverage",
-    "check-format": "bun run biome check .",
-    "format": "bun run biome format --write",
-    "lint": "bun run biome lint .",
-    "fix-lint": "bun run biome lint --fix ."
+    "check-format": "bunx biome check .",
+    "format": "bunx biome format --write",
+    "lint": "bunx biome lint",
+    "fix-lint": "bunx biome lint --fix"
   },
   "files": [
     "workflow/**/*.js",
