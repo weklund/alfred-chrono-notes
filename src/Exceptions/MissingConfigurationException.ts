@@ -4,9 +4,9 @@
  */
 export class MissingConfigurationException extends Error {
   constructor(message: string) {
-    super(message);
-    this.name = "MissingConfigurationException";
-    this.message = message;
-    console.error(`${this.name}: ${this.message}`);
+    super(message)
+    this.name = 'MissingConfigurationException'
+    this.message = message
+    console.error(`${this.name}: ${this.message}`)
   }
 }

@@ -1,14 +1,14 @@
-import { DateTime } from "luxon";
-import { IFileProvider } from "../File/FileProvider.js";
+import { DateTime } from 'luxon'
+import { IFileProvider } from '../File/FileProvider.js'
 
 /**
  * {@link Ordinal} is an enum that represents the position in a series of {@link Interval} of a note.
  * It can be Current, Next, or Previous.
  */
 export enum Ordinal {
-  Current = "Current",
-  Next = "Next",
-  Previous = "Previous",
+  Current = 'Current',
+  Next = 'Next',
+  Previous = 'Previous',
 }
 
 /**
@@ -19,33 +19,33 @@ const ordinalMap = {
   [Ordinal.Current]: 0,
   [Ordinal.Next]: 1,
   [Ordinal.Previous]: -1,
-};
+}
 
 /**
  * {@link Interval} is an enum that represents the time interval of a note.
  */
 export enum Interval {
-  Daily = "Daily",
-  Weekly = "Weekly",
-  Monthly = "Monthly",
-  Quarterly = "Quarterly",
-  Annually = "Annually",
+  Daily = 'Daily',
+  Weekly = 'Weekly',
+  Monthly = 'Monthly',
+  Quarterly = 'Quarterly',
+  Annually = 'Annually',
 }
 
 /**
  * The intervalMap maps {@link Interval} enums to Luxon strings.
  */
 const intervalMap = {
-  [Interval.Annually]: "year",
-  [Interval.Daily]: "day",
-  [Interval.Monthly]: "month",
-  [Interval.Quarterly]: "quarter",
-  [Interval.Weekly]: "week",
-};
+  [Interval.Annually]: 'year',
+  [Interval.Daily]: 'day',
+  [Interval.Monthly]: 'month',
+  [Interval.Quarterly]: 'quarter',
+  [Interval.Weekly]: 'week',
+}
 
 export interface ChronoType {
-  ordinal: Ordinal;
-  interval: Interval;
+  ordinal: Ordinal
+  interval: Interval
 }
 
 /**
@@ -59,29 +59,29 @@ export interface ChronoType {
  * @template {string} formatDate - Returns the formatted date of the note.
  */
 export interface IChronoNote {
-  getInterval: () => Interval;
-  getOrdinal: () => Ordinal;
-  getDate: () => DateTime;
-  getTemplate: (templatePath: string) => string;
-  formatDate: (formatToken: string) => string;
+  getInterval: () => Interval
+  getOrdinal: () => Ordinal
+  getDate: () => DateTime
+  getTemplate: (templatePath: string) => string
+  formatDate: (formatToken: string) => string
 }
 
 /**
  * ChronoNote is a class that represents a chronological note.
  */
 export class ChronoNote implements IChronoNote {
-  private readonly type: ChronoType;
-  private fileProvider: IFileProvider;
-  private date: DateTime = DateTime.now();
+  private readonly type: ChronoType
+  private fileProvider: IFileProvider
+  private date: DateTime = DateTime.now()
 
   constructor(
     type: ChronoType,
     fileProvider: IFileProvider,
     providedDate: DateTime = DateTime.now(),
   ) {
-    this.type = type;
-    this.fileProvider = fileProvider;
-    this.setDate(providedDate);
+    this.type = type
+    this.fileProvider = fileProvider
+    this.setDate(providedDate)
   }
 
   /**
@@ -89,7 +89,7 @@ export class ChronoNote implements IChronoNote {
    * @returns - Returns the {@link Interval}.
    */
   getInterval(): Interval {
-    return this.type.interval;
+    return this.type.interval
   }
 
   /**
@@ -97,7 +97,7 @@ export class ChronoNote implements IChronoNote {
    * @returns Returns the {@link Ordinal}.
    */
   getOrdinal(): Ordinal {
-    return this.type.ordinal;
+    return this.type.ordinal
   }
 
   /**
@@ -105,7 +105,7 @@ export class ChronoNote implements IChronoNote {
    * @returns - The datetime of the note.
    */
   getDate(): DateTime {
-    return this.date;
+    return this.date
   }
 
   /**
@@ -116,7 +116,7 @@ export class ChronoNote implements IChronoNote {
    * @returns The template file content.
    */
   getTemplate(templatePath: string): string {
-    return this.fileProvider.readTemplate(templatePath);
+    return this.fileProvider.readTemplate(templatePath)
   }
 
   /**
@@ -132,10 +132,10 @@ export class ChronoNote implements IChronoNote {
   setDate(providedDate: DateTime): void {
     this.date = providedDate.plus({
       [intervalMap[this.type.interval]]: ordinalMap[this.type.ordinal],
-    });
+    })
     console.info(
-      `Date with ${this.type.interval} interval and ${this.type.ordinal} ordinal set to: ${this.date.toFormat("yyyy-MM-dd")}`,
-    );
+      `Date with ${this.type.interval} interval and ${this.type.ordinal} ordinal set to: ${this.date.toFormat('yyyy-MM-dd')}`,
+    )
   }
 
   /**
@@ -144,7 +144,7 @@ export class ChronoNote implements IChronoNote {
    * @returns The formatted datetime string.
    */
   formatDate(formatToken: string): string {
-    return this.date.toFormat(formatToken);
+    return this.date.toFormat(formatToken)
   }
 
   /**
@@ -154,8 +154,8 @@ export class ChronoNote implements IChronoNote {
    * @param formatToken - The format token from Luxon to use for formatting the date.
    * @returns Yyyy-MM-dd cccc.
    */
-  formatDayDate(formatToken: string = "yyyy-MM-dd cccc"): string {
-    return this.date.toFormat(formatToken);
+  formatDayDate(formatToken: string = 'yyyy-MM-dd cccc'): string {
+    return this.date.toFormat(formatToken)
   }
 
   /**
@@ -166,18 +166,18 @@ export class ChronoNote implements IChronoNote {
    * @returns - DateTime in YYYY-'W'ww format.
    */
   formatWeekDate(formatToken: string = "yyyy-'W'WW"): string {
-    console.log(formatToken);
+    console.log(formatToken)
 
     // TODO: Troubleshoot why .toFormat can't take in localWeekNumber so we can dynamically format
     // Format given weeknumber to make sure it's 2 digits, so a single digit number will have a 0 prefixed
-    let weekNumber = this.getWeekNumber().toString();
+    let weekNumber = this.getWeekNumber().toString()
 
     if (weekNumber.length === 1) {
-      weekNumber = `0${weekNumber}`;
+      weekNumber = `0${weekNumber}`
     }
 
     // Manually format the date using yyyy-'W'WW format token
-    return `${this.date.toFormat("yyyy")}-W${weekNumber}`;
+    return `${this.date.toFormat('yyyy')}-W${weekNumber}`
 
     // return date.toFormat(formatToken, {locale: "en-US"})
   }
@@ -188,6 +188,6 @@ export class ChronoNote implements IChronoNote {
    * @returns - Returns the luxon {@link DateTime} week number.
    */
   getWeekNumber(): number {
-    return this.date.localWeekNumber;
+    return this.date.localWeekNumber
   }
 }
